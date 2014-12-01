@@ -2,7 +2,9 @@
 
 @section('content')
 
-
+<?php
+  header( "refresh:5;" );
+?>
 
 <style>
   table, th, td {
