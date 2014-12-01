@@ -14,6 +14,10 @@
 Route::get('/readings', array(
 	'as' => 'home'
 ));
+Route::get('/readings/threshold', array(
+    'as' => 'range',
+    'uses' => 'ReadingsController@postRange'
+));
 Route::get('/readings/{room}', array(
 	'as' => 'graph',
 	'uses' => 'ReadingsController@getGraph'
