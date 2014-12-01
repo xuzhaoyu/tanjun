@@ -21,12 +21,12 @@
     <div id="smoke" style="height:400px"></div>
     <div id="dust" style="height:400px"></div>
     <!-- ECharts import -->
-    <script src="../echarts/build/dist/echarts.js"></script>
+    <script src="echarts/build/dist/echarts.js"></script>
     <script type="text/javascript">
         // configure for module loader
         require.config({
             paths: {
-                echarts: '../echarts/build/dist'
+                echarts: 'echarts/build/dist'
             }
         });
 
@@ -97,7 +97,7 @@
         // configure for module loader
         require.config({
             paths: {
-                echarts: '../echarts/build/dist'
+                echarts: 'echarts/build/dist'
             }
         });
 
@@ -168,7 +168,7 @@
         // configure for module loader
         require.config({
             paths: {
-                echarts: '../echarts/build/dist'
+                echarts: 'echarts/build/dist'
             }
         });
 
@@ -239,7 +239,7 @@
         // configure for module loader
         require.config({
             paths: {
-                echarts: '../echarts/build/dist'
+                echarts: 'echarts/build/dist'
             }
         });
 
@@ -310,7 +310,7 @@
         // configure for module loader
         require.config({
             paths: {
-                echarts: 'http://echarts.baidu.com/build/dist'
+                echarts: 'echarts/build/dist'
             }
         });
 
