@@ -36,21 +36,10 @@ class ReadingsController extends \BaseController {
 		}
 		return View::make('data.presentData') -> with('data', $data_list);
 	}
-
-	public function getChart(){
-        $all_tp = DB::table('user')
-            -> where('mac', '=', 'e84e06200f3b')
-            -> orderBy('serverTime')
-            -> select('serverTime', 'MS5611Pressure')
-            -> get();
-
-        return View::make('data.presentGraph') -> with('data', $all_tp);
-	}
-
 	public function getGraph($room) {
 				$m = DB::table('ip2name')
-					  -> where('room', '=', $room)
-						-> select('mac')
+					    -> where('room', '=', $room)
+					    -> select('mac')
 						-> first();
 
 				$mac = $m -> mac;
@@ -61,8 +50,7 @@ class ReadingsController extends \BaseController {
 						-> select('serverTime', 'dhtTemp', 'dhtHumidity', 'MS5611Pressure', 'MQ2Smoke', 'Dust')
 						-> get();
 
-				return View::make('data.presentGraph') -> with('data', $all_tp)
-																							 -> with('room', $room);
+				return View::make('data.presentGraph') -> with('data', $all_tp) -> with('room', $room);
 	}
 
 	public function postReading(){
