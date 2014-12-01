@@ -84,7 +84,7 @@
         // configure for module loader
         require.config({
             paths: {
-                echarts: {{ HTML::script('js/echarts/build/dist'); }}
+                echarts:'http://123.57.66.77/js/echarts/build/dist'
             }
         });
 
@@ -156,7 +156,7 @@
         // configure for module loader
         require.config({
             paths: {
-                echarts: {{ HTML::script('js/echarts/build/dist'); }}
+                echarts: 'http://123.57.66.77/js/echarts/build/dist'
             }
         });
 
