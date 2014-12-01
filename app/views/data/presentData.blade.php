@@ -3,7 +3,7 @@
 @section('content')
 
 <?php
-  header( "refresh:5;" );
+  header( "refresh:10;" );
 ?>
 
 <style>

@@ -1,7 +1,9 @@
 @extends('layouts.master')
 
 @section('content')
-
+<?php
+  header( "refresh:10;" );
+?>
 <!DOCTYPE html>
 <head>
     <meta charset="utf-8">
