@@ -10,36 +10,27 @@
     <title>{{$room}}</title>
 </head>
 <body>
-
     {{$room}}
     <br>
-
-    <!-- Prepare a Dom with size (width and height) for ECharts -->
     <div id="temp" style="height:400px"></div>
     <div id="humidity" style="height:400px"></div>
     <div id="pressure" style="height:400px"></div>
     <div id="smoke" style="height:400px"></div>
     <div id="dust" style="height:400px"></div>
-    <!-- ECharts import -->
-    <script src="echarts/build/dist/echarts.js"></script>
+    {{ HTML::script('js/echarts/build/dist/echarts.js'); }}
     <script type="text/javascript">
-        // configure for module loader
         require.config({
             paths: {
-                echarts: 'echarts/build/dist'
+                echarts: 'http://123.57.66.77/js/echarts/build/dist'
             }
         });
-
-        // use
         require(
             [
                 'echarts',
-                'echarts/chart/line' // require the specific chart type
+                'echarts/chart/line'
             ],
             function (ec) {
-                // Initialize after dom ready
                 var myChart = ec.init(document.getElementById('temp'));
-
                 var option = {
                     tooltip: {
                         show: true
@@ -51,16 +42,12 @@
                         {
                             type : 'category',
                             data : [<?php
-                                        //$last = array_pop($data);
                                         foreach ($data as $a) {
                                             echo '\'';
                                             print_r (explode(" ", $a->serverTime)[1]);
                                             echo '\'';
                                             echo ', ';
                                         }
-                                        // echo '\'';
-                                        // print_r (explode(" ", $last->serverTime)[1]);
-                                        // echo '\'';
                                   ?>]
                         }
                     ],
@@ -77,40 +64,32 @@
                             "name":"温度",
                             "type":"line",
                             "data": [<?php
-                                        //  $last = array_pop($data);
                                          foreach ($data as $a) {
                                              echo $a -> dhtTemp;
                                              echo ', ';
                                          }
-                                        //  echo $last -> dhtTemp;
                                      ?>]
                         }
                     ]
                 };
-                // Load data into the ECharts instance
                 myChart.setOption(option);
             }
         );
     </script>
 
     <script type="text/javascript">
-        // configure for module loader
         require.config({
             paths: {
-                echarts: 'echarts/build/dist'
+                echarts: 'http://123.57.66.77/js/echarts/build/dist'
             }
         });
-
-        // use
         require(
             [
                 'echarts',
-                'echarts/chart/line' // require the specific chart type
+                'echarts/chart/line'
             ],
             function (ec) {
-                // Initialize after dom ready
                 var myChart = ec.init(document.getElementById('humidity'));
-
                 var option = {
                     tooltip: {
                         show: true
@@ -122,16 +101,12 @@
                         {
                             type : 'category',
                             data : [<?php
-                                        // $last = array_pop($data);
                                         foreach ($data as $a) {
                                             echo '\'';
                                             print_r (explode(" ", $a->serverTime)[1]);
                                             echo '\'';
                                             echo ', ';
                                         }
-                                        // echo '\'';
-                                        // print_r (explode(" ", $last->serverTime)[1]);
-                                        // echo '\'';
                                   ?>]
                         }
                     ],
@@ -148,40 +123,32 @@
                             "name":"湿度",
                             "type":"line",
                             "data": [<?php
-                                        //  $last = array_pop($data);
                                          foreach ($data as $a) {
                                              echo $a -> dhtHumidity;
                                              echo ', ';
                                          }
-                                        //  echo $last -> dhtHumidity;
                                      ?>]
                         }
                     ]
                 };
-                // Load data into the ECharts instance
                 myChart.setOption(option);
             }
         );
     </script>
 
     <script type="text/javascript">
-        // configure for module loader
         require.config({
             paths: {
-                echarts: 'echarts/build/dist'
+                echarts: 'http://123.57.66.77/js/echarts/build/dist'
             }
         });
-
-        // use
         require(
             [
                 'echarts',
-                'echarts/chart/line' // require the specific chart type
+                'echarts/chart/line'
             ],
             function (ec) {
-                // Initialize after dom ready
                 var myChart = ec.init(document.getElementById('pressure'));
-
                 var option = {
                     tooltip: {
                         show: true
@@ -193,16 +160,12 @@
                         {
                             type : 'category',
                             data : [<?php
-                                        // $last = array_pop($data);
                                         foreach ($data as $a) {
                                             echo '\'';
                                             print_r (explode(" ", $a->serverTime)[1]);
                                             echo '\'';
                                             echo ', ';
                                         }
-                                        // echo '\'';
-                                        // print_r (explode(" ", $last->serverTime)[1]);
-                                        // echo '\'';
                                   ?>]
                         }
                     ],
@@ -219,40 +182,32 @@
                             "name":"压差",
                             "type":"line",
                             "data": [<?php
-                                        //  $last = array_pop($data);
                                          foreach ($data as $a) {
                                              echo $a -> MS5611Pressure;
                                              echo ', ';
                                          }
-                                        //  echo $last -> MS5611Pressure;
                                      ?>]
                         }
                     ]
                 };
-                // Load data into the ECharts instance
                 myChart.setOption(option);
             }
         );
     </script>
 
     <script type="text/javascript">
-        // configure for module loader
         require.config({
             paths: {
-                echarts: 'echarts/build/dist'
+                echarts: 'http://123.57.66.77/js/echarts/build/dist'
             }
         });
-
-        // use
         require(
             [
                 'echarts',
                 'echarts/chart/line' // require the specific chart type
             ],
             function (ec) {
-                // Initialize after dom ready
                 var myChart = ec.init(document.getElementById('smoke'));
-
                 var option = {
                     tooltip: {
                         show: true
@@ -264,16 +219,12 @@
                         {
                             type : 'category',
                             data : [<?php
-                                        // $last = array_pop($data);
                                         foreach ($data as $a) {
                                             echo '\'';
                                             print_r (explode(" ", $a->serverTime)[1]);
                                             echo '\'';
                                             echo ', ';
                                         }
-                                        // echo '\'';
-                                        // print_r (explode(" ", $last->serverTime)[1]);
-                                        // echo '\'';
                                   ?>]
                         }
                     ],
@@ -290,40 +241,32 @@
                             "name":"烟雾",
                             "type":"line",
                             "data": [<?php
-                                        //  $last = array_pop($data);
                                          foreach ($data as $a) {
                                              echo $a -> MQ2Smoke;
                                              echo ', ';
                                          }
-                                        //  echo $last -> MQ2Smoke;
                                      ?>]
                         }
                     ]
                 };
-                // Load data into the ECharts instance
                 myChart.setOption(option);
             }
         );
     </script>
 
     <script type="text/javascript">
-        // configure for module loader
         require.config({
             paths: {
-                echarts: 'echarts/build/dist'
+                echarts: 'http://123.57.66.77/js/echarts/build/dist'
             }
         });
-
-        // use
         require(
             [
                 'echarts',
-                'echarts/chart/line' // require the specific chart type
+                'echarts/chart/line'
             ],
             function (ec) {
-                // Initialize after dom ready
                 var myChart = ec.init(document.getElementById('dust'));
-
                 var option = {
                     tooltip: {
                         show: true
@@ -335,16 +278,12 @@
                         {
                             type : 'category',
                             data : [<?php
-                                        // $last = array_pop($data);
                                         foreach ($data as $a) {
                                             echo '\'';
                                             print_r (explode(" ", $a->serverTime)[1]);
                                             echo '\'';
                                             echo ', ';
                                         }
-                                        // echo '\'';
-                                        // print_r (explode(" ", $last->serverTime)[1]);
-                                        // echo '\'';
                                   ?>]
                         }
                     ],
@@ -361,20 +300,16 @@
                             "name":"尘埃微粒",
                             "type":"line",
                             "data": [<?php
-                                        //  $last = array_pop($data);
                                          foreach ($data as $a) {
                                              echo $a -> Dust;
                                              echo ', ';
                                          }
-                                        //  echo $last -> Dust;
                                      ?>]
                         }
                     ]
                 };
-                // Load data into the ECharts instance
                 myChart.setOption(option);
             }
         );
     </script>
-
 </body>

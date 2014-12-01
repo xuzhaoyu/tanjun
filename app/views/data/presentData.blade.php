@@ -70,12 +70,9 @@
     echo '</tr>';
   }
 ?>
-
-
 </table>
 
 <body>
-
     <div id="pressure" style="height:400px; width:600px"></div>
     <div id="dust" style="height:400px; width:600px"></div>
     <!-- ECharts import -->
@@ -209,5 +206,4 @@
         );
     </script>
 </body>
-
 @stop
