@@ -53,6 +53,9 @@ class ReadingsController extends \BaseController {
 				return View::make('data.presentGraph') -> with('data', $all_tp) -> with('room', $room);
 	}
 
+    public function postRange(){
+        return View::make('data.setThreshold');
+    }
 	public function postReading(){
 		$input = (object)Input::all();
 		date_default_timezone_set('America/Toronto');
