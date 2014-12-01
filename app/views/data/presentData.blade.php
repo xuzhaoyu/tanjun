@@ -79,7 +79,7 @@
     <div id="pressure" style="height:400px; width:600px"></div>
     <div id="dust" style="height:400px; width:600px"></div>
     <!-- ECharts import -->
-    <script src="../../../echarts/build/dist/echarts.js"></script>
+    <script src="/../../../echarts/build/dist/echarts.js"></script>
     <script type="text/javascript">
         // configure for module loader
         require.config({

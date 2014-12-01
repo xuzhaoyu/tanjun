@@ -28,11 +28,11 @@
       <file leaf-file-name="presentData.blade.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/data/presentData.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.2140884" vertical-offset="1479" max-vertical-offset="4617">
-              <caret line="86" column="34" selection-start-line="86" selection-start-column="34" selection-end-line="86" selection-end-column="34" />
+            <state vertical-scroll-proportion="0.31906077" vertical-offset="1422" max-vertical-offset="4617">
+              <caret line="87" column="13" selection-start-line="87" selection-start-column="13" selection-end-line="87" selection-end-column="13" />
               <folding>
-                <marker date="1417412215868" expanded="false" signature="784:805" placeholder="..." />
-                <marker date="1417412215868" expanded="false" signature="820:830" placeholder="..." />
+                <marker date="1417412362290" expanded="false" signature="784:805" placeholder="..." />
+                <marker date="1417412362290" expanded="false" signature="820:830" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -124,38 +124,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sensor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sensors" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sensor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sensors" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
@@ -194,7 +162,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="916" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -202,7 +170,7 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21625" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21625" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -243,8 +211,8 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="988" max-vertical-offset="4579">
           <caret line="52" column="21" selection-start-line="52" selection-start-column="21" selection-end-line="52" selection-end-column="21" />
           <folding>
-            <marker date="1417412215868" expanded="false" signature="784:805" placeholder="..." />
-            <marker date="1417412215868" expanded="false" signature="820:830" placeholder="..." />
+            <marker date="1417412362290" expanded="false" signature="784:805" placeholder="..." />
+            <marker date="1417412362290" expanded="false" signature="820:830" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -262,8 +230,8 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="397" max-vertical-offset="3615">
           <caret line="52" column="21" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1417412215868" expanded="false" signature="784:805" placeholder="..." />
-            <marker date="1417412215868" expanded="false" signature="820:830" placeholder="..." />
+            <marker date="1417412362290" expanded="false" signature="784:805" placeholder="..." />
+            <marker date="1417412362290" expanded="false" signature="820:830" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -273,8 +241,8 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="915" max-vertical-offset="3465">
           <caret line="71" column="33" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1417412215868" expanded="false" signature="784:805" placeholder="..." />
-            <marker date="1417412215868" expanded="false" signature="820:830" placeholder="..." />
+            <marker date="1417412362290" expanded="false" signature="784:805" placeholder="..." />
+            <marker date="1417412362290" expanded="false" signature="820:830" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -297,11 +265,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/data/presentData.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2140884" vertical-offset="1479" max-vertical-offset="4617">
-          <caret line="86" column="34" selection-start-line="86" selection-start-column="34" selection-end-line="86" selection-end-column="34" />
+        <state vertical-scroll-proportion="0.31906077" vertical-offset="1422" max-vertical-offset="4617">
+          <caret line="87" column="13" selection-start-line="87" selection-start-column="13" selection-end-line="87" selection-end-column="13" />
           <folding>
-            <marker date="1417412215868" expanded="false" signature="784:805" placeholder="..." />
-            <marker date="1417412215868" expanded="false" signature="820:830" placeholder="..." />
+            <marker date="1417412362290" expanded="false" signature="784:805" placeholder="..." />
+            <marker date="1417412362290" expanded="false" signature="820:830" placeholder="..." />
           </folding>
         </state>
       </provider>
