@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+
+
+<html>
+      <head>
+          <title> Data </title>
+      </head>
+
+      <body>
+            <?php echo $__env->yieldContent('content'); ?>
+      </body>
+</html>
