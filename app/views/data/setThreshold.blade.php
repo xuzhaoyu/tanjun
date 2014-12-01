@@ -1,43 +1,55 @@
-{{ Form::open(array('route' => 'range')) }}
+{{ Form::open(array('route' => 'variable')) }}
+
+<?php
+    $room_drop_down = array();
+    foreach ($room as $r)
+         $room_drop_down =  array_add($room_drop_down, $r -> mac, $r -> room);
+
+    echo Form::select('mac', $room_drop_down);
+?>
+
+<br>
+<br>
+
 {{ Form::label('tempMax', 'tempMax'); }}
 {{ Form::text('tempMax'); }}
-{{ '°C' }}
-{{ '<br>' }}
+°C
+<br>
 {{ Form::label('tempMin', 'tempMin'); }}
 {{ Form::text('tempMin'); }}
-{{ '°C' }}
-{{ '<br>' }}
+°C
+<br>
 {{ Form::label('humidityMax', 'humidityMax'); }}
 {{ Form::text('humidityMax'); }}
-{{ '%RH' }}
-{{ '<br>' }}
+%RH
+<br>
 {{ Form::label('humidityMin', 'humidityMin'); }}
 {{ Form::text('humidityMin'); }}
-{{ '%RH' }}
-{{ '<br>' }}
+%RH
+<br>
 {{ Form::label('pressureMax', 'pressureMax'); }}
 {{ Form::text('pressureMax'); }}
-{{ 'Pa' }}
-{{ '<br>' }}
+Pa
+<br>
 {{ Form::label('pressureMin', 'pressureMin'); }}
 {{ Form::text('pressureMin'); }}
-{{ 'Pa' }}
-{{ '<br>' }}
+Pa
+<br>
 {{ Form::label('smokeMax', 'smokeMax'); }}
 {{ Form::text('smokeMax'); }}
-{{ 'Volt' }}
-{{ '<br>' }}
+'Volt
+<br>
 {{ Form::label('smokeMin', 'smokeMin'); }}
 {{ Form::text('smokeMin'); }}
-{{ 'Volt' }}
-{{ '<br>' }}
+'Volt
+<br>
 {{ Form::label('dustMax', 'DustMax'); }}
 {{ Form::text('dustMax'); }}
-{{ 'Volt' }}
-{{ '<br>' }}
+'Volt
+<br>
 {{ Form::label('dustMin', 'DustMin'); }}
 {{ Form::text('dustMin'); }}
-{{ 'Volt' }}
-{{ '<br>' }}
+Volt
+<br>
 {{ Form::submit('Submit') }}
 {{ Form::close() }}

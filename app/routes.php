@@ -14,13 +14,25 @@
 Route::get('/readings', array(
 	'as' => 'home'
 ));
+
 Route::get('/readings/threshold', array(
-    'as' => 'range',
-    'uses' => 'ReadingsController@postRange'
+    'as' => 'form',
+    'uses' => 'ReadingsController@getForm'
 ));
+
+Route::post('/readings/data', array(
+    'as' => 'variable',
+    'uses' => 'ReadingsController@postVariable'
+));
+
 Route::get('/readings/{room}', array(
 	'as' => 'graph',
 	'uses' => 'ReadingsController@getGraph'
+));
+
+Route::get('/mac/{IP}/{mac}', array(
+    'as' => 'updateMac',
+    'uses' => 'AddressController@getUpdate'
 ));
 
 Route::Controller('readings', 'ReadingsController');

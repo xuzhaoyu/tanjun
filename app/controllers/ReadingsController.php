@@ -36,6 +36,16 @@ class ReadingsController extends \BaseController {
 		}
 		return View::make('data.presentData') -> with('data', $data_list);
 	}
+    public function getForm(){
+        $room = DB::table('ip2name')->select('room','mac')->get();
+        //dd($room);
+        return View::make('data.setThreshold') -> with('room', $room);
+    }
+
+    public function postVariable(){
+        $input = Input::all();
+        return  $input;
+    }
 	public function getGraph($room) {
 				$m = DB::table('ip2name')
 					    -> where('room', '=', $room)
