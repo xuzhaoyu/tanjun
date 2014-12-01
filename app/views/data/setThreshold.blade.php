@@ -1,3 +1,4 @@
 {{ Form::open(array('route' => 'range')) }}
-{{ Form::radio('name', 'value');}}
+{{ Form::label('dust', 'Dust'); }}
+{{ Form::number('name', 'value'); }}
 {{ Form::close() }}
