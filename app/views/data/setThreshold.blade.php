@@ -1,24 +1,43 @@
 {{ Form::open(array('route' => 'range')) }}
 {{ Form::label('tempMax', 'tempMax'); }}
-{{ Form::text('tempMax', 'value'); }}
-{{ 'C' }}
+{{ Form::text('tempMax'); }}
+{{ '°C' }}
+{{ '<br>' }}
 {{ Form::label('tempMin', 'tempMin'); }}
-{{ Form::text('tempMin', 'value'); }}
+{{ Form::text('tempMin'); }}
+{{ '°C' }}
+{{ '<br>' }}
 {{ Form::label('humidityMax', 'humidityMax'); }}
-{{ Form::text('humidityMax', 'value'); }}
+{{ Form::text('humidityMax'); }}
+{{ '%RH' }}
+{{ '<br>' }}
 {{ Form::label('humidityMin', 'humidityMin'); }}
-{{ Form::text('humidityMin', 'value'); }}
+{{ Form::text('humidityMin'); }}
+{{ '%RH' }}
+{{ '<br>' }}
 {{ Form::label('pressureMax', 'pressureMax'); }}
-{{ Form::text('pressureMax', 'value'); }}
+{{ Form::text('pressureMax'); }}
+{{ 'Pa' }}
+{{ '<br>' }}
 {{ Form::label('pressureMin', 'pressureMin'); }}
-{{ Form::text('pressureMin', 'value'); }}
+{{ Form::text('pressureMin'); }}
+{{ 'Pa' }}
+{{ '<br>' }}
 {{ Form::label('smokeMax', 'smokeMax'); }}
-{{ Form::text('smokeMax', 'value'); }}
+{{ Form::text('smokeMax'); }}
+{{ 'Volt' }}
+{{ '<br>' }}
 {{ Form::label('smokeMin', 'smokeMin'); }}
-{{ Form::text('smokeMin', 'value'); }}
+{{ Form::text('smokeMin'); }}
+{{ 'Volt' }}
+{{ '<br>' }}
 {{ Form::label('dustMax', 'DustMax'); }}
-{{ Form::text('dustMax', 'value'); }}
+{{ Form::text('dustMax'); }}
+{{ 'Volt' }}
+{{ '<br>' }}
 {{ Form::label('dustMin', 'DustMin'); }}
-{{ Form::text('dustMin', 'value'); }}
+{{ Form::text('dustMin'); }}
+{{ 'Volt' }}
+{{ '<br>' }}
 {{ Form::submit('Submit') }}
 {{ Form::close() }}
