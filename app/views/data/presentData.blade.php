@@ -79,12 +79,12 @@
     <div id="pressure" style="height:400px; width:600px"></div>
     <div id="dust" style="height:400px; width:600px"></div>
     <!-- ECharts import -->
-    <script src="echarts/build/dist/echarts.js"></script>
+    {{ HTML::script('js/echarts/build/dist/echarts.js'); }}
     <script type="text/javascript">
         // configure for module loader
         require.config({
             paths: {
-                echarts: 'echarts/build/dist'
+                echarts: {{ HTML::script('js/echarts/build/dist'); }}
             }
         });
 
@@ -156,7 +156,7 @@
         // configure for module loader
         require.config({
             paths: {
-                echarts: 'echarts/build/dist'
+                echarts: {{ HTML::script('js/echarts/build/dist'); }}
             }
         });
 
