@@ -28,23 +28,14 @@
       <file leaf-file-name="presentData.blade.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/data/presentData.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.3411602" vertical-offset="1330" max-vertical-offset="3287">
-              <caret line="83" column="3" selection-start-line="83" selection-start-column="3" selection-end-line="83" selection-end-column="3" />
+            <state vertical-scroll-proportion="0.1339779" vertical-offset="1347" max-vertical-offset="4161">
+              <caret line="76" column="6" selection-start-line="76" selection-start-column="6" selection-end-line="76" selection-end-column="6" />
               <folding>
+                <element signature="e#1189#1222#0#HTML" expanded="true" />
                 <element signature="e#1249#1282#0#HTML" expanded="true" />
-                <marker date="1417414671750" expanded="false" signature="784:805" placeholder="..." />
-                <marker date="1417414671750" expanded="false" signature="820:830" placeholder="..." />
+                <marker date="1417414912688" expanded="false" signature="784:805" placeholder="..." />
+                <marker date="1417414912688" expanded="false" signature="820:830" placeholder="..." />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="mainPressure.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/js/graphs/mainPressure.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1425">
-              <caret line="10" column="18" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -147,28 +138,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sensor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sensors" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="graphs" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -331,9 +300,10 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="988" max-vertical-offset="4579">
           <caret line="52" column="21" selection-start-line="52" selection-start-column="21" selection-end-line="52" selection-end-column="21" />
           <folding>
+            <element signature="e#1189#1222#0#HTML" expanded="true" />
             <element signature="e#1249#1282#0#HTML" expanded="true" />
-            <marker date="1417414671750" expanded="false" signature="784:805" placeholder="..." />
-            <marker date="1417414671750" expanded="false" signature="820:830" placeholder="..." />
+            <marker date="1417414912688" expanded="false" signature="784:805" placeholder="..." />
+            <marker date="1417414912688" expanded="false" signature="820:830" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -351,9 +321,10 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="397" max-vertical-offset="3615">
           <caret line="52" column="21" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
+            <element signature="e#1189#1222#0#HTML" expanded="true" />
             <element signature="e#1249#1282#0#HTML" expanded="true" />
-            <marker date="1417414671750" expanded="false" signature="784:805" placeholder="..." />
-            <marker date="1417414671750" expanded="false" signature="820:830" placeholder="..." />
+            <marker date="1417414912688" expanded="false" signature="784:805" placeholder="..." />
+            <marker date="1417414912688" expanded="false" signature="820:830" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -363,9 +334,10 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="915" max-vertical-offset="3465">
           <caret line="71" column="33" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
+            <element signature="e#1189#1222#0#HTML" expanded="true" />
             <element signature="e#1249#1282#0#HTML" expanded="true" />
-            <marker date="1417414671750" expanded="false" signature="784:805" placeholder="..." />
-            <marker date="1417414671750" expanded="false" signature="820:830" placeholder="..." />
+            <marker date="1417414912688" expanded="false" signature="784:805" placeholder="..." />
+            <marker date="1417414912688" expanded="false" signature="820:830" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -402,22 +374,15 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/graphs/mainPressure.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1425">
-          <caret line="10" column="18" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/data/presentData.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3411602" vertical-offset="1330" max-vertical-offset="3287">
-          <caret line="83" column="3" selection-start-line="83" selection-start-column="3" selection-end-line="83" selection-end-column="3" />
+        <state vertical-scroll-proportion="0.1339779" vertical-offset="1347" max-vertical-offset="4161">
+          <caret line="76" column="6" selection-start-line="76" selection-start-column="6" selection-end-line="76" selection-end-column="6" />
           <folding>
+            <element signature="e#1189#1222#0#HTML" expanded="true" />
             <element signature="e#1249#1282#0#HTML" expanded="true" />
-            <marker date="1417414671750" expanded="false" signature="784:805" placeholder="..." />
-            <marker date="1417414671750" expanded="false" signature="820:830" placeholder="..." />
+            <marker date="1417414912688" expanded="false" signature="784:805" placeholder="..." />
+            <marker date="1417414912688" expanded="false" signature="820:830" placeholder="..." />
           </folding>
         </state>
       </provider>
