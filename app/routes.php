@@ -16,7 +16,7 @@ Route::get('/readings', array(
 ));
 Route::get('/readings/threshold', array(
     'as' => 'range',
-    'uses' => 'ReadingsController@getGraph'
+    'uses' => 'ReadingsController@postRange'
 ));
 Route::get('/readings/{room}', array(
 	'as' => 'graph',
@@ -24,3 +24,4 @@ Route::get('/readings/{room}', array(
 ));
 
 Route::Controller('readings', 'ReadingsController');
+Route::Controller('variable', 'VariableController');
