@@ -310,7 +310,7 @@
         // configure for module loader
         require.config({
             paths: {
-                echarts: '../echarts/build/dist'
+                echarts: 'http://echarts.baidu.com/build/dist'
             }
         });
 
