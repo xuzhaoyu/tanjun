@@ -14,13 +14,13 @@
 Route::get('/readings', array(
 	'as' => 'home'
 ));
-
-Route::get('/readings/{room}', array(
-	'as' => 'graph',
-	'uses' => 'ReadingsController@getGraph'
-));
 Route::get('/readings/threshold', array(
     'as' => 'range',
     'uses' => 'ReadingsController@getGraph'
 ));
+Route::get('/readings/{room}', array(
+	'as' => 'graph',
+	'uses' => 'ReadingsController@getGraph'
+));
+
 Route::Controller('readings', 'ReadingsController');
