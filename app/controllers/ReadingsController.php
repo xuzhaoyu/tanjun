@@ -3,7 +3,6 @@
 class ReadingsController extends \BaseController {
 
 	public function getIndex(){
-		//$d = DB::table('user')->get();
 		$all_mac = DB::table('user')->select('mac')->groupBy('mac')->get();
 
 		$data_list = array();
@@ -38,13 +37,45 @@ class ReadingsController extends \BaseController {
 	}
     public function getForm(){
         $room = DB::table('ip2name')->select('room','mac')->get();
-        //dd($room);
         return View::make('data.setThreshold') -> with('room', $room);
     }
 
     public function postVariable(){
-        $input = Input::all();
-        return  $input;
+        $input =    Input::all();
+        $mac = DB::table('thresholds')->select('mac')->where('mac','=',$input['mac'])->get();
+        if($mac == []){
+            DB::table('thresholds')->insert(array('mac'=>$input['mac']));
+        }
+        if(is_numeric($input['tempMin'])){
+            DB::table('thresholds')->update(array('tempMin'=>$input['tempMin']));
+        }
+        if(is_numeric($input['tempMax'])){
+            DB::table('thresholds')->update(array('tempMax'=>$input['tempMax']));
+        }
+        if(is_numeric($input['humidityMin'])){
+            DB::table('thresholds')->update(array('humidityMin'=>$input['humidityMin']));
+        }
+        if(is_numeric($input['humidityMax'])){
+            DB::table('thresholds')->update(array('humidityMax'=>$input['humidityMax']));
+        }
+        if(is_numeric($input['pressureMin'])){
+            DB::table('thresholds')->update(array('pressureMin'=>$input['pressureMin']));
+        }
+        if(is_numeric($input['pressureMax'])){
+            DB::table('thresholds')->update(array('pressureMax'=>$input['pressureMax']));
+        }
+        if(is_numeric($input['smokeMin'])){
+            DB::table('thresholds')->update(array('smokeMin'=>$input['smokeMin']));
+        }
+        if(is_numeric($input['smokeMax'])){
+            DB::table('thresholds')->update(array('smokeMax'=>$input['smokeMax']));
+        }
+        if(is_numeric($input['dustMin'])){
+            DB::table('thresholds')->update(array('dustMin'=>$input['dustMin']));
+        }
+        if(is_numeric($input['dustMax'])){
+            DB::table('thresholds')->update(array('dustMax'=>$input['dustMax']));
+        }
     }
 	public function getGraph($room) {
 				$m = DB::table('ip2name')
