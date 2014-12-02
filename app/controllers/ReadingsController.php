@@ -76,6 +76,7 @@ class ReadingsController extends \BaseController {
         if(is_numeric($input['dustMax'])){
             DB::table('thresholds')->update(array('dustMax'=>$input['dustMax']));
         }
+        return View::make('success');
     }
 	public function getGraph($room) {
 				$m = DB::table('ip2name')
@@ -84,7 +85,8 @@ class ReadingsController extends \BaseController {
 						-> first();
 
 				$mac = $m -> mac;
-
+                $t = DB::table('thresholds')->where('mac','=',$mac)
+                        ->select('tempMin','tempMax','humidityMin','humidityMax','pressureMin','pressureMax','smokeMin','smokeMax','dustMin','dustMax');
 				$all_tp = DB::table('user')
 						-> where('mac', '=', $mac)
 						-> orderBy('serverTime')
