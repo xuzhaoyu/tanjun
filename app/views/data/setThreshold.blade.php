@@ -37,19 +37,24 @@ Pa
 <br>
 {{ Form::label('smokeMax', 'smokeMax'); }}
 {{ Form::text('smokeMax'); }}
-'Volt
+Volt
 <br>
 {{ Form::label('smokeMin', 'smokeMin'); }}
 {{ Form::text('smokeMin'); }}
-'Volt
+Volt
 <br>
 {{ Form::label('dustMax', 'DustMax'); }}
 {{ Form::text('dustMax'); }}
-'Volt
+Volt
 <br>
 {{ Form::label('dustMin', 'DustMin'); }}
 {{ Form::text('dustMin'); }}
 Volt
+<br>
+{{ Form::label('interval', 'Interval'); }}
+{{ Form::text('interval'); }}
+mins
+<br>
 <br>
 {{ Form::submit('Submit') }}
 {{ Form::close() }}

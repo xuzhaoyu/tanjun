@@ -11,11 +11,11 @@
 |
 */
 
-Route::get('/readings', array(
-	'as' => 'home'
+Route::get('/graph', array(
+    'as' => 'home'
 ));
 
-Route::get('/readings/threshold', array(
+Route::get('/set_threshold', array(
     'as' => 'form',
     'uses' => 'ReadingsController@getForm'
 ));
@@ -25,14 +25,27 @@ Route::post('/readings/data', array(
     'uses' => 'ReadingsController@postVariable'
 ));
 
-Route::get('/readings/{room}', array(
+Route::get('/graph/{room}', array(
 	'as' => 'graph',
 	'uses' => 'ReadingsController@getGraph'
 ));
 
-Route::get('/mac/{IP}/{mac}', array(
-    'as' => 'updateMac',
+Route::get('/update_ip/{IP}/{mac}', array(  // if {mac} is not in table ip2name, add a new row with room name 新车间
+                                            // if {mac} is already in table ip2name, then update the {IP}
+                                            // This interface is for raspberry pi only
+    'as' => 'updateIP',
     'uses' => 'AddressController@getUpdate'
 ));
 
-Route::Controller('readings', 'ReadingsController');
+Route::get('/threshold', array(             // display all entries in the table threshold
+    'as' => 'getThreshold',
+    'uses' => 'ThresholdController@getThreshold'
+));
+
+Route::get('/devices', array(               // display all entries in the table ip2name
+    'as' => 'devices',
+    'uses' => 'DeviceController@getDevices'
+));
+
+
+Route::Controller('readings', 'ReadingsController');    // present table and bar graph

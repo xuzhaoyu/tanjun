@@ -25,6 +25,11 @@
 
 <?php
   foreach ($data as $a) {
+
+    $t = DB::table('thresholds')->where('mac', '=', $a['mac'])
+         ->select('tempMin', 'tempMax', 'humidityMin', 'humidityMax', 'pressureMin', 'pressureMax', 'smokeMin', 'smokeMax', 'dustMin', 'dustMax')
+         ->first();
+
     echo '<tr>';
     echo '<td>';
     echo '<a href="';
@@ -37,19 +42,37 @@
     echo '</a>';
     echo '</td>';
 
-    echo '<td>';
-    print_r($a['dhtTemp']);
-    echo '</td>';
+      if (($a['dhtTemp'] > $t -> tempMax) or ($a['dhtTemp'] < $t -> tempMin)) {
+          echo '<td style="background-color:blue"><span style="color:red;">';
+          print_r($a['dhtTemp']);
+          echo '</span></td>';
+      } else {
+          echo '<td>';
+          print_r($a['dhtTemp']);
+          echo '</td>';
+      }
 
-    echo '<td>';
-    print_r($a['dhtHumidity']);
-    echo '</td>';
+      if (($a['dhtHumidity'] > $t -> humidityMax) or ($a['dhtHumidity'] < $t -> humidityMin)) {
+          echo '<td style="background-color:blue"><span style="color:red;">';
+          print_r($a['dhtHumidity']);
+          echo '</span></td>';
+      } else {
+          echo '<td>';
+          print_r($a['dhtHumidity']);
+          echo '</td>';
+      }
 
-    echo '<td>';
-    print_r($a['MS5611Pressure']);
-    echo '</td>';
+      if (($a['MS5611Pressure'] > $t -> pressureMax) or ($a['MS5611Pressure'] < $t -> pressureMin)) {
+          echo '<td style="background-color:blue"><span style="color:red;">';
+          print_r($a['MS5611Pressure']);
+          echo '</span></td>';
+      } else {
+          echo '<td>';
+          print_r($a['MS5611Pressure']);
+          echo '</td>';
+      }
 
-    if ($a['MQ2Smoke'] > 68){
+    if (($a['MQ2Smoke'] > $t -> smokeMax) or ($a['MQ2Smoke'] < $t -> smokeMin)) {
         echo '<td style="background-color:blue"><span style="color:red;">';
         print_r($a['MQ2Smoke']);
         echo '</span></td>';
@@ -59,9 +82,17 @@
         echo '</td>';
     }
 
-    echo '<td>';
-    print_r($a['Dust']);
-    echo '</td>';
+      if (($a['Dust'] > $t -> dustMax) or ($a['Dust'] < $t -> dustMin)) {
+          echo '<td style="background-color:blue"><span style="color:red;">';
+          print_r($a['Dust']);
+          echo '</span></td>';
+      } else {
+          echo '<td>';
+          print_r($a['Dust']);
+          echo '</td>';
+      }
+
+
 
     echo '<td>';
     print_r($a['serverTime']);
@@ -128,7 +159,17 @@
                                              echo $a['MS5611Pressure'];
                                              echo ', ';
                                          }
-                                     ?>]
+                                     ?>],
+
+                            "markLine": {
+                                data:[
+                                    [{name: "Max_Start", value: <?php echo $t -> pressureMax; ?>, xAxis: -1, yAxis:<?php echo $t -> pressureMax; ?>,itemStyle:{normal:{color:'#1e90ff'}}},
+                                        {name: "Max_End", xAxis: 4, yAxis:<?php echo $t -> pressureMax; ?>,itemStyle:{normal:{color:'#1e90ff'}}}],
+                                    [{name: "Min_Start", value: <?php echo $t -> pressureMin; ?>, xAxis: -1, yAxis:<?php echo $t -> pressureMin; ?>,itemStyle:{normal:{color:'#1e90ff'}}},
+                                        {name: "Min_End", xAxis: 4, yAxis:<?php echo $t -> pressureMin; ?>,itemStyle:{normal:{color:'#1e90ff'}}}
+                                    ]
+                                ]
+                            }
                         }
                     ]
                 };
@@ -189,12 +230,13 @@
                                              echo ', ';
                                          }
                                      ?>],
+
                             "markLine": {
                                 data:[
-                                    [{name: "Max_Start", value: 200, xAxis: -1, yAxis:200,itemStyle:{normal:{color:'#1e90ff'}}},
-                                    {name: "Max_End", xAxis: 4, yAxis:200,itemStyle:{normal:{color:'#1e90ff'}}}],
-                                    [{name: "Min_Start", value: 150, xAxis: -1, yAxis:150,itemStyle:{normal:{color:'#1e90ff'}}},
-                                    {name: "Min_End", xAxis: 4, yAxis:150,itemStyle:{normal:{color:'#1e90ff'}}}
+                                    [{name: "Max_Start", value: <?php echo $t -> dustMax; ?>, xAxis: -1, yAxis:<?php echo $t -> dustMax; ?>,itemStyle:{normal:{color:'#1e90ff'}}},
+                                    {name: "Max_End", xAxis: 4, yAxis:<?php echo $t -> dustMax; ?>,itemStyle:{normal:{color:'#1e90ff'}}}],
+                                    [{name: "Min_Start", value: <?php echo $t -> dustMin; ?>, xAxis: -1, yAxis:<?php echo $t -> dustMin; ?>,itemStyle:{normal:{color:'#1e90ff'}}},
+                                    {name: "Min_End", xAxis: 4, yAxis:<?php echo $t -> dustMin; ?>,itemStyle:{normal:{color:'#1e90ff'}}}
                                     ]
                                 ]
                             }

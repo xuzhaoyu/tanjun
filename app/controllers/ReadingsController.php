@@ -25,6 +25,7 @@ class ReadingsController extends \BaseController
 
             $data_list[] = array(
                 'room' => $n->room,
+                'mac' => $mac_addr,
                 'dhtTemp' => $a->dhtTemp,
                 'dhtHumidity' => $a->dhtHumidity,
                 'MS5611Temp' => $a->MS5611Temp,
@@ -81,6 +82,9 @@ class ReadingsController extends \BaseController
         if (is_numeric($input['dustMax'])) {
             DB::table('thresholds')->update(array('dustMax' => $input['dustMax']));
         }
+        if (is_numeric($input['interval'])) {
+            DB::table('thresholds')->update(array('interval' => $input['interval']));
+        }
         return View::make('success');
     }
 
@@ -95,7 +99,7 @@ class ReadingsController extends \BaseController
         $t = DB::table('thresholds')->where('mac', '=', $mac)
             ->select('tempMin', 'tempMax', 'humidityMin', 'humidityMax', 'pressureMin', 'pressureMax', 'smokeMin', 'smokeMax', 'dustMin', 'dustMax')
             ->get();
-        dd($t);
+
         $all_tp = DB::table('user')
             ->where('mac', '=', $mac)
             ->orderBy('serverTime')

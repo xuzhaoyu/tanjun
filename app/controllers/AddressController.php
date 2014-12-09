@@ -4,11 +4,28 @@ class AddressController extends BaseController {
 
     public function getUpdate($ip, $mac)
     {
-        DB::table('ip2name')
+        $q = DB::table('ip2name')
             -> where('mac', $mac)
-            -> update(array('IP' => $ip));
+            -> first();
 
-        return View::make('success');
+        if ($q == NULL) {
+            DB::table('ip2name')
+                -> insert(array(
+                    'mac' => $mac,
+                    'IP' => $ip,
+                    'room' => '新车间'
+                ));
+
+            return View::make('success') -> with('global', 'new device logged');
+
+        } else {
+
+            DB::table('ip2name')
+                -> where('mac', $mac)
+                -> update(array('IP' => $ip));
+
+            return View::make('success') -> with('global', 'IP updated');
+        }
     }
 
 }
