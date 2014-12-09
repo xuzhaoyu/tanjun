@@ -47,5 +47,4 @@ Route::get('/devices', array(               // display all entries in the table 
     'uses' => 'DeviceController@getDevices'
 ));
 
-
 Route::Controller('readings', 'ReadingsController');    // present table and bar graph

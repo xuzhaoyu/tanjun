@@ -96,9 +96,6 @@ class ReadingsController extends \BaseController
             ->first();
 
         $mac = $m->mac;
-        $t = DB::table('thresholds')->where('mac', '=', $mac)
-            ->select('tempMin', 'tempMax', 'humidityMin', 'humidityMax', 'pressureMin', 'pressureMax', 'smokeMin', 'smokeMax', 'dustMin', 'dustMax')
-            ->get();
 
         $all_tp = DB::table('user')
             ->where('mac', '=', $mac)
