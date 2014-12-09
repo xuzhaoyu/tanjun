@@ -117,7 +117,8 @@
         require(
             [
                 'echarts',
-                'echarts/chart/bar'
+                'echarts/chart/bar',
+                'echarts/chart/line'
             ],
             function (ec) {
                 var myChart = ec.init(document.getElementById('pressure'));
@@ -159,17 +160,22 @@
                                              echo $a['MS5611Pressure'];
                                              echo ', ';
                                          }
-                                     ?>],
-
-                            "markLine": {
-                                data:[
-                                    [{name: "Max_Start", value: <?php echo $t -> pressureMax; ?>, xAxis: -1, yAxis:<?php echo $t -> pressureMax; ?>,itemStyle:{normal:{color:'#1e90ff'}}},
-                                        {name: "Max_End", xAxis: 4, yAxis:<?php echo $t -> pressureMax; ?>,itemStyle:{normal:{color:'#1e90ff'}}}],
-                                    [{name: "Min_Start", value: <?php echo $t -> pressureMin; ?>, xAxis: -1, yAxis:<?php echo $t -> pressureMin; ?>,itemStyle:{normal:{color:'#1e90ff'}}},
-                                        {name: "Min_End", xAxis: 4, yAxis:<?php echo $t -> pressureMin; ?>,itemStyle:{normal:{color:'#1e90ff'}}}
-                                    ]
-                                ]
-                            }
+                                     ?>]
+                        },
+                        {
+                            "name":"最高",
+                            "type":"line",
+                            "stack":"总量",
+                            "itemStyle": {normal: {areaStyle: {type: 'default'}}},
+                            "data":[<?php
+                                        foreach($data as $a){
+                                            $b = DB::table('thresholds')->where('mac', '=', $a['mac'])
+                                                     ->select( 'pressureMax')
+                                                     ->first();
+                                            echo $b->pressureMax;
+                                            echo ', ';
+                                        }
+                            ?>]
                         }
                     ]
                 };
@@ -187,7 +193,8 @@
         require(
             [
                 'echarts',
-                'echarts/chart/bar'
+                'echarts/chart/bar',
+                'echarts/chart/line'
             ],
             function (ec) {
                 var myChart = ec.init(document.getElementById('dust'));
