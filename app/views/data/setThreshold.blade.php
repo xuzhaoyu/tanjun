@@ -1,8 +1,8 @@
 @extends('layouts.master')
 
-@section('content')
-{{ Form::open(array('route' => 'variable')) }}
 
+{{ Form::open(array('route' => 'variable')) }}
+@section('content')
 <?php
     $room_drop_down = array();
     foreach ($room as $r)
