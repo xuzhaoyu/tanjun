@@ -13,3 +13,5 @@ ul{
          <li><a href="{{ URL::route('form') }}">Set Thresholds</a></li>
     </ul>
 </nav>
+<br>
+<br>
