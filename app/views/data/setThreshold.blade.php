@@ -1,3 +1,6 @@
+@extends('layouts.master')
+
+@section('content')
 {{ Form::open(array('route' => 'variable')) }}
 
 <?php

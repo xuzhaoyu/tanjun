@@ -1,12 +1,8 @@
 <nav>
     <ul>
-        <li>Home</li>
-
-            <li>DHT Temperature</li>
-            <li>DHT Humidity</li>
-            <li>MS5611 Temperature</li>
-            <li>MS5611 Pressure</li>
-            <li>MQ-2 Smoke</li>
-            <li>Dust</li>
+         <li><a href="{{ URL::route('index') }}">Home</a></li>
+         <li><a href="{{ URL::route('getThreshold') }}">Get Thresholds</a></li>
+         <li><a href="{{ URL::route('devices') }}">Get Devices</a></li>
+         <li><a href="{{ URL::route('form') }}">Set Thresholds</a></li>
     </ul>
 </nav>

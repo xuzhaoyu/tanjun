@@ -15,6 +15,10 @@ Route::get('/graph', array(
     'as' => 'home'
 ));
 
+Route::get('/readings', array(
+    'as' => 'index'
+));
+
 Route::get('/set_threshold', array(
     'as' => 'form',
     'uses' => 'ReadingsController@getForm'
