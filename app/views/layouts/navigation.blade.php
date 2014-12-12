@@ -1,3 +1,10 @@
+<style>
+ul{
+    list-style-type: none;
+    padding:0;
+    margin:0;
+  }
+</style>
 <nav>
     <ul>
          <li><a href="{{ URL::route('index') }}">Home</a></li>
