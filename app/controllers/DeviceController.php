@@ -1,6 +1,6 @@
 <?php
 
-class DeviceController extends BaseController {
+class DeviceController extends \BaseController {
 
     public function getDevices()
     {

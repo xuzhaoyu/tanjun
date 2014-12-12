@@ -1,6 +1,6 @@
 <?php
 
-class ThresholdController extends BaseController {
+class ThresholdController extends \BaseController {
 
     public function getThreshold()
     {

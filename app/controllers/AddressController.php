@@ -1,6 +1,6 @@
 <?php
 
-class AddressController extends BaseController {
+class AddressController extends \BaseController {
 
     public function getUpdate($ip, $mac)
     {
