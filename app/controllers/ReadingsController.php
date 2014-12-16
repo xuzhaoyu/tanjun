@@ -88,6 +88,16 @@ class ReadingsController extends \BaseController
         return View::make('success');
     }
 
+    public function postInterval(){
+        $input = Input::all();
+        $interval = DB::table('thresholds')->select('interval')->where('mac', '=', $input['mac'])->get();
+        if($interval == []) {
+            DB::table('thresholds')->insert(array('interval' => '600'));
+            return 600;
+        }
+        return $interval;
+    }
+
     public function getGraph($room)
     {
         $m = DB::table('ip2name')
