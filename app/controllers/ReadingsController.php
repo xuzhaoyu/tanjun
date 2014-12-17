@@ -95,7 +95,7 @@ class ReadingsController extends \BaseController
             DB::table('thresholds')->insert(array('interval' => '600'));
             return 600;
         }
-        return $interval['interval'];
+        return $interval[0];
     }
 
     public function getGraph($room)
