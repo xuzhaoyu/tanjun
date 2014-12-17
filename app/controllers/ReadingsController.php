@@ -113,7 +113,11 @@ class ReadingsController extends \BaseController
             ->select('serverTime', 'dhtTemp', 'dhtHumidity', 'MS5611Pressure', 'MQ2Smoke', 'Dust')
             ->get();
 
-        return View::make('data.presentGraph')->with('data', $all_tp)->with('room', $room);
+        $t = DB::table('thresholds')->where('mac', '=', $mac)
+            ->select('tempMin', 'tempMax', 'humidityMin', 'humidityMax', 'pressureMin', 'pressureMax', 'smokeMin', 'smokeMax', 'dustMin', 'dustMax')
+            ->first();
+
+        return View::make('data.presentGraph')->with('data', $all_tp)->with('room', $room)->with('t', $t);
     }
 
     public function postReading()
