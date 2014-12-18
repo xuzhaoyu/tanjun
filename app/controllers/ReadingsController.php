@@ -85,6 +85,9 @@ class ReadingsController extends \BaseController
         if (is_numeric($input['interval'])) {
             DB::table('thresholds')->update(array('interval' => $input['interval']));
         }
+        if(strlen($input['name']) > 0){
+          DB::table('ip2name')->where('mac', '=', $input['mac'])->update(array('room' => $input['name']));
+        }
         return View::make('success');
     }
 
@@ -95,7 +98,7 @@ class ReadingsController extends \BaseController
             DB::table('thresholds')->insert(array('interval' => '600'));
             return 600;
         }
-        return $interval[0]->interval;
+        return $interval[0]->interval*60;
     }
 
     public function getGraph($room)

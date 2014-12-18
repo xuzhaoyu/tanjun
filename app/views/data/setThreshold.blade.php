@@ -6,14 +6,16 @@
 <?php
     $room_drop_down = array();
     foreach ($room as $r)
-         $room_drop_down =  array_add($room_drop_down, $r -> mac, $r -> room);
-
+         $room_drop_down =  array_add($room_drop_down, $r -> mac, $r -> room."/".$r -> mac);
+    //dd($room_drop_down);
     echo Form::select('mac', $room_drop_down);
 ?>
 
 <br>
 <br>
-
+{{ Form::label('name', 'Name'); }}
+{{ Form::text('name'); }}
+<br>
 {{ Form::label('tempMax', 'tempMax'); }}
 {{ Form::text('tempMax'); }}
 °C
