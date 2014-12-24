@@ -56,8 +56,8 @@ Volt
 {{ Form::text('dustMin'); }}
 Volt
 <br>
-{{ Form::label('interval', 'Interval'); }}
-{{ Form::text('interval'); }}
+{{ Form::label('intervals', 'Intervals'); }}
+{{ Form::text('intervals'); }}
 mins
 <br>
 <br>

@@ -82,8 +82,8 @@ class ReadingsController extends \BaseController
         if (is_numeric($input['dustMax'])) {
             DB::table('thresholds')->update(array('dustMax' => $input['dustMax']));
         }
-        if (is_numeric($input['interval'])) {
-            DB::table('thresholds')->update(array('interval' => $input['interval']));
+        if (is_numeric($input['intervals'])) {
+            DB::table('thresholds')->update(array('intervals' => $input['intervals']));
         }
         if(strlen($input['name']) > 0){
           DB::table('ip2name')->where('mac', '=', $input['mac'])->update(array('room' => $input['name']));
@@ -93,12 +93,19 @@ class ReadingsController extends \BaseController
 
     public function postInterval(){
         $input = Input::all();
-        $interval = DB::table('thresholds')->select('interval')->where('mac', '=', $input['mac'])->get();
+        $interval = DB::table('thresholds')->select('intervals')->where('mac', '=', $input['mac'])->get();
         if($interval == []) {
-            DB::table('thresholds')->insert(array('interval' => '600'));
+            DB::table('thresholds')->insert(array('intervals' => '600'));
             return 600;
         }
-        return $interval[0]->interval*60;
+        return $interval[0]->intervals*60;
+    }
+
+    public function postAlarm(){
+      $input = Input::all();
+      $thresholds = DB::table('thresholds')->select('*')->where('mac', '=', $input['mac'])->get();
+      //return 'fff';
+      return $thresholds;
     }
 
     public function getGraph($room)

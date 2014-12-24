@@ -15,6 +15,21 @@ class AddressController extends \BaseController {
                     'IP' => $ip,
                     'room' => '新车间'
                 ));
+            DB::table('thresholds')
+                -> insert(array(
+                  'mac' => $mac,
+                  'tempMin' => 0,
+                  'tempMax' => 0,
+                  'humidityMin' => 0,
+                  'humidityMax' => 0,
+                  'pressureMin' => 0,
+                  'pressureMax' => 0,
+                  'smokeMin' => 0,
+                  'smokeMax' => 0,
+                  'dustMin' => 0,
+                  'dustMax' => 0,
+                  'intervals' => 10
+                ));
 
             return View::make('success') -> with('global', 'new device logged');
 
