@@ -91,20 +91,9 @@ class ReadingsController extends \BaseController
         return View::make('success');
     }
 
-    public function postInterval(){
-        $input = Input::all();
-        $interval = DB::table('thresholds')->select('intervals')->where('mac', '=', $input['mac'])->get();
-        if($interval == []) {
-            DB::table('thresholds')->insert(array('intervals' => '600'));
-            return 600;
-        }
-        return $interval[0]->intervals*60;
-    }
-
-    public function postAlarm(){
+    public function postControls(){
       $input = Input::all();
       $thresholds = DB::table('thresholds')->select('*')->where('mac', '=', $input['mac'])->get();
-      //return 'fff';
       return $thresholds;
     }
 

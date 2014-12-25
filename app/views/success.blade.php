@@ -1,5 +1,6 @@
-<!doctype html>
-<html lang="en">
+@extends('layouts.master')
+
+@section('content')
 <head>
 	<meta charset="UTF-8">
 	<title>Successfully updated!</title>
@@ -8,4 +9,4 @@
 <body>
 Successfully updated!
 </body>
-</html>
+@stop
