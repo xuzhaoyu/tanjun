@@ -53,37 +53,37 @@ class ReadingsController extends \BaseController
             DB::table('thresholds')->insert(array('mac' => $input['mac']));
         }
         if (is_numeric($input['tempMin'])) {
-            DB::table('thresholds')->update(array('tempMin' => $input['tempMin']));
+            DB::table('thresholds')->where('mac', '=', $input['mac'])->update(array('tempMin' => $input['tempMin']));
         }
         if (is_numeric($input['tempMax'])) {
-            DB::table('thresholds')->update(array('tempMax' => $input['tempMax']));
+            DB::table('thresholds')->where('mac', '=', $input['mac'])->update(array('tempMax' => $input['tempMax']));
         }
         if (is_numeric($input['humidityMin'])) {
-            DB::table('thresholds')->update(array('humidityMin' => $input['humidityMin']));
+            DB::table('thresholds')->where('mac', '=', $input['mac'])->update(array('humidityMin' => $input['humidityMin']));
         }
         if (is_numeric($input['humidityMax'])) {
-            DB::table('thresholds')->update(array('humidityMax' => $input['humidityMax']));
+            DB::table('thresholds')->where('mac', '=', $input['mac'])->update(array('humidityMax' => $input['humidityMax']));
         }
         if (is_numeric($input['pressureMin'])) {
-            DB::table('thresholds')->update(array('pressureMin' => $input['pressureMin']));
+            DB::table('thresholds')->where('mac', '=', $input['mac'])->update(array('pressureMin' => $input['pressureMin']));
         }
         if (is_numeric($input['pressureMax'])) {
-            DB::table('thresholds')->update(array('pressureMax' => $input['pressureMax']));
+            DB::table('thresholds')->where('mac', '=', $input['mac'])->update(array('pressureMax' => $input['pressureMax']));
         }
         if (is_numeric($input['smokeMin'])) {
-            DB::table('thresholds')->update(array('smokeMin' => $input['smokeMin']));
+            DB::table('thresholds')->where('mac', '=', $input['mac'])->update(array('smokeMin' => $input['smokeMin']));
         }
         if (is_numeric($input['smokeMax'])) {
-            DB::table('thresholds')->update(array('smokeMax' => $input['smokeMax']));
+            DB::table('thresholds')->where('mac', '=', $input['mac'])->update(array('smokeMax' => $input['smokeMax']));
         }
         if (is_numeric($input['dustMin'])) {
-            DB::table('thresholds')->update(array('dustMin' => $input['dustMin']));
+            DB::table('thresholds')->where('mac', '=', $input['mac'])->update(array('dustMin' => $input['dustMin']));
         }
         if (is_numeric($input['dustMax'])) {
-            DB::table('thresholds')->update(array('dustMax' => $input['dustMax']));
+            DB::table('thresholds')->where('mac', '=', $input['mac'])->update(array('dustMax' => $input['dustMax']));
         }
         if (is_numeric($input['intervals'])) {
-            DB::table('thresholds')->update(array('intervals' => $input['intervals']));
+            DB::table('thresholds')->where('mac', '=', $input['mac'])->update(array('intervals' => $input['intervals']));
         }
         if(strlen($input['name']) > 0){
           DB::table('ip2name')->where('mac', '=', $input['mac'])->update(array('room' => $input['name']));
