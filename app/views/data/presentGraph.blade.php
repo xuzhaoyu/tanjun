@@ -200,7 +200,7 @@ header( "refresh:30;" );
           "type":"line",
           "data": [<?php
           foreach ($data as $a) {
-            echo $a -> MS5611Pressure;
+            echo $a -> MS5611Pressure - 102000;
             echo ', ';
           }
           ?>],
