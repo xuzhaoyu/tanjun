@@ -2,7 +2,7 @@
 
 @section('content')
 <?php
-header( "refresh:10;" );
+header( "refresh:30;" );
 ?>
 
 <!DOCTYPE html>
@@ -334,7 +334,7 @@ header( "refresh:10;" );
           "type":"line",
           "data": [<?php
           foreach ($data as $a) {
-            echo $a -> Dust;
+            echo $a -> Dust - 150;
             echo ', ';
           }
           ?>],

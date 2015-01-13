@@ -122,7 +122,7 @@ class ReadingsController extends \BaseController
     public function postReading()
     {
         $input = (object)Input::all();
-        date_default_timezone_set('America/Toronto');
+        date_default_timezone_set('Asia/Shanghai');
         $date = date('Y-m-d H:i:s');
         DB::table('user')->insert(
             array('clientTime' => $input->clientTime,

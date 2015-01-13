@@ -3,7 +3,7 @@
 @section('content')
 
 <?php
-header( "refresh:10;" );
+header( "refresh:30;" );
 ?>
 
 <style>
@@ -84,11 +84,11 @@ table, th, td {
 
     if (($a['Dust'] > $t -> dustMax) or ($a['Dust'] < $t -> dustMin)) {
       echo '<td style="background-color:blue"><span style="color:red;">';
-      print_r($a['Dust']);
+      print_r($a['Dust'] - 150);
       echo '</span></td>';
     } else {
       echo '<td>';
-      print_r($a['Dust']);
+      print_r($a['Dust'] - 150);
       echo '</td>';
     }
 
