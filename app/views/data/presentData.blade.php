@@ -216,7 +216,7 @@ table, th, td {
           "barWidth": 50,
           "data": [<?php
           foreach ($data as $a) {
-            echo $a['Dust'];
+            echo $a['Dust'] - 150;
             echo ', ';
           }
           ?>]
