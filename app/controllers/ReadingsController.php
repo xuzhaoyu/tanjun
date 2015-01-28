@@ -137,15 +137,4 @@ class ReadingsController extends \BaseController
                 'Dust' => $input->Dust)
         );
     }
-
-    public function postUpload()
-    {
-        $input = Input::file('file');
-        $mac = Input::get('mac');
-        $dest = storage_path() . "/video/{$mac}/";
-        $filename = str_random(6) . '_' . $input->getClientOriginalName();
-        $input->move($dest, $filename);
-        //return $filename;
-    }
-
 }
