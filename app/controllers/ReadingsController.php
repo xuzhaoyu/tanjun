@@ -15,7 +15,7 @@ class ReadingsController extends \BaseController
             $a = DB::table('user')
                 ->where('mac', '=', $mac_addr)
                 ->orderBy('serverTime', 'DESC')
-                ->select('IP', 'mac', 'serverTime', 'dhtTemp', 'dhtHumidity', 'MS5611Temp', 'MS5611Pressure', 'MQ2Smoke', 'Dust')
+                ->select('ip', 'mac', 'serverTime', 'temp', 'humidity', 'pressure', 'dust')
                 ->first();
 
             $n = DB::table('ip2name')
@@ -26,12 +26,10 @@ class ReadingsController extends \BaseController
             $data_list[] = array(
                 'room' => $n->room,
                 'mac' => $mac_addr,
-                'dhtTemp' => $a->dhtTemp,
-                'dhtHumidity' => $a->dhtHumidity,
-                'MS5611Temp' => $a->MS5611Temp,
-                'MS5611Pressure' => $a->MS5611Pressure,
-                'MQ2Smoke' => $a->MQ2Smoke,
-                'Dust' => $a->Dust,
+                'temp' => $a->temp,
+                'humidity' => $a->humidity,
+                'pressure' => $a->pressure,
+                'dust' => $a->dust,
                 'serverTime' => $a->serverTime
             );
 
@@ -109,7 +107,7 @@ class ReadingsController extends \BaseController
         $all_tp = DB::table('user')
             ->where('mac', '=', $mac)
             ->orderBy('serverTime')
-            ->select('serverTime', 'dhtTemp', 'dhtHumidity', 'MS5611Pressure', 'MQ2Smoke', 'Dust')
+            ->select('serverTime', 'temp', 'humidity', 'pressure', 'dust')
             ->get();
 
         $t = DB::table('thresholds')->where('mac', '=', $mac)
@@ -127,13 +125,12 @@ class ReadingsController extends \BaseController
         DB::table('user')->insert(
             array('clientTime' => $input->clientTime,
                 'serverTime' => $date,
-                'IP' => $input->IP,
+                'ip' => $input->ip,
                 'mac' => $input->mac,
-                'dhtTemp' => $input->dhtTemp,
-                'dhtHumidity' => $input->dhtHumidity,
-                'MS5611Temp' => $input->MS5611Temp,
-                'MS5611Pressure' => $input->MS5611Pressure,
-                'Dust' => $input->Dust)
+                'temp' => $input->temp,
+                'humidity' => $input->humidity,
+                'pressure' => $input->pressure,
+                'dust' => $input->dust)
         );
     }
 }
