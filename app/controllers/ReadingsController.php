@@ -133,7 +133,6 @@ class ReadingsController extends \BaseController
                 'dhtHumidity' => $input->dhtHumidity,
                 'MS5611Temp' => $input->MS5611Temp,
                 'MS5611Pressure' => $input->MS5611Pressure,
-                'MQ2Smoke' => $input->MQ2Smoke,
                 'Dust' => $input->Dust)
         );
     }
