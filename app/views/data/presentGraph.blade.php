@@ -16,7 +16,6 @@ header( "refresh:30;" );
   <div id="temp" style="height:400px"></div>
   <div id="humidity" style="height:400px"></div>
   <div id="pressure" style="height:400px"></div>
-  <div id="smoke" style="height:400px"></div>
   <div id="dust" style="height:400px"></div>
   {{ HTML::script('js/echarts/build/dist/echarts.js'); }}
   <script type="text/javascript">
@@ -66,7 +65,7 @@ header( "refresh:30;" );
           "type":"line",
           "data": [<?php
           foreach ($data as $a) {
-            echo $a -> dhtTemp;
+            echo $a -> temp;
             echo ', ';
           }
           ?>],
@@ -133,7 +132,7 @@ header( "refresh:30;" );
           "type":"line",
           "data": [<?php
           foreach ($data as $a) {
-            echo $a -> dhtHumidity;
+            echo $a -> humidity;
             echo ', ';
           }
           ?>],
@@ -200,7 +199,7 @@ header( "refresh:30;" );
           "type":"line",
           "data": [<?php
           foreach ($data as $a) {
-            echo $a -> MS5611Pressure - 102000;
+            echo $a -> pressure - 102000;
             echo ', ';
           }
           ?>],
@@ -210,73 +209,6 @@ header( "refresh:30;" );
             {name: "Max_End", xAxis: 99999999, yAxis:<?php echo $t -> pressureMax; ?>,itemStyle:{normal:{color:'#1e90ff'}}}],
             [{name: "Min_Start", value: <?php echo $t -> pressureMin; ?>, xAxis: -1, yAxis:<?php echo $t -> pressureMin; ?>,itemStyle:{normal:{color:'#1e90ff'}}},
             {name: "Min_End", xAxis: 99999999, yAxis:<?php echo $t -> pressureMin; ?>,itemStyle:{normal:{color:'#1e90ff'}}}]
-            ]
-          }
-        }
-        ]
-      };
-      myChart.setOption(option);
-    }
-  );
-  </script>
-
-  <script type="text/javascript">
-  require.config({
-    paths: {
-      echarts: 'http://123.57.66.77/js/echarts/build/dist'
-    }
-  });
-  require(
-    [
-    'echarts',
-    'echarts/chart/line' // require the specific chart type
-    ],
-    function (ec) {
-      var myChart = ec.init(document.getElementById('smoke'));
-      var option = {
-        tooltip: {
-          show: true
-        },
-        legend: {
-          data:['烟雾']
-        },
-        xAxis : [
-        {
-          type : 'category',
-          data : [<?php
-          foreach ($data as $a) {
-            echo '\'';
-            print_r (explode(" ", $a->serverTime)[1]);
-            echo '\'';
-            echo ', ';
-          }
-          ?>]
-        }
-        ],
-        yAxis : [
-        {
-          type : 'value',
-          axisLabel : {
-            formatter: '{value} Volt'
-          }
-        }
-        ],
-        series : [
-        {
-          "name":"烟雾",
-          "type":"line",
-          "data": [<?php
-          foreach ($data as $a) {
-            echo $a -> MQ2Smoke;
-            echo ', ';
-          }
-          ?>],
-          "markLine": {
-            data:[
-            [{name: "Max_Start", value: <?php echo $t -> smokeMax; ?>, xAxis: -1, yAxis:<?php echo $t -> smokeMax; ?>,itemStyle:{normal:{color:'#1e90ff'}}},
-            {name: "Max_End", xAxis: 99999999, yAxis:<?php echo $t -> smokeMax; ?>,itemStyle:{normal:{color:'#1e90ff'}}}],
-            [{name: "Min_Start", value: <?php echo $t -> smokeMin; ?>, xAxis: -1, yAxis:<?php echo $t -> smokeMin; ?>,itemStyle:{normal:{color:'#1e90ff'}}},
-            {name: "Min_End", xAxis: 99999999, yAxis:<?php echo $t -> smokeMin; ?>,itemStyle:{normal:{color:'#1e90ff'}}}]
             ]
           }
         }
@@ -334,7 +266,7 @@ header( "refresh:30;" );
           "type":"line",
           "data": [<?php
           foreach ($data as $a) {
-            echo $a -> Dust - 150;
+            echo $a -> dust - 150;
             echo ', ';
           }
           ?>],

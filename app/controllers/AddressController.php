@@ -12,7 +12,7 @@ class AddressController extends \BaseController {
             DB::table('ip2name')
                 -> insert(array(
                     'mac' => $mac,
-                    'IP' => $ip,
+                    'ip' => $ip,
                     'room' => '新车间'
                 ));
             DB::table('thresholds')
@@ -24,8 +24,6 @@ class AddressController extends \BaseController {
                   'humidityMax' => 0,
                   'pressureMin' => 0,
                   'pressureMax' => 0,
-                  'smokeMin' => 0,
-                  'smokeMax' => 0,
                   'dustMin' => 0,
                   'dustMax' => 0,
                   'intervals' => 10
@@ -37,7 +35,7 @@ class AddressController extends \BaseController {
 
             DB::table('ip2name')
                 -> where('mac', $mac)
-                -> update(array('IP' => $ip));
+                -> update(array('ip' => $ip));
 
             return View::make('success') -> with('global', 'IP updated');
         }

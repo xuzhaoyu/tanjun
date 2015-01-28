@@ -40,14 +40,6 @@ Pa
 {{ Form::text('pressureMin'); }}
 Pa
 <br>
-{{ Form::label('smokeMax', 'smokeMax'); }}
-{{ Form::text('smokeMax'); }}
-Volt
-<br>
-{{ Form::label('smokeMin', 'smokeMin'); }}
-{{ Form::text('smokeMin'); }}
-Volt
-<br>
 {{ Form::label('dustMax', 'DustMax'); }}
 {{ Form::text('dustMax'); }}
 Volt

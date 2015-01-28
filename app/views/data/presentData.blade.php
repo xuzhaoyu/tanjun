@@ -18,7 +18,6 @@ table, th, td {
     <th>温度</th>
     <th>湿度</th>
     <th>压力</th>
-    <th>烟雾</th>
     <th>尘埃微粒</th>
     <th>时间</th>
   </tr>
@@ -42,53 +41,43 @@ table, th, td {
     echo '</a>';
     echo '</td>';
 
-    if (($a['dhtTemp'] > $t -> tempMax) or ($a['dhtTemp'] < $t -> tempMin)) {
+    if (($a['temp'] > $t -> tempMax) or ($a['temp'] < $t -> tempMin)) {
       echo '<td style="background-color:blue"><span style="color:red;">';
-      print_r($a['dhtTemp']);
+      print_r($a['temp']);
       echo '</span></td>';
     } else {
       echo '<td>';
-      print_r($a['dhtTemp']);
+      print_r($a['temp']);
       echo '</td>';
     }
 
-    if (($a['dhtHumidity'] > $t -> humidityMax) or ($a['dhtHumidity'] < $t -> humidityMin)) {
+    if (($a['humidity'] > $t -> humidityMax) or ($a['humidity'] < $t -> humidityMin)) {
       echo '<td style="background-color:blue"><span style="color:red;">';
-      print_r($a['dhtHumidity']);
+      print_r($a['humidity']);
       echo '</span></td>';
     } else {
       echo '<td>';
-      print_r($a['dhtHumidity']);
+      print_r($a['humidity']);
       echo '</td>';
     }
 
-    if (($a['MS5611Pressure'] > $t -> pressureMax) or ($a['MS5611Pressure'] < $t -> pressureMin)) {
+    if (($a['pressure'] > $t -> pressureMax) or ($a['pressure'] < $t -> pressureMin)) {
       echo '<td style="background-color:blue"><span style="color:red;">';
-      print_r($a['MS5611Pressure']);
+      print_r($a['pressure']);
       echo '</span></td>';
     } else {
       echo '<td>';
-      print_r($a['MS5611Pressure']);
+      print_r($a['pressure']);
       echo '</td>';
     }
 
-    if (($a['MQ2Smoke'] > $t -> smokeMax) or ($a['MQ2Smoke'] < $t -> smokeMin)) {
+    if (($a['dust'] > $t -> dustMax) or ($a['dust'] < $t -> dustMin)) {
       echo '<td style="background-color:blue"><span style="color:red;">';
-      print_r($a['MQ2Smoke']);
+      print_r($a['dust'] - 150);
       echo '</span></td>';
     } else {
       echo '<td>';
-      print_r($a['MQ2Smoke']);
-      echo '</td>';
-    }
-
-    if (($a['Dust'] > $t -> dustMax) or ($a['Dust'] < $t -> dustMin)) {
-      echo '<td style="background-color:blue"><span style="color:red;">';
-      print_r($a['Dust'] - 150);
-      echo '</span></td>';
-    } else {
-      echo '<td>';
-      print_r($a['Dust'] - 150);
+      print_r($a['dust'] - 150);
       echo '</td>';
     }
 
@@ -156,7 +145,7 @@ table, th, td {
           "barWidth": 50,
           "data": [<?php
           foreach ($data as $a) {
-            echo $a['MS5611Pressure'] - 102000;
+            echo $a['pressure'] - 102000;
             echo ', ';
           }
           ?>]
@@ -216,7 +205,7 @@ table, th, td {
           "barWidth": 50,
           "data": [<?php
           foreach ($data as $a) {
-            echo $a['Dust'] - 150;
+            echo $a['dust'] - 150;
             echo ', ';
           }
           ?>]

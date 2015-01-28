@@ -34,7 +34,7 @@ Route::get('/graph/{room}', array(
 	'uses' => 'ReadingsController@getGraph'
 ));
 
-Route::get('/update_ip/{IP}/{mac}', array(  // if {mac} is not in table ip2name, add a new row with room name 新车间
+Route::get('/update_ip/{ip}/{mac}', array(  // if {mac} is not in table ip2name, add a new row with room name 新车间
                                             // if {mac} is already in table ip2name, then update the {IP}
                                             // This interface is for raspberry pi only
     'as' => 'updateIP',

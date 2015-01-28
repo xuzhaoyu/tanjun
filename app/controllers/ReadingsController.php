@@ -68,12 +68,6 @@ class ReadingsController extends \BaseController
         if (is_numeric($input['pressureMax'])) {
             DB::table('thresholds')->where('mac', '=', $input['mac'])->update(array('pressureMax' => $input['pressureMax']));
         }
-        if (is_numeric($input['smokeMin'])) {
-            DB::table('thresholds')->where('mac', '=', $input['mac'])->update(array('smokeMin' => $input['smokeMin']));
-        }
-        if (is_numeric($input['smokeMax'])) {
-            DB::table('thresholds')->where('mac', '=', $input['mac'])->update(array('smokeMax' => $input['smokeMax']));
-        }
         if (is_numeric($input['dustMin'])) {
             DB::table('thresholds')->where('mac', '=', $input['mac'])->update(array('dustMin' => $input['dustMin']));
         }
@@ -111,7 +105,7 @@ class ReadingsController extends \BaseController
             ->get();
 
         $t = DB::table('thresholds')->where('mac', '=', $mac)
-            ->select('tempMin', 'tempMax', 'humidityMin', 'humidityMax', 'pressureMin', 'pressureMax', 'smokeMin', 'smokeMax', 'dustMin', 'dustMax')
+            ->select('tempMin', 'tempMax', 'humidityMin', 'humidityMax', 'pressureMin', 'pressureMax', 'dustMin', 'dustMax')
             ->first();
 
         return View::make('data.presentGraph')->with('data', $all_tp)->with('room', $room)->with('t', $t);
