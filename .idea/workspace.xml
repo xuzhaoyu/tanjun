@@ -4,9 +4,7 @@
     <bookmark url="file://$PROJECT_DIR$/app/controllers/AddressController.php" line="0" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e9b5c613-5e88-4f66-be8a-f252e43e4f70" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/data/presentData.blade.php" afterPath="$PROJECT_DIR$/app/views/data/presentData.blade.php" />
-    </list>
+    <list default="true" id="e9b5c613-5e88-4f66-be8a-f252e43e4f70" name="Default" comment="" />
     <ignored path="sensor.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
