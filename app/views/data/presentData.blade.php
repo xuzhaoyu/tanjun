@@ -73,11 +73,11 @@ table, th, td {
 
     if (($a['dust'] > $t -> dustMax) or ($a['dust'] < $t -> dustMin)) {
       echo '<td style="background-color:blue"><span style="color:red;">';
-      print_r($a['dust'] - 150);
+      print_r($a['dust']);
       echo '</span></td>';
     } else {
       echo '<td>';
-      print_r($a['dust'] - 150);
+      print_r($a['dust']);
       echo '</td>';
     }
 
