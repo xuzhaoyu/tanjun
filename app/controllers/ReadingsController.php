@@ -18,7 +18,7 @@ class ReadingsController extends \BaseController
             if ($name == NULL){
                 DB::table('ip2name')
                     -> insert(array(
-                        'mac' => $mac,
+                        'mac' => $mac->mac,
                         'ip' => $ip,
                         'room' => '新车间'
                     ));
