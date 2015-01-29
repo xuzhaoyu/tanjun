@@ -199,7 +199,7 @@ header( "refresh:30;" );
           "type":"line",
           "data": [<?php
           foreach ($data as $a) {
-            echo $a -> pressure - 102000;
+            echo $a -> pressure;
             echo ', ';
           }
           ?>],
@@ -266,7 +266,7 @@ header( "refresh:30;" );
           "type":"line",
           "data": [<?php
           foreach ($data as $a) {
-            echo $a -> dust - 150;
+            echo $a -> dust;
             echo ', ';
           }
           ?>],

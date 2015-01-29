@@ -15,12 +15,29 @@ class ReadingsController extends \BaseController
             $name = DB::table('ip2name')
                 ->where('mac',$mac_addr)
                 ->first();
+            $thresh = DB::table('threshold')
+                ->where('mac',$mac_addr)
+                ->first();
             if ($name == NULL){
                 DB::table('ip2name')
                     -> insert(array(
                         'mac' => $mac_addr,
                         'ip' => $ip,
                         'room' => '新车间'
+                    ));
+            }
+            if ($thresh == NULL){
+                DB::table('thresholds')
+                    -> insert(array(
+                        'mac' => $mac_addr,
+                        'tempMin' => 0,
+                        'tempMax' => 0,
+                        'humidityMin' => 0,
+                        'humidityMax' => 0,
+                        'pressureMin' => 0,
+                        'pressureMax' => 0,
+                        'dustMin' => 0,
+                        'dustMax' => 0
                     ));
             }
             $a = DB::table('sensors')

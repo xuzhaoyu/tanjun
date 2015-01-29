@@ -143,7 +143,7 @@ table, th, td {
           "barWidth": 50,
           "data": [<?php
           foreach ($data as $a) {
-            echo $a['pressure'] - 102000;
+            echo $a['pressure'];
             echo ', ';
           }
           ?>]
@@ -203,7 +203,7 @@ table, th, td {
           "barWidth": 50,
           "data": [<?php
           foreach ($data as $a) {
-            echo $a['dust'] - 150;
+            echo $a['dust'];
             echo ', ';
           }
           ?>]
