@@ -15,7 +15,7 @@ class ReadingsController extends \BaseController
             $name = DB::table('ip2name')
                 ->where('mac',$mac_addr)
                 ->first();
-            $thresh = DB::table('threshold')
+            $thresh = DB::table('thresholds')
                 ->where('mac',$mac_addr)
                 ->first();
             if ($name == NULL){
