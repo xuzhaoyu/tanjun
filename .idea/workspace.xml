@@ -4,7 +4,9 @@
     <bookmark url="file://$PROJECT_DIR$/app/controllers/AddressController.php" line="0" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e9b5c613-5e88-4f66-be8a-f252e43e4f70" name="Default" comment="" />
+    <list default="true" id="e9b5c613-5e88-4f66-be8a-f252e43e4f70" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/data/setThreshold.blade.php" afterPath="$PROJECT_DIR$/app/views/data/setThreshold.blade.php" />
+    </list>
     <ignored path="sensor.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -60,8 +62,8 @@
       <file leaf-file-name="presentGraph.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/data/presentGraph.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.725806" vertical-offset="4134" max-vertical-offset="5605">
-              <caret line="233" column="56" selection-start-line="233" selection-start-column="54" selection-end-line="233" selection-end-column="56" />
+            <state vertical-scroll-proportion="-42.607143" vertical-offset="137" max-vertical-offset="5605">
+              <caret line="70" column="14" selection-start-line="70" selection-start-column="14" selection-end-line="70" selection-end-column="14" />
               <folding>
                 <element signature="e#307#327#0#HTML" expanded="true" />
                 <element signature="e#352#372#0#HTML" expanded="true" />
@@ -70,21 +72,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="User.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/models/User.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.2702407" vertical-offset="0" max-vertical-offset="914">
-              <caret line="16" column="29" selection-start-line="16" selection-start-column="29" selection-end-line="16" selection-end-column="29" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="setThreshold.blade.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="setThreshold.blade.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/data/setThreshold.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-20.428572" vertical-offset="226" max-vertical-offset="1140">
-              <caret line="42" column="19" selection-start-line="42" selection-start-column="17" selection-end-line="42" selection-end-column="19" />
+            <state vertical-scroll-proportion="0.70897156" vertical-offset="226" max-vertical-offset="1140">
+              <caret line="46" column="28" selection-start-line="46" selection-start-column="28" selection-end-line="46" selection-end-column="28" />
               <folding />
             </state>
           </provider>
@@ -114,12 +106,12 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/app/routes.php" />
-        <option value="$PROJECT_DIR$/app/views/data/setThreshold.blade.php" />
         <option value="$PROJECT_DIR$/vendor/symfony/translation/Symfony/Component/Translation/Interval.php" />
         <option value="$PROJECT_DIR$/app/controllers/AddressController.php" />
         <option value="$PROJECT_DIR$/app/views/data/presentData.blade.php" />
-        <option value="$PROJECT_DIR$/app/views/data/presentGraph.blade.php" />
         <option value="$PROJECT_DIR$/app/controllers/ReadingsController.php" />
+        <option value="$PROJECT_DIR$/app/views/data/presentGraph.blade.php" />
+        <option value="$PROJECT_DIR$/app/views/data/setThreshold.blade.php" />
       </list>
     </option>
   </component>
@@ -396,7 +388,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1938" height="1098" extended-state="7" />
+    <frame x="-9" y="-9" width="1938" height="1098" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -849,17 +841,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/data/presentGraph.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.725806" vertical-offset="4134" max-vertical-offset="5605">
-          <caret line="233" column="56" selection-start-line="233" selection-start-column="54" selection-end-line="233" selection-end-column="56" />
-          <folding>
-            <element signature="e#307#327#0#HTML" expanded="true" />
-            <element signature="e#352#372#0#HTML" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/data/presentData.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-4.725806" vertical-offset="239" max-vertical-offset="4294">
@@ -893,14 +874,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/data/setThreshold.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-20.428572" vertical-offset="226" max-vertical-offset="1140">
-          <caret line="42" column="19" selection-start-line="42" selection-start-column="17" selection-end-line="42" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/AddressController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-21.714285" vertical-offset="0" max-vertical-offset="912">
@@ -913,6 +886,25 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.2702407" vertical-offset="0" max-vertical-offset="914">
           <caret line="16" column="29" selection-start-line="16" selection-start-column="29" selection-end-line="16" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/data/presentGraph.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-42.607143" vertical-offset="137" max-vertical-offset="5605">
+          <caret line="70" column="14" selection-start-line="70" selection-start-column="14" selection-end-line="70" selection-end-column="14" />
+          <folding>
+            <element signature="e#307#327#0#HTML" expanded="true" />
+            <element signature="e#352#372#0#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/data/setThreshold.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.70897156" vertical-offset="226" max-vertical-offset="1140">
+          <caret line="46" column="28" selection-start-line="46" selection-start-column="28" selection-end-line="46" selection-end-column="28" />
           <folding />
         </state>
       </provider>

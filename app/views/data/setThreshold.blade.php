@@ -40,11 +40,11 @@ Pa
 {{ Form::text('pressureMin'); }}
 Pa
 <br>
-{{ Form::label('dustMax', 'DustMax'); }}
+{{ Form::label('dustMax', 'dustMax'); }}
 {{ Form::text('dustMax'); }}
 Volt
 <br>
-{{ Form::label('dustMin', 'DustMin'); }}
+{{ Form::label('dustMin', 'dustMin'); }}
 {{ Form::text('dustMin'); }}
 Volt
 <br>
