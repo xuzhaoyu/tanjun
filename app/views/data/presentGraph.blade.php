@@ -21,7 +21,7 @@ header( "refresh:30;" );
   <script type="text/javascript">
   require.config({
     paths: {
-      echarts: 'http://123.57.66.77/js/echarts/build/dist'
+      echarts: 'http://123.57.251.73/js/echarts/build/dist'
     }
   });
   require(
@@ -88,7 +88,7 @@ header( "refresh:30;" );
   <script type="text/javascript">
   require.config({
     paths: {
-      echarts: 'http://123.57.66.77/js/echarts/build/dist'
+      echarts: 'http://123.57.251.73/js/echarts/build/dist'
     }
   });
   require(
@@ -155,7 +155,7 @@ header( "refresh:30;" );
   <script type="text/javascript">
   require.config({
     paths: {
-      echarts: 'http://123.57.66.77/js/echarts/build/dist'
+      echarts: 'http://123.57.251.73/js/echarts/build/dist'
     }
   });
   require(
@@ -222,7 +222,7 @@ header( "refresh:30;" );
   <script type="text/javascript">
   require.config({
     paths: {
-      echarts: 'http://123.57.66.77/js/echarts/build/dist'
+      echarts: 'http://123.57.251.73/js/echarts/build/dist'
     }
   });
   require(

@@ -5,13 +5,24 @@ class ReadingsController extends \BaseController
 
     public function getIndex()
     {
-        $all_mac = DB::table('user')->select('mac')->groupBy('mac')->get();
+        $all_mac = DB::table('user')->select('mac', 'ip')->groupBy('mac')->get();
 
         $data_list = array();
 
         foreach ($all_mac as $mac) {
             $mac_addr = $mac->mac;
-
+            $ip = $mac->ip;
+            $name = DB::table('ip2name')
+                ->where('mac',$mac_addr)
+                ->first();
+            if ($name == NULL){
+                DB::table('ip2name')
+                    -> insert(array(
+                        'mac' => $mac,
+                        'ip' => $ip,
+                        'room' => '新车间'
+                    ));
+            }
             $a = DB::table('user')
                 ->where('mac', '=', $mac_addr)
                 ->orderBy('serverTime', 'DESC')
@@ -73,9 +84,6 @@ class ReadingsController extends \BaseController
         }
         if (is_numeric($input['dustMax'])) {
             DB::table('thresholds')->where('mac', '=', $input['mac'])->update(array('dustMax' => $input['dustMax']));
-        }
-        if (is_numeric($input['intervals'])) {
-            DB::table('thresholds')->where('mac', '=', $input['mac'])->update(array('intervals' => $input['intervals']));
         }
         if(strlen($input['name']) > 0){
           DB::table('ip2name')->where('mac', '=', $input['mac'])->update(array('room' => $input['name']));

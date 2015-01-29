@@ -48,10 +48,6 @@ Volt
 {{ Form::text('dustMin'); }}
 Volt
 <br>
-{{ Form::label('intervals', 'Intervals'); }}
-{{ Form::text('intervals'); }}
-mins
-<br>
 <br>
 {{ Form::submit('Submit') }}
 {{ Form::close() }}

@@ -25,14 +25,12 @@ class AddressController extends \BaseController {
                   'pressureMin' => 0,
                   'pressureMax' => 0,
                   'dustMin' => 0,
-                  'dustMax' => 0,
-                  'intervals' => 10
+                  'dustMax' => 0
                 ));
 
             return View::make('success') -> with('global', 'new device logged');
 
         } else {
-
             DB::table('ip2name')
                 -> where('mac', $mac)
                 -> update(array('ip' => $ip));

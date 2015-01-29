@@ -26,7 +26,7 @@ table, th, td {
   foreach ($data as $a) {
 
     $t = DB::table('thresholds')->where('mac', '=', $a['mac'])
-    ->select('tempMin', 'tempMax', 'humidityMin', 'humidityMax', 'pressureMin', 'pressureMax', 'smokeMin', 'smokeMax', 'dustMin', 'dustMax')
+    ->select('tempMin', 'tempMax', 'humidityMin', 'humidityMax', 'pressureMin', 'pressureMax', 'dustMin', 'dustMax')
     ->first();
 
     echo '<tr>';
@@ -100,7 +100,7 @@ table, th, td {
   <script type="text/javascript">
   require.config({
     paths: {
-      echarts:'http://123.57.66.77/js/echarts/build/dist'
+      echarts:'http://123.57.251.73/js/echarts/build/dist'
     }
   });
   require(
@@ -160,7 +160,7 @@ table, th, td {
   <script type="text/javascript">
   require.config({
     paths: {
-      echarts: 'http://123.57.66.77/js/echarts/build/dist'
+      echarts: 'http://123.57.251.73/js/echarts/build/dist'
     }
   });
   require(
