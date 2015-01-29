@@ -57,7 +57,7 @@ CREATE TABLE `thresholds` (
 --
 
 DROP TABLE IF EXISTS `sensors`;
-CREATE TABLE `sensor` (
+CREATE TABLE `sensors` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `clientTime` datetime DEFAULT NULL,
   `serverTime` datetime DEFAULT NULL,
