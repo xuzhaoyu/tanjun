@@ -6,3 +6,4 @@ app/storage/logs/laravel.log
 ._*  
 .Spotlight-V100  
 .Trashes 
+.idea/workspace.xml
