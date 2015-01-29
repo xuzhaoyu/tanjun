@@ -24,7 +24,7 @@ table, th, td {
 
   <?php
   foreach ($data as $a) {
-
+    dd($a);
     $t = DB::table('thresholds')->where('mac', '=', $a['mac'])
     ->select('tempMin', 'tempMax', 'humidityMin', 'humidityMax', 'pressureMin', 'pressureMax', 'dustMin', 'dustMax')
     ->first();
@@ -81,8 +81,6 @@ table, th, td {
       echo '</td>';
     }
 
-
-
     echo '<td>';
     print_r($a['serverTime']);
     echo '</td>';
@@ -91,6 +89,5 @@ table, th, td {
   }
   ?>
 </table>
-
 
 @stop
