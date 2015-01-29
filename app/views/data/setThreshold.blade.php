@@ -10,7 +10,6 @@
     //dd($room_drop_down);
     echo Form::select('mac', $room_drop_down);
 ?>
-
 <br>
 <br>
 {{ Form::label('name', 'Name'); }}
