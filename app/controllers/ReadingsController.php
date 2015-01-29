@@ -5,7 +5,7 @@ class ReadingsController extends \BaseController
 
     public function getIndex()
     {
-        $all_mac = DB::table('user')->select('mac', 'ip')->groupBy('mac')->get();
+        $all_mac = DB::table('sensors')->select('mac', 'ip')->groupBy('mac')->get();
 
         $data_list = array();
 
@@ -23,7 +23,7 @@ class ReadingsController extends \BaseController
                         'room' => '新车间'
                     ));
             }
-            $a = DB::table('user')
+            $a = DB::table('sensors')
                 ->where('mac', '=', $mac_addr)
                 ->orderBy('serverTime', 'DESC')
                 ->select('ip', 'mac', 'serverTime', 'temp', 'humidity', 'pressure', 'dust')
@@ -106,7 +106,7 @@ class ReadingsController extends \BaseController
 
         $mac = $m->mac;
 
-        $all_tp = DB::table('user')
+        $all_tp = DB::table('sensors')
             ->where('mac', '=', $mac)
             ->orderBy('serverTime')
             ->select('serverTime', 'temp', 'humidity', 'pressure', 'dust')
@@ -124,7 +124,7 @@ class ReadingsController extends \BaseController
         $input = (object)Input::all();
         date_default_timezone_set('Asia/Shanghai');
         $date = date('Y-m-d H:i:s');
-        DB::table('user')->insert(
+        DB::table('sensors')->insert(
             array('clientTime' => $input->clientTime,
                 'serverTime' => $date,
                 'ip' => $input->ip,
