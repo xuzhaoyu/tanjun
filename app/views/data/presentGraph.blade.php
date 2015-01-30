@@ -13,10 +13,10 @@ header( "refresh:30;" );
 <body>
   {{$room}}
   <br>
-  <div id="temp" style="height:400px"></div>
-  <div id="humidity" style="height:400px"></div>
   <div id="pressure" style="height:400px"></div>
   <div id="dust" style="height:400px"></div>
+  <div id="temp" style="height:400px"></div>
+  <div id="humidity" style="height:400px"></div>
   {{ HTML::script('js/echarts/build/dist/echarts.js'); }}
   <script type="text/javascript">
   require.config({
