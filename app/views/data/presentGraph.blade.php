@@ -256,7 +256,7 @@ header( "refresh:30;" );
         {
           type : 'value',
           axisLabel : {
-            formatter: '{value} Particle'
+            formatter: '{value} 个'
           }
         }
         ],
