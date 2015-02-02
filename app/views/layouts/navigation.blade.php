@@ -1,12 +1,13 @@
 <style>
 ul{
     list-style-type: none;
-    padding-right: 32px;
+    padding:0;
     margin:0;
     font-size:27px;
   }
 li{
     float:left;
+    padding-right: 32px;
 }
 </style>
 <nav>
