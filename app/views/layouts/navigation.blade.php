@@ -10,6 +10,8 @@ li{
     padding-right: 32px;
 }
 </style>
+<br>
+<br>
 <nav>
     <ul>
          <li><a href="{{ URL::route('index') }}">Home</a></li>
