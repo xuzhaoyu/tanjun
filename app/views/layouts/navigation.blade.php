@@ -3,7 +3,7 @@ ul{
     list-style-type: none;
     padding:0;
     margin:0;
-    font-size:24px;
+    font-size:27px;
   }
 </style>
 <nav>

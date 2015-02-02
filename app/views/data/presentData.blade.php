@@ -9,7 +9,7 @@ header( "refresh:30;" );
 <style>
 table, th, td {
   border: 1px solid black;
-  font-size:24px;
+  font-size:27px;
 }
 </style>
 
@@ -92,6 +92,8 @@ table, th, td {
 </table>
 
 <body>
+  <br>
+  <br>
   <div id="pressure" style="height:400px; width:600px"></div>
   <div id="dust" style="height:400px; width:600px"></div>
   <!-- ECharts import -->
