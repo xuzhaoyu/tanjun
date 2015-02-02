@@ -9,7 +9,7 @@ header( "refresh:30;" );
 <style>
 table, th, td {
   border: 1px solid black;
-  font-size:27px;
+  font-size:37px;
   font-weight:600;
 }
 </style>
