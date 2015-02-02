@@ -1,7 +1,7 @@
 <style>
 ul{
     list-style-type: none;
-    padding:0;
+    padding-right: 32px;
     margin:0;
     font-size:27px;
   }
