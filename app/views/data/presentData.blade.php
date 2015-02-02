@@ -114,7 +114,10 @@ table, th, td {
           show: true
         },
         legend: {
-          data:['压差']
+          data:['压差'],
+          textStyle:{
+            fontSize: 24
+          }
         },
         xAxis : [
         {
@@ -126,17 +129,21 @@ table, th, td {
             echo '\'';
             echo ', ';
           }
-          ?>]
-        }
-        ],
+          ?>],
+          textStyle:{
+            fontSize: 24
+          }
+        }],
         yAxis : [
         {
           type : 'value',
           axisLabel : {
             formatter: '{value} Pa'
+          },
+          textStyle:{
+            fontSize: 24
           }
-        }
-        ],
+        }],
         series : [
         {
           "name":"压差",
@@ -147,9 +154,11 @@ table, th, td {
             echo $a['pressure'];
             echo ', ';
           }
-          ?>]
-        }
-        ]
+          ?>],
+          textStyle:{
+            fontSize: 24
+          }
+        }]
       };
       myChart.setOption(option);
     }
@@ -174,7 +183,10 @@ table, th, td {
           show: true
         },
         legend: {
-          data:['尘埃微粒']
+          data:['尘埃微粒'],
+          textStyle:{
+            fontSize: 24
+          }
         },
         xAxis : [
         {
@@ -186,17 +198,21 @@ table, th, td {
             echo '\'';
             echo ', ';
           }
-          ?>]
-        }
-        ],
+          ?>],
+          textStyle:{
+            fontSize: 24
+          }
+        }],
         yAxis : [
         {
           type : 'value',
           axisLabel : {
             formatter: '{value} 个'
+          },
+          textStyle:{
+            fontSize: 24
           }
-        }
-        ],
+        }],
         series : [
         {
           "name":"尘埃微粒",
@@ -207,9 +223,11 @@ table, th, td {
             echo $a['dust'];
             echo ', ';
           }
-          ?>]
-        }
-        ]
+          ?>],
+          textStyle:{
+            fontSize: 24
+          }
+        }]
       };
       myChart.setOption(option);
     }
