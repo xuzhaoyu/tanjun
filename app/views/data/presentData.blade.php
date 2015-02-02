@@ -129,19 +129,16 @@ table, th, td {
             echo '\'';
             echo ', ';
           }
-          ?>],
-          textStyle:{
-            fontSize: 24
-          }
+          ?>]
         }],
         yAxis : [
         {
           type : 'value',
           axisLabel : {
-            formatter: '{value} Pa'
-          },
-          textStyle:{
-            fontSize: 24
+            formatter: '{value} Pa',
+            textStyle:{
+              fontSize: 24
+            }
           }
         }],
         series : [
@@ -154,10 +151,7 @@ table, th, td {
             echo $a['pressure'];
             echo ', ';
           }
-          ?>],
-          textStyle:{
-            fontSize: 24
-          }
+          ?>]
         }]
       };
       myChart.setOption(option);
@@ -198,19 +192,16 @@ table, th, td {
             echo '\'';
             echo ', ';
           }
-          ?>],
-          textStyle:{
-            fontSize: 24
-          }
+          ?>]
         }],
         yAxis : [
         {
           type : 'value',
           axisLabel : {
-            formatter: '{value} 个'
-          },
-          textStyle:{
-            fontSize: 24
+            formatter: '{value} 个',
+            textStyle:{
+              fontSize: 24
+            }
           }
         }],
         series : [
@@ -223,10 +214,7 @@ table, th, td {
             echo $a['dust'];
             echo ', ';
           }
-          ?>],
-          textStyle:{
-            fontSize: 24
-          }
+          ?>]
         }]
       };
       myChart.setOption(option);
