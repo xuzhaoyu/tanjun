@@ -5,6 +5,9 @@ ul{
     margin:0;
     font-size:27px;
   }
+li{
+    float:left;
+}
 </style>
 <nav>
     <ul>
