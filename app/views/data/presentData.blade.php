@@ -135,10 +135,7 @@ table, th, td {
         {
           type : 'value',
           axisLabel : {
-            formatter: '{value} Pa',
-            textStyle:{
-              fontSize: 24
-            }
+            formatter: '{value} Pa'
           }
         }],
         series : [
@@ -198,10 +195,7 @@ table, th, td {
         {
           type : 'value',
           axisLabel : {
-            formatter: '{value} 个',
-            textStyle:{
-              fontSize: 24
-            }
+            formatter: '{value} 个'
           }
         }],
         series : [

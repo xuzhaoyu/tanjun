@@ -36,7 +36,10 @@ header( "refresh:30;" );
           show: true
         },
         legend: {
-          data:['温度']
+          data:['温度'],
+          textStyle:{
+            fontSize: 24
+          }
         },
         xAxis : [
         {
@@ -103,7 +106,10 @@ header( "refresh:30;" );
           show: true
         },
         legend: {
-          data:['湿度']
+          data:['湿度'],
+          textStyle:{
+            fontSize: 24
+          }
         },
         xAxis : [
         {
@@ -170,7 +176,10 @@ header( "refresh:30;" );
           show: true
         },
         legend: {
-          data:['压差']
+          data:['压差'],
+          textStyle:{
+            fontSize: 24
+          }
         },
         xAxis : [
         {
@@ -237,7 +246,10 @@ header( "refresh:30;" );
           show: true
         },
         legend: {
-          data:['尘埃微粒']
+          data:['尘埃微粒'],
+          textStyle:{
+            fontSize: 24
+          }
         },
         xAxis : [
         {
