@@ -41,11 +41,11 @@ Pa
 <br>
 {{ Form::label('dustMax', 'dustMax'); }}
 {{ Form::text('dustMax'); }}
-Volt
+Particle
 <br>
 {{ Form::label('dustMin', 'dustMin'); }}
 {{ Form::text('dustMin'); }}
-Volt
+Particle
 <br>
 <br>
 {{ Form::submit('Submit') }}
