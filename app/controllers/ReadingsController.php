@@ -43,7 +43,7 @@ class ReadingsController extends \BaseController
                         'pressureMax' => 0,
                         'dustMin' => 0,
                         'dustMax' => 0,
-                        'intervals' =>30
+                        'intervals' => 30
                     ));
             }
             $a = DB::table('sensors')
