@@ -26,6 +26,11 @@ class ReadingsController extends \BaseController
                         'room' => '新车间'
                     ));
             }
+            if($name->ip != $ip){
+                DB::table('ip2name')
+                    ->where('mac',$mac_addr)
+                    ->update(array('ip' => $ip));
+            }
             if ($thresh == NULL){
                 DB::table('thresholds')
                     -> insert(array(
@@ -37,7 +42,8 @@ class ReadingsController extends \BaseController
                         'pressureMin' => 0,
                         'pressureMax' => 0,
                         'dustMin' => 0,
-                        'dustMax' => 0
+                        'dustMax' => 0,
+                        'intervals' =>30
                     ));
             }
             $a = DB::table('sensors')
@@ -101,6 +107,9 @@ class ReadingsController extends \BaseController
         }
         if (is_numeric($input['dustMax'])) {
             DB::table('thresholds')->where('mac', '=', $input['mac'])->update(array('dustMax' => $input['dustMax']));
+        }
+        if (is_numeric($input['intervals'])) {
+            DB::table('thresholds')->where('mac', '=', $input['mac'])->update(array('intervals' => $input['intervals']));
         }
         if(strlen($input['name']) > 0){
           DB::table('ip2name')->where('mac', '=', $input['mac'])->update(array('room' => $input['name']));

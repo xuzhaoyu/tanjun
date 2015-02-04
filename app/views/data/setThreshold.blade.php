@@ -47,6 +47,10 @@ Particle
 {{ Form::text('dustMin'); }}
 Particle
 <br>
+{{ Form::label('intervals', 'intervals'); }}
+{{ Form::text('intervals'); }}
+Seconds
+<br>
 <br>
 {{ Form::submit('Submit') }}
 {{ Form::close() }}

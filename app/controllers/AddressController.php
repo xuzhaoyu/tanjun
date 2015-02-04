@@ -25,7 +25,8 @@ class AddressController extends \BaseController {
                   'pressureMin' => 0,
                   'pressureMax' => 0,
                   'dustMin' => 0,
-                  'dustMax' => 0
+                  'dustMax' => 0,
+                  'intervals' => 30
                 ));
 
             return View::make('success') -> with('global', 'new device logged');
