@@ -11,12 +11,17 @@
 |
 */
 
+Route::get('/', array(
+    'as' => 'index',
+    'uses' => 'WebsiteController@getIndex'
+));
+
 Route::get('/graph', array(
-    'as' => 'home'
+    'as' => 'graphs'
 ));
 
 Route::get('/readings', array(
-    'as' => 'index'
+    'as' => 'readings'
 ));
 
 Route::get('/set_threshold', array(

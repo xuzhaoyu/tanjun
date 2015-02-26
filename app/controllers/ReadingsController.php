@@ -11,43 +11,6 @@ class ReadingsController extends \BaseController
 
         foreach ($all_mac as $mac) {
             $mac_addr = $mac->mac;
-//            $ip = $mac->ip;
-//            $name = DB::table('ip2name')
-//                ->where('mac',$mac_addr)
-//                ->first();
-//            $thresh = DB::table('thresholds')
-//                ->where('mac',$mac_addr)
-//                ->first();
-//            if ($name == NULL){
-//                DB::table('ip2name')
-//                    -> insert(array(
-//                        'mac' => $mac_addr,
-//                        'ip' => $ip,
-//                        'room' => '新车间'
-//                    ));
-//            }
-//            foreach($name as $n){
-//                if($n->ip != $ip){
-//                    DB::table('ip2name')
-//                        ->where('mac',$mac_addr)
-//                        ->update(array('ip' => $ip));
-//                }
-//            }
-//            if ($thresh == NULL){
-//                DB::table('thresholds')
-//                    -> insert(array(
-//                        'mac' => $mac_addr,
-//                        'tempMin' => 0,
-//                        'tempMax' => 0,
-//                        'humidityMin' => 0,
-//                        'humidityMax' => 0,
-//                        'pressureMin' => 0,
-//                        'pressureMax' => 0,
-//                        'dustMin' => 0,
-//                        'dustMax' => 0,
-//                        'intervals' => 30
-//                    ));
-//            }
             $a = DB::table('sensors')
                 ->where('mac', '=', $mac_addr)
                 ->orderBy('serverTime', 'DESC')

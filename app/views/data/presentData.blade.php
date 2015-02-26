@@ -34,7 +34,7 @@ table, th, td {
     echo '<tr>';
     echo '<td>';
     echo '<a href="';
-    echo URL::route('home');
+    echo URL::route('graphs');
     echo '/';
     print_r($a['room']);
 
