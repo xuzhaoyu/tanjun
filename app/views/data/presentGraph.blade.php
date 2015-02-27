@@ -2,7 +2,7 @@
 
 @section('content')
 <?php
-header( "refresh:30;" );
+header( "refresh:120;" );
 ?>
 
 <!DOCTYPE html>
@@ -11,6 +11,49 @@ header( "refresh:30;" );
   <title>{{$room}}</title>
 </head>
 <body>
+
+<?php
+echo '<a href="';
+echo URL::route('graphs');
+echo '/';
+print_r($room);
+echo '/all';
+
+echo '">';
+print_r('所有数据');
+echo '</a>';
+?>
+<br>
+
+<?php
+echo '<a href="';
+echo URL::route('graphs');
+echo '/';
+print_r($room);
+echo '/month';
+
+echo '">';
+print_r('一个月的数据');
+echo '</a>';
+?>
+<br>
+
+<?php
+echo '<a href="';
+echo URL::route('graphs');
+echo '/';
+print_r($room);
+echo '/day';
+
+echo '">';
+print_r('今天的数据');
+echo '</a>';
+?>
+<br>
+
+  <br>
+  <br>
+
   {{$room}}
   <br>
   <div id="pressure" style="height:400px"></div>
@@ -47,7 +90,8 @@ header( "refresh:30;" );
           data : [<?php
           foreach ($data as $a) {
             echo '\'';
-            print_r (explode(" ", $a->serverTime)[1]);
+            if ($time_length == 'day') print_r (explode(" ", $a->serverTime)[1]); else
+            print_r (explode(" ", $a->serverTime)[0]);
             echo '\'';
             echo ', ';
           }
@@ -117,7 +161,8 @@ header( "refresh:30;" );
           data : [<?php
           foreach ($data as $a) {
             echo '\'';
-            print_r (explode(" ", $a->serverTime)[1]);
+            if ($time_length == 'day') print_r (explode(" ", $a->serverTime)[1]); else
+            print_r (explode(" ", $a->serverTime)[0]);
             echo '\'';
             echo ', ';
           }
@@ -187,7 +232,8 @@ header( "refresh:30;" );
           data : [<?php
           foreach ($data as $a) {
             echo '\'';
-            print_r (explode(" ", $a->serverTime)[1]);
+            if ($time_length == 'day') print_r (explode(" ", $a->serverTime)[1]); else
+            print_r (explode(" ", $a->serverTime)[0]);
             echo '\'';
             echo ', ';
           }
@@ -257,7 +303,8 @@ header( "refresh:30;" );
           data : [<?php
           foreach ($data as $a) {
             echo '\'';
-            print_r (explode(" ", $a->serverTime)[1]);
+            if ($time_length == 'day') print_r (explode(" ", $a->serverTime)[1]); else
+            print_r (explode(" ", $a->serverTime)[0]);
             echo '\'';
             echo ', ';
           }

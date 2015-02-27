@@ -3,7 +3,7 @@
 @section('content')
 
 <?php
-header( "refresh:30;" );
+header( "refresh:120;" );
 ?>
 
 <style>
@@ -37,6 +37,7 @@ table, th, td {
     echo URL::route('graphs');
     echo '/';
     print_r($a['room']);
+    echo '/day';
 
     echo '">';
     print_r($a['room']);

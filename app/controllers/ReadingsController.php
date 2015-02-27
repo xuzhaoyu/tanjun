@@ -88,7 +88,7 @@ class ReadingsController extends \BaseController
       return $thresholds;
     }
 
-    public function getGraph($room)
+    public function getGraph($room, $time_length)
     {
         $m = DB::table('ip2name')
             ->where('room', '=', $room)
@@ -97,17 +97,45 @@ class ReadingsController extends \BaseController
 
         $mac = $m->mac;
 
-        $all_tp = DB::table('sensors')
+        $q = DB::table('sensors')
             ->where('mac', '=', $mac)
-            ->orderBy('serverTime')
+            ->orderBy('serverTime', 'DEST')
             ->select('serverTime', 'temp', 'humidity', 'pressure', 'dust')
-            ->get();
+            ->first();
+
+        //dd($q -> serverTime);
+        //dd($start_from);
+        $date = new DateTime($q -> serverTime);
+        if ($time_length == 'month') {
+            $start_from = $date -> modify('-1 month') ->format('Y-m-d H:i:s');
+            $all_tp = DB::table('sensors')
+                ->where('serverTime', '>=', $start_from)
+                ->where('mac', '=', $mac)
+                ->orderBy('serverTime')
+                ->select('serverTime', 'temp', 'humidity', 'pressure', 'dust')
+                ->get();
+        } elseif ($time_length == 'day') {
+            $start_from = $date -> modify('-1 day') ->format('Y-m-d H:i:s');
+            $all_tp = DB::table('sensors')
+                ->where('serverTime', '>=', $start_from)
+                ->where('mac', '=', $mac)
+                ->orderBy('serverTime')
+                ->select('serverTime', 'temp', 'humidity', 'pressure', 'dust')
+                ->get();
+        } else {
+            $all_tp = DB::table('sensors')
+                ->where('mac', '=', $mac)
+                ->orderBy('serverTime')
+                ->select('serverTime', 'temp', 'humidity', 'pressure', 'dust')
+                ->get();
+        }
+
 
         $t = DB::table('thresholds')->where('mac', '=', $mac)
             ->select('tempMin', 'tempMax', 'humidityMin', 'humidityMax', 'pressureMin', 'pressureMax', 'dustMin', 'dustMax')
             ->first();
 
-        return View::make('data.presentGraph')->with('data', $all_tp)->with('room', $room)->with('t', $t);
+        return View::make('data.presentGraph')->with('data', $all_tp)->with('room', $room)->with('t', $t)->with('time_length', $time_length);
     }
 
     public function postReading()

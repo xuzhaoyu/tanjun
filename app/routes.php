@@ -34,7 +34,7 @@ Route::post('/readings/data', array(
     'uses' => 'ReadingsController@postVariable'
 ));
 
-Route::get('/graph/{room}', array(
+Route::get('/graph/{room}/{time_length}', array(
 	'as' => 'graph',
 	'uses' => 'ReadingsController@getGraph'
 ));
@@ -54,6 +54,11 @@ Route::get('/threshold', array(             // display all entries in the table 
 Route::get('/devices', array(               // display all entries in the table ip2name
     'as' => 'devices',
     'uses' => 'DeviceController@getDevices'
+));
+
+Route::get('/devices/delete/{mac}', array(               // display all entries in the table ip2name
+    'as' => 'delete',
+    'uses' => 'DeviceController@getDelete'
 ));
 
 Route::Controller('readings', 'ReadingsController');    // present table and bar graph
