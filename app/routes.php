@@ -12,8 +12,23 @@
 */
 
 Route::get('/', array(
-    'as' => 'index',
-    'uses' => 'WebsiteController@getIndex'
+    'as' => 'account-login',
+    'uses' => 'AccountController@getLogin'
+));
+
+Route::post('/', array(
+    'as' => 'account-login-post',
+    'uses' => 'AccountController@postLogin'
+));
+
+Route::get('/account/create', array(
+    'as' => 'account-create',
+    'uses' => 'AccountController@getCreate'
+));
+
+Route::post('/account/create', array(
+    'as' => 'account-create-post',
+    'uses' => 'AccountController@postCreate'
 ));
 
 Route::get('/graph', array(
