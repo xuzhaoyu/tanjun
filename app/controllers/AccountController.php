@@ -17,11 +17,11 @@ class AccountController extends BaseController {
 
 
 
-    public function getCreate() {
+    protected function getCreate() {
         return View::make('account.create');
     }
-//
-    public function postCreate() {
+
+    protected function postCreate() {
         $validator = Validator::make(Input::all(), array(
             'email'           =>  'required|max:50|email|unique:users',
             'username'        =>  'required|max:20|unique:users',
@@ -38,69 +38,31 @@ class AccountController extends BaseController {
             $email = Input::get('email');
             $username = Input::get('username');
             $password = Hash::make(Input::get('password'));
-            //$code = str_random(60);
 
             $user = User::create(array(
                 'email'         => $email,
                 'username'      => $username,
-                'password'      => $password,
-                'active'        => '1'
-                //'code'          => $code,
-                //'active'        => '0'
+                'password'      => $password
             ));
 
             if ($user) {
-
-                //Mail::send('emails.auth.activation',  array('username' => $username, 'link' => URL::route('account-activate', $code)), function($message) use($user)
-                //{
-                //    $message->to($user->email, $user->username)->subject('Activate your account');
-                //});
-
-                return Redirect::route('home')
+                return Redirect::route('account-login')
                     -> with('global', 'Your account has already been created. Check your email to activate your account! ');
             }
         }
 
     }
 
-//    public function getActivate($code) {
-//
-//        $user = User::where('code','=',$code)->where('active','=',0);
-//        echo '<pre>', print_r($user->first()), '</pre>';
-//
-//        echo '<pre>', print_r($user->count()), '</pre>';
-//
-//        if ($user->count()) {
-//
-//            $user = $user->first();
-//
-//            $user->code = '';
-//            $user->active = 1;
-//
-//            if ($user->save()) {
-//                return Redirect::route('home') ->
-//                    with('global', 'Your account has been activated.');
-//            }
-//
-//        }
-//
-//        return Redirect::route('home') ->
-//            with('global', 'Opps! Error.');
-//
-//    }
+    protected function getLogoff(){
+        Auth::logout();
+        return Redirect::route('account-login');
+    }
 
-//    protected function getLogoff(){
-//        Auth::logout();
-//        return Redirect::route('home');
-//    }
-
-    public function getLogin(){
+    protected function getLogin(){
         return View::make('account.login');
     }
 
-    public function postLogin() {
-
-        dd();
+    protected function postLogin() {
 
         $validator = Validator::make(Input::all(), array(
             'email'           =>  'required|max:50|email',
@@ -113,23 +75,15 @@ class AccountController extends BaseController {
                 ->withInput();
         } else {
 
-//            $email = Input::get('email');
-//            $password = Input::get('password');
-
-//            echo '<pre>', $email, '</pre>';
-//            echo '<pre>', $password, '</pre>';
-
-
             $remember = Input::has('remember') ? true : false;
 
             $auth = Auth::attempt(array(
                 'email' => Input::get('email'),
-                'password' => Input::get('password'),
-                'active' => 1,
+                'password' => Input::get('password')
             ), $remember);
 
             if ($auth) {
-                return Redirect::route('home');
+                return Redirect::route('readings');
             } else {
                 return Redirect::route('account-login')
                     -> with('global', 'Username or password wrong...');
