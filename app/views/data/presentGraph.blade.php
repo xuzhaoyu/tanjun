@@ -110,6 +110,7 @@ echo '</a>';
         {
           "name":"温度",
           "type":"line",
+          "itemStyle":{normal:{color:'#1e90ff'}},
           "data": [<?php
           foreach ($data as $a) {
             echo $a -> temp;
@@ -118,10 +119,10 @@ echo '</a>';
           ?>],
           "markLine": {
             data:[
-            [{name: "Max_Start", value: <?php echo $t -> tempMax; ?>, xAxis: -1, yAxis:<?php echo $t -> tempMax; ?>,itemStyle:{normal:{color:'#1e90ff'}}},
-            {name: "Max_End", xAxis: 99999999, yAxis:<?php echo $t -> tempMax; ?>,itemStyle:{normal:{color:'#1e90ff'}}}],
-            [{name: "Min_Start", value: <?php echo $t -> tempMin; ?>, xAxis: -1, yAxis:<?php echo $t -> tempMin; ?>,itemStyle:{normal:{color:'#1e90ff'}}},
-            {name: "Min_End", xAxis: 99999999, yAxis:<?php echo $t -> tempMin; ?>,itemStyle:{normal:{color:'#1e90ff'}}}]
+            [{name: "Max_Start", value: <?php echo $t -> tempMax; ?>, xAxis: -1, yAxis:<?php echo $t -> tempMax; ?>,itemStyle:{normal:{color:'#ff7f50'}}},
+            {name: "Max_End", xAxis: 99999999, yAxis:<?php echo $t -> tempMax; ?>,itemStyle:{normal:{color:'#ff7f50'}}}],
+            [{name: "Min_Start", value: <?php echo $t -> tempMin; ?>, xAxis: -1, yAxis:<?php echo $t -> tempMin; ?>,itemStyle:{normal:{color:'#ff7f50'}}},
+            {name: "Min_End", xAxis: 99999999, yAxis:<?php echo $t -> tempMin; ?>,itemStyle:{normal:{color:'#ff7f50'}}}]
             ]
           }
         }
@@ -181,6 +182,7 @@ echo '</a>';
         {
           "name":"湿度",
           "type":"line",
+          "itemStyle":{normal:{color:'#1e90ff'}},
           "data": [<?php
           foreach ($data as $a) {
             echo $a -> humidity;
@@ -189,10 +191,10 @@ echo '</a>';
           ?>],
           "markLine": {
             data:[
-            [{name: "Max_Start", value: <?php echo $t -> humidityMax; ?>, xAxis: -1, yAxis:<?php echo $t -> humidityMax; ?>,itemStyle:{normal:{color:'#1e90ff'}}},
-            {name: "Max_End", xAxis: 99999999, yAxis:<?php echo $t -> humidityMax; ?>,itemStyle:{normal:{color:'#1e90ff'}}}],
-            [{name: "Min_Start", value: <?php echo $t -> humidityMin; ?>, xAxis: -1, yAxis:<?php echo $t -> humidityMin; ?>,itemStyle:{normal:{color:'#1e90ff'}}},
-            {name: "Min_End", xAxis: 99999999, yAxis:<?php echo $t -> humidityMin; ?>,itemStyle:{normal:{color:'#1e90ff'}}}]
+            [{name: "Max_Start", value: <?php echo $t -> humidityMax; ?>, xAxis: -1, yAxis:<?php echo $t -> humidityMax; ?>,itemStyle:{normal:{color:'#ff7f50'}}},
+            {name: "Max_End", xAxis: 99999999, yAxis:<?php echo $t -> humidityMax; ?>,itemStyle:{normal:{color:'#ff7f50'}}}],
+            [{name: "Min_Start", value: <?php echo $t -> humidityMin; ?>, xAxis: -1, yAxis:<?php echo $t -> humidityMin; ?>,itemStyle:{normal:{color:'#ff7f50'}}},
+            {name: "Min_End", xAxis: 99999999, yAxis:<?php echo $t -> humidityMin; ?>,itemStyle:{normal:{color:'#ff7f50'}}}]
             ]
           }
         }
@@ -252,6 +254,7 @@ echo '</a>';
         {
           "name":"压差",
           "type":"line",
+          "itemStyle":{normal:{color:'#1e90ff'}},
           "data": [<?php
           foreach ($data as $a) {
             echo $a -> pressure;
@@ -260,10 +263,10 @@ echo '</a>';
           ?>],
           "markLine": {
             data:[
-            [{name: "Max_Start", value: <?php echo $t -> pressureMax; ?>, xAxis: -1, yAxis:<?php echo $t -> pressureMax; ?>,itemStyle:{normal:{color:'#1e90ff'}}},
-            {name: "Max_End", xAxis: 99999999, yAxis:<?php echo $t -> pressureMax; ?>,itemStyle:{normal:{color:'#1e90ff'}}}],
-            [{name: "Min_Start", value: <?php echo $t -> pressureMin; ?>, xAxis: -1, yAxis:<?php echo $t -> pressureMin; ?>,itemStyle:{normal:{color:'#1e90ff'}}},
-            {name: "Min_End", xAxis: 99999999, yAxis:<?php echo $t -> pressureMin; ?>,itemStyle:{normal:{color:'#1e90ff'}}}]
+            [{name: "Max_Start", value: <?php echo $t -> pressureMax; ?>, xAxis: -1, yAxis:<?php echo $t -> pressureMax; ?>,itemStyle:{normal:{color:'#ff7f50'}}},
+            {name: "Max_End", xAxis: 99999999, yAxis:<?php echo $t -> pressureMax; ?>,itemStyle:{normal:{color:'#ff7f50'}}}],
+            [{name: "Min_Start", value: <?php echo $t -> pressureMin; ?>, xAxis: -1, yAxis:<?php echo $t -> pressureMin; ?>,itemStyle:{normal:{color:'#ff7f50'}}},
+            {name: "Min_End", xAxis: 99999999, yAxis:<?php echo $t -> pressureMin; ?>,itemStyle:{normal:{color:'#ff7f50'}}}]
             ]
           }
         }
@@ -323,6 +326,7 @@ echo '</a>';
         {
           "name":"尘埃微粒",
           "type":"line",
+          "itemStyle":{normal:{color:'#1e90ff'}},
           "data": [<?php
           foreach ($data as $a) {
             echo $a -> dust;
@@ -331,10 +335,10 @@ echo '</a>';
           ?>],
           "markLine": {
             data:[
-            [{name: "Max_Start", value: <?php echo $t -> dustMax; ?>, xAxis: -1, yAxis:<?php echo $t -> dustMax; ?>,itemStyle:{normal:{color:'#1e90ff'}}},
-            {name: "Max_End", xAxis: 99999999, yAxis:<?php echo $t -> dustMax; ?>,itemStyle:{normal:{color:'#1e90ff'}}}],
-            [{name: "Min_Start", value: <?php echo $t -> dustMin; ?>, xAxis: -1, yAxis:<?php echo $t -> dustMin; ?>,itemStyle:{normal:{color:'#1e90ff'}}},
-            {name: "Min_End", xAxis: 99999999, yAxis:<?php echo $t -> dustMin; ?>,itemStyle:{normal:{color:'#1e90ff'}}}]
+            [{name: "Max_Start", value: <?php echo $t -> dustMax; ?>, xAxis: -1, yAxis:<?php echo $t -> dustMax; ?>,itemStyle:{normal:{color:'#ff7f50'}}},
+            {name: "Max_End", xAxis: 99999999, yAxis:<?php echo $t -> dustMax; ?>,itemStyle:{normal:{color:'#ff7f50'}}}],
+            [{name: "Min_Start", value: <?php echo $t -> dustMin; ?>, xAxis: -1, yAxis:<?php echo $t -> dustMin; ?>,itemStyle:{normal:{color:'#ff7f50'}}},
+            {name: "Min_End", xAxis: 99999999, yAxis:<?php echo $t -> dustMin; ?>,itemStyle:{normal:{color:'#ff7f50'}}}]
             ]
           }
         }

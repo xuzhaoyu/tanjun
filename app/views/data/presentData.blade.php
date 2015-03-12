@@ -147,6 +147,7 @@ table, th, td {
           "name":"压差",
           "type":"bar",
           "barWidth": 50,
+          "itemStyle":{normal:{color:'#1e90ff'}},
           "data": [<?php
           foreach ($data as $a) {
             echo $a['pressure'];
@@ -207,6 +208,7 @@ table, th, td {
           "name":"尘埃微粒",
           "type":"bar",
           "barWidth": 50,
+          "itemStyle":{normal:{color:'#1e90ff'}},
           "data": [<?php
           foreach ($data as $a) {
             echo $a['dust'];
