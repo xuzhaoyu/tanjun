@@ -5,41 +5,51 @@ class ReadingsController extends \BaseController
 
     public function getIndex()
     {
-        $all_mac = DB::table('sensors')->select('mac', 'ip')->groupBy('mac')->get();
+        if (Auth::user()) {
+            $email = User::find(Auth::id())->email;
+            $all_mac = DB::table('ip2name')->select('mac', 'ip')->where('email', $email)->get();
 
-        $data_list = array();
+            $data_list = array();
 
-        foreach ($all_mac as $mac) {
-            $mac_addr = $mac->mac;
-            $a = DB::table('sensors')
-                ->where('mac', '=', $mac_addr)
-                ->orderBy('serverTime', 'DESC')
-                ->select('ip', 'mac', 'serverTime', 'temp', 'humidity', 'pressure', 'dust')
-                ->first();
+            foreach ($all_mac as $mac) {
+                $mac_addr = $mac->mac;
+                $a = DB::table('sensors')
+                    ->where('mac', '=', $mac_addr)
+                    ->orderBy('serverTime', 'DESC')
+                    ->select('ip', 'mac', 'serverTime', 'temp', 'humidity', 'pressure', 'dust')
+                    ->first();
 
-            $n = DB::table('ip2name')
-                ->select('room')
-                ->where('mac', '=', $mac_addr)
-                ->first();
+                $n = DB::table('ip2name')
+                    ->select('room')
+                    ->where('mac', '=', $mac_addr)
+                    ->first();
 
-            $data_list[] = array(
-                'room' => $n->room,
-                'mac' => $mac_addr,
-                'temp' => $a->temp,
-                'humidity' => $a->humidity,
-                'pressure' => $a->pressure,
-                'dust' => $a->dust,
-                'serverTime' => $a->serverTime
-            );
+                if ($a && $n) {
+                    $data_list[] = array(
+                        'room' => $n->room,
+                        'mac' => $mac_addr,
+                        'temp' => $a->temp,
+                        'humidity' => $a->humidity,
+                        'pressure' => $a->pressure,
+                        'dust' => $a->dust,
+                        'serverTime' => $a->serverTime
+                    );
+                }
 
+            }
+            return View::make('data.presentData')->with('data', $data_list);
         }
-        return View::make('data.presentData')->with('data', $data_list);
+        return Redirect::to(URL::route('account-login'));
     }
 
     public function getForm()
     {
-        $room = DB::table('ip2name')->select('room', 'mac')->get();
-        return View::make('data.setThreshold')->with('room', $room);
+        if (Auth::user()) {
+            $email = User::find(Auth::id())->email;
+            $room = DB::table('ip2name')->select('room', 'mac')->where('email', $email)->get();
+            return View::make('data.setThreshold')->with('room', $room);
+        }
+        return Redirect::to(URL::route('account-login'));
     }
 
     public function postVariable()
@@ -76,16 +86,17 @@ class ReadingsController extends \BaseController
         if (is_numeric($input['intervals'])) {
             DB::table('thresholds')->where('mac', '=', $input['mac'])->update(array('intervals' => $input['intervals']));
         }
-        if(strlen($input['name']) > 0){
-          DB::table('ip2name')->where('mac', '=', $input['mac'])->update(array('room' => $input['name']));
+        if (strlen($input['name']) > 0) {
+            DB::table('ip2name')->where('mac', '=', $input['mac'])->update(array('room' => $input['name']));
         }
         return View::make('success');
     }
 
-    public function postControls(){
-      $input = Input::all();
-      $thresholds = DB::table('thresholds')->select('*')->where('mac', '=', $input['mac'])->get();
-      return $thresholds;
+    public function postControls()
+    {
+        $input = Input::all();
+        $thresholds = DB::table('thresholds')->select('*')->where('mac', '=', $input['mac'])->get();
+        return $thresholds;
     }
 
     public function getGraph($room, $time_length)
@@ -103,11 +114,9 @@ class ReadingsController extends \BaseController
             ->select('serverTime', 'temp', 'humidity', 'pressure', 'dust')
             ->first();
 
-        //dd($q -> serverTime);
-        //dd($start_from);
-        $date = new DateTime($q -> serverTime);
+        $date = new DateTime($q->serverTime);
         if ($time_length == 'month') {
-            $start_from = $date -> modify('-1 month') ->format('Y-m-d H:i:s');
+            $start_from = $date->modify('-1 month')->format('Y-m-d H:i:s');
             $all_tp = DB::table('sensors')
                 ->where('serverTime', '>=', $start_from)
                 ->where('mac', '=', $mac)
@@ -115,7 +124,7 @@ class ReadingsController extends \BaseController
                 ->select('serverTime', 'temp', 'humidity', 'pressure', 'dust')
                 ->get();
         } elseif ($time_length == 'day') {
-            $start_from = $date -> modify('-1 day') ->format('Y-m-d H:i:s');
+            $start_from = $date->modify('-1 day')->format('Y-m-d H:i:s');
             $all_tp = DB::table('sensors')
                 ->where('serverTime', '>=', $start_from)
                 ->where('mac', '=', $mac)
@@ -154,27 +163,26 @@ class ReadingsController extends \BaseController
                 'dust' => $input->dust)
         );
         $name = DB::table('ip2name')
-            ->where('mac',$input->mac)
+            ->where('mac', $input->mac)
             ->first();
         $thresh = DB::table('thresholds')
-            ->where('mac',$input->mac)
+            ->where('mac', $input->mac)
             ->first();
-        if ($name == NULL){
+        if ($name == NULL) {
             DB::table('ip2name')
-                -> insert(array(
+                ->insert(array(
                     'mac' => $input->mac,
                     'ip' => $input->ip,
                     'room' => '新车间'
                 ));
-        }
-        else if ($name->ip != $input->ip){
+        } else if ($name->ip != $input->ip) {
             DB::table('ip2name')
-                ->where('mac',$input->mac)
+                ->where('mac', $input->mac)
                 ->update(array('ip' => $input->ip));
         }
-        if ($thresh == NULL){
+        if ($thresh == NULL) {
             DB::table('thresholds')
-                -> insert(array(
+                ->insert(array(
                     'mac' => $input->mac,
                     'tempMin' => 0,
                     'tempMax' => 0,

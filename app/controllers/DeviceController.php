@@ -4,10 +4,12 @@ class DeviceController extends \BaseController {
 
     public function getDevices()
     {
-        $data = DB::table('ip2name')
-            -> select('ip', 'mac', 'room')
-            -> get();
-        return View::make('data.showDevice')->with('data', $data);
+        if (Auth::user()) {
+            $email = User::find(Auth::id())->email;
+            $data = DB::table('ip2name')->select('ip', 'mac', 'room')->where('email', $email)->get();
+            return View::make('data.showDevice')->with('data', $data);
+        }
+        return Redirect::to(URL::route('account-login'));
     }
 
     public function getDelete($mac)
@@ -25,5 +27,4 @@ class DeviceController extends \BaseController {
             -> delete();
         return Redirect::to(URL::route('devices'));
     }
-
 }
