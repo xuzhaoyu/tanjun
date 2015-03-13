@@ -7,11 +7,24 @@ header( "refresh:120;" );
 ?>
 
 <style>
-table, th, td {
-  border: 1px solid black;
-  font-size:37px;
-  font-weight:600;
-}
+    table, th, td {
+      border: 1px solid black;
+      font-size:37px;
+      font-weight:600;
+    }
+    th{
+        background-color: #1e90ff;
+        color: #2c3e50;
+    }
+    td{
+        background-color: #94C5CC;
+    }
+    a:link {
+        color: #2c3e50;
+    }
+    a:visited {
+        color: #2c3e50;
+    }
 </style>
 
 <table>
@@ -30,9 +43,8 @@ table, th, td {
     $t = DB::table('thresholds')->where('mac', '=', $a['mac'])
     ->select('tempMin', 'tempMax', 'humidityMin', 'humidityMax', 'pressureMin', 'pressureMax', 'dustMin', 'dustMax')
     ->first();
-
     echo '<tr>';
-    echo '<td>';
+    echo '<td style="background-color:#1e90ff">';
     echo '<a href="';
     echo URL::route('graphs');
     echo '/';
@@ -133,13 +145,21 @@ table, th, td {
             echo '\'';
             echo ', ';
           }
-          ?>]
+          ?>],
+            axisLabel : {
+                textStyle:{
+                    fontWeight: 'bolder'
+                }
+            }
         }],
         yAxis : [
         {
           type : 'value',
           axisLabel : {
-            formatter: '{value} Pa'
+            formatter: '{value} Pa',
+            textStyle:{
+                  fontWeight: 'bolder'
+            }
           }
         }],
         series : [
@@ -194,13 +214,21 @@ table, th, td {
             echo '\'';
             echo ', ';
           }
-          ?>]
+          ?>],
+            axisLabel : {
+                textStyle:{
+                    fontWeight: 'bolder'
+                }
+            }
         }],
         yAxis : [
         {
           type : 'value',
           axisLabel : {
-            formatter: '{value} 个'
+            formatter: '{value} 个',
+            textStyle:{
+                fontWeight: 'bolder'
+            }
           }
         }],
         series : [
