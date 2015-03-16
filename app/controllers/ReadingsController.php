@@ -99,6 +99,14 @@ class ReadingsController extends \BaseController
         return $thresholds;
     }
 
+    public function getClean(){
+        $path = app_path('files/'.date("Ymd").'_backup.csv');
+        DB::statement("select * from sensors into outfile '".$path."'");
+        DB::statement("truncate table sensors");
+//        return $a;
+        return View::make('success');
+    }
+
     public function getGraph($room, $time_length)
     {
         $m = DB::table('ip2name')

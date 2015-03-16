@@ -44,6 +44,11 @@ Route::group(array('before' => 'guest'), function(){
 
 });
 
+Route::post('/readings/reading', array(
+    'as' => 'data',
+    'uses' => 'ReadingsController@postReading'
+));
+
 Route::group(array('before' => 'auth'), function(){
 
     Route::group(array('before' => 'csrf'), function(){
@@ -60,12 +65,9 @@ Route::group(array('before' => 'auth'), function(){
         'uses' => 'AccountController@getLogoff'
     ));
 
-    Route::get('/graph', array(
-        'as' => 'graphs'
-    ));
-
     Route::get('/readings', array(
-        'as' => 'readings'
+        'as' => 'readings',
+        'uses' => 'ReadingsController@getIndex'
     ));
 
     Route::get('/set_threshold', array(
@@ -73,7 +75,10 @@ Route::group(array('before' => 'auth'), function(){
         'uses' => 'ReadingsController@getForm'
     ));
 
-
+    Route::get('/backup', array(
+        'as' => 'clean',
+        'uses' => 'ReadingsController@getClean'
+    ));
 
     Route::get('/graph/{room}/{time_length}', array(
         'as' => 'graph',
@@ -102,6 +107,6 @@ Route::group(array('before' => 'auth'), function(){
         'uses' => 'DeviceController@getDelete'
     ));
 
-    Route::Controller('readings', 'ReadingsController');    // present table and bar graph
+    //Route::Controller('readings', 'ReadingsController');    // present table and bar graph
 
 });

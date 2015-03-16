@@ -18,6 +18,7 @@ li{
          <li><a href="{{ URL::route('getThreshold') }}">Get Thresholds</a></li>
          <li><a href="{{ URL::route('devices') }}">Get Devices</a></li>
          <li><a href="{{ URL::route('form') }}">Set Thresholds</a></li>
+         <li><a href="{{ URL::route('clean') }}">Clean</a></li>
          <li><a href="{{ URL::route('account-logoff') }}">Logoff</a></li>
     </ul>
 </nav>

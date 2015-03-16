@@ -46,7 +46,7 @@ header( "refresh:120;" );
     echo '<tr>';
     echo '<td style="background-color:#1e90ff">';
     echo '<a href="';
-    echo URL::route('graphs');
+    echo '/graph';
     echo '/';
     print_r($a['room']);
     echo '/day';

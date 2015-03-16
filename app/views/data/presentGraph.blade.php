@@ -14,7 +14,7 @@ header( "refresh:120;" );
 
 <?php
 echo '<a href="';
-echo URL::route('graphs');
+echo '/graph';
 echo '/';
 print_r($room);
 echo '/all';
@@ -27,7 +27,7 @@ echo '</a>';
 
 <?php
 echo '<a href="';
-echo URL::route('graphs');
+echo '/graph';
 echo '/';
 print_r($room);
 echo '/month';
@@ -40,7 +40,7 @@ echo '</a>';
 
 <?php
 echo '<a href="';
-echo URL::route('graphs');
+echo '/graph';
 echo '/';
 print_r($room);
 echo '/day';
