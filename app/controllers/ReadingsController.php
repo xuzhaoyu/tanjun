@@ -103,7 +103,6 @@ class ReadingsController extends \BaseController
         $path = app_path('files/'.date("Ymd").'_backup.csv');
         DB::statement("select * from sensors into outfile '".$path."'");
         DB::statement("truncate table sensors");
-//        return $a;
         return View::make('success');
     }
 
