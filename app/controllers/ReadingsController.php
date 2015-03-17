@@ -106,8 +106,7 @@ class ReadingsController extends \BaseController
         }
         DB::statement("select * from sensors into outfile '".$path."'");
         DB::statement("truncate table sensors");
-        Response::download($path);
-        return View::make('success');
+        return Response::download($path);
     }
 
     public function getGraph($room, $time_length)
