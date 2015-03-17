@@ -100,7 +100,8 @@ class ReadingsController extends \BaseController
     }
 
     public function getClean(){
-        $path = app_path('files/'.date("Ymd").'_backup.csv');
+        $email = User::find(Auth::id())->email;
+        $path = app_path('files/'.$email."_".date("Ymd").'_backup.csv');
         if(file_exists($path)){
             unlink($path);
         }
