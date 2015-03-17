@@ -57,7 +57,7 @@ header( "refresh:120;" );
     echo '</td>';
 
     if (($a['temp'] > $t -> tempMax) or ($a['temp'] < $t -> tempMin)) {
-      echo '<td style="background-color:blue"><span style="color:red;">';
+      echo '<td><span style="color:red;">';
       print_r($a['temp']);
       echo '</span></td>';
     } else {
@@ -67,7 +67,7 @@ header( "refresh:120;" );
     }
 
     if (($a['humidity'] > $t -> humidityMax) or ($a['humidity'] < $t -> humidityMin)) {
-      echo '<td style="background-color:blue"><span style="color:red;">';
+      echo '<td><span style="color:red;">';
       print_r($a['humidity']);
       echo '</span></td>';
     } else {
@@ -77,7 +77,7 @@ header( "refresh:120;" );
     }
 
     if (($a['pressure'] > $t -> pressureMax) or ($a['pressure'] < $t -> pressureMin)) {
-      echo '<td style="background-color:blue"><span style="color:red;">';
+      echo '<td><span style="color:red;">';
       print_r($a['pressure']);
       echo '</span></td>';
     } else {
@@ -87,7 +87,7 @@ header( "refresh:120;" );
     }
 
     if (($a['dust'] > $t -> dustMax) or ($a['dust'] < $t -> dustMin)) {
-      echo '<td style="background-color:blue"><span style="color:red;">';
+      echo '<td><span style="color:red;">';
       print_r($a['dust']);
       echo '</span></td>';
     } else {

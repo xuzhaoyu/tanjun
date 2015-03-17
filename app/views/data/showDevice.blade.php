@@ -8,6 +8,13 @@
         font-size:27px;
         font-weight:600;
     }
+    th{
+        background-color: #1e90ff;
+        color: #2c3e50;
+    }
+    td{
+        background-color: #94C5CC;
+    }
 </style>
 
 <table>
