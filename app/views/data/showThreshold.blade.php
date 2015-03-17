@@ -40,7 +40,7 @@
 
 foreach ($data as $line) {
     echo '<tr>';
-    echo '<td  style="color:#2c3e50">';
+    echo '<td  style="color:#2c3e50; background-color: #1e90ff;">';
     echo $line['room'];
     echo '</td>';
     echo '<td>';
