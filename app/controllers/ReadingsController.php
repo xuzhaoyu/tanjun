@@ -101,9 +101,13 @@ class ReadingsController extends \BaseController
 
     public function getClean(){
         $path = app_path('files/'.date("Ymd").'_backup.csv');
+        if(file_exists($path)){
+            unlink($path);
+        }
         DB::statement("select * from sensors into outfile '".$path."'");
         DB::statement("truncate table sensors");
-        return Response::download($path);
+        Response::download($path);
+        return View::make('success');
     }
 
     public function getGraph($room, $time_length)
