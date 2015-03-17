@@ -41,8 +41,35 @@
 foreach ($data as $line) {
     echo '<tr>';
     foreach ($line as $entry) {
+        echo '<td  style="color:#2c3e50">';
+        echo $entry['room'];
+        echo '</td>';
         echo '<td>';
-        echo $entry;
+        echo $entry['tempMin'];
+        echo '</td>';
+        echo '<td>';
+        echo $entry['tempMax'];
+        echo '</td>';
+        echo '<td>';
+        echo $entry['humidityMin'];
+        echo '</td>';
+        echo '<td>';
+        echo $entry['humidityMax'];
+        echo '</td>';
+        echo '<td>';
+        echo $entry['pressureMin'];
+        echo '</td>';
+        echo '<td>';
+        echo $entry['pressureMax'];
+        echo '</td>';
+        echo '<td>';
+        echo $entry['dustMin'];
+        echo '</td>';
+        echo '<td>';
+        echo $entry['dustMax'];
+        echo '</td>';
+        echo '<td>';
+        echo $entry['intervals'];
         echo '</td>';
     }
     echo '</tr>';

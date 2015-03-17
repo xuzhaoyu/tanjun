@@ -37,7 +37,7 @@ foreach ($data as $line) {
     echo $line -> mac;
     echo '</td>';
 
-    echo '<td style="color:#2c3e50">';
+    echo '<td>';
     echo $line -> room;
     echo '</td>';
 
