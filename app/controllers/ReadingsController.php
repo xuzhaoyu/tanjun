@@ -184,7 +184,8 @@ class ReadingsController extends \BaseController
                 ->insert(array(
                     'mac' => $input->mac,
                     'ip' => $input->ip,
-                    'room' => '新车间'
+                    'room' => '新车间',
+                    'email' => User::find(Auth::id())->email
                 ));
         } else if ($name->ip != $input->ip) {
             DB::table('ip2name')
