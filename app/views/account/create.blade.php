@@ -13,7 +13,7 @@
         </div>
 
         <div>
-            Username: <input type="text" name="username"
+            用户名: <input type="text" name="username"
             {{ (Input::old('username')) ? (' value="' . e(Input::old('username')) . '"') : ('') }}>
             @if ($errors->has())
             {{ $errors->first("username") }}
@@ -21,14 +21,14 @@
         </div>
 
         <div>
-            Password: <input type="password" name="password">
+            密码: <input type="password" name="password">
             @if ($errors->has())
             {{ $errors->first("password") }}
             @endif
         </div>
 
         <div>
-            Password Again: <input type="password" name="password_again">
+            再一次秘密: <input type="password" name="password_again">
             @if ($errors->has())
             {{ $errors->first("password_again") }}
             @endif

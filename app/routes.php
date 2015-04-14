@@ -49,6 +49,11 @@ Route::post('/readings/reading', array(
     'uses' => 'ReadingsController@postReading'
 ));
 
+Route::get('/account/getPhone', array(
+    'as' => 'phone',
+    'uses' => 'AccountController@getPhone'
+));
+
 Route::group(array('before' => 'auth'), function(){
 
     Route::group(array('before' => 'csrf'), function(){
@@ -58,11 +63,31 @@ Route::group(array('before' => 'auth'), function(){
             'uses' => 'ReadingsController@postVariable'
         ));
 
+        Route::post('/account/phonechange', array(
+            'as' => 'account-phone-post',
+            'uses' => 'AccountController@postPhone'
+        ));
+
+        Route::post('/account/password', array(
+            'as' => 'account-password-post',
+            'uses' => 'AccountController@postChangePassword'
+        ));
+
     });
 
     Route::get('/account/logoff', array(
         'as' => 'account-logoff',
         'uses' => 'AccountController@getLogoff'
+    ));
+
+    Route::get('/account/pass', array(
+        'as' => 'account-password',
+        'uses' => 'AccountController@getChangePassword'
+    ));
+
+    Route::get('/account/phone', array(
+        'as' => 'account-phone',
+        'uses' => 'AccountController@getChangePhone'
     ));
 
     Route::get('/readings', array(

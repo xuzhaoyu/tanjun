@@ -13,7 +13,7 @@
     </div>
 
     <div>
-        Password: <input type="password" name="password">
+        密码: <input type="password" name="password">
         @if ($errors->has())
         {{ $errors->first("password") }}
         @endif
@@ -21,7 +21,7 @@
 
     <div class="field">
         <input type="checkbox" name="remember" id="remember">
-        <label for="remember"> Remember me </label>
+        <label for="remember"> 记住 </label>
     </div>
 
     <br>

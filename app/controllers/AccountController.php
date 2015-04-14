@@ -47,7 +47,7 @@ class AccountController extends BaseController {
 
             if ($user) {
                 return Redirect::route('account-login')
-                    -> with('global', 'Your account has already been created. Check your email to activate your account! ');
+                    -> with('global', 'Your account has already been created');
             }
         }
 
@@ -56,6 +56,30 @@ class AccountController extends BaseController {
     protected function getLogoff(){
         Auth::logout();
         return Redirect::route('account-login');
+    }
+
+    protected function getChangePhone(){
+        return View::make('account.phone');
+    }
+
+    protected function postPhone(){
+        $input = Input::all();
+        $email = User::find(Auth::id())->email;
+        if (is_numeric($input['phone'])) {
+            DB::table('users')->where('email', '=', $email)->update(array('phone' => $input['phone']));
+        }
+        return View::make('success');
+    }
+
+    public function getPhone(){
+        $input = Input::all();
+        $email = DB::table('ip2name')->where('mac', '=', $input['mac']);
+        $phone = DB::table('users')->where('email', '=', $email)->get();
+        if ($phone) {
+            return $phone;
+        } else{
+            return 0;
+        }
     }
 
     protected function getLogin(){
@@ -96,52 +120,43 @@ class AccountController extends BaseController {
 
     }
 
-//    protected function getChangePassword() {
-//        return View::make('account.password');
-//    }
-//
-//    protected function postChangePassword() {
-//
-//        /*        echo Input::get('password');
-//                echo '<br>';
-//                echo Input::get('new_password_again');
-//                echo '<br>';
-//                echo Input::get('new_password');
-//        */
-//
-//        $validator = Validator::make(Input::all(), array(
-//            'password'        =>  'required|max:60|min:6',
-//            'new_password'        =>  'required|max:60|min:6',
-//            'new_password_again'  =>  'required|max:60|min:6|same:new_password'
-//        ));
-//
-//        if ($validator->fails()) {
-//            return Redirect::route('account-change-password')
-//                -> withErrors($validator);
-//        } else {
-//            $user = Auth::getUser();
-//            echo $user->password;
-//            echo Input::get('password');
-//
-//            if (Hash::check(Input::get('password'), $user->password)) {
-//                $temp = User::find($user->id);
-//                echo $temp->password;
-//                echo '<br>';
-//                $user->password = Hash::make(Input::get('new_password'));
-//                echo $temp->password;
-//                if ($user->save()) {
-//                    return Redirect::route('home')
-//                        -> with('global', 'Your password has been successfully changed.');
-//                }
-//
-//            } else {
-//                return Redirect::route('account-change-password')
-//                    -> with('global', 'The old password is incorrect.');
-//            }
-//        }
-//
-//
-//    }
+    protected function getChangePassword() {
+        return View::make('account.password');
+    }
 
+    protected function postChangePassword() {
+
+        $validator = Validator::make(Input::all(), array(
+            'password'        =>  'required|max:60|min:6',
+            'new_password'        =>  'required|max:60|min:6',
+            'new_password_again'  =>  'required|max:60|min:6|same:new_password'
+        ));
+
+        if ($validator->fails()) {
+            return Redirect::route('account-change-password')
+                -> withErrors($validator);
+        } else {
+            $user = Auth::getUser();
+            echo $user->password;
+            echo Input::get('password');
+
+            if (Hash::check(Input::get('password'), $user->password)) {
+                $temp = User::find($user->id);
+                echo $temp->password;
+                echo '<br>';
+                $user->password = Hash::make(Input::get('new_password'));
+                echo $temp->password;
+                if ($user->save()) {
+                    return View::make('success');
+                }
+
+            } else {
+                return Redirect::route('account-password')
+                    -> with('global', 'The old password is incorrect.');
+            }
+        }
+
+
+    }
 
 }
