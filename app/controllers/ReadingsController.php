@@ -8,7 +8,7 @@ class ReadingsController extends \BaseController
         if (Auth::user()) {
             $email = User::find(Auth::id())->email;
             $all_mac = DB::table('ip2name')->select('mac', 'ip')->where('email', $email)->get();
-
+            $columns = DB::table('users')->select('temp', 'pressure', 'dust')->where('email', $email)->get();
             $data_list = array();
 
             foreach ($all_mac as $mac) {
@@ -37,7 +37,7 @@ class ReadingsController extends \BaseController
                 }
 
             }
-            return View::make('data.presentData')->with('data', $data_list);
+            return View::make('data.presentData')->with('data', $data_list)->with('columns', $columns);
         }
         return Redirect::to(URL::route('account-login'));
     }
@@ -207,5 +207,22 @@ class ReadingsController extends \BaseController
                     'intervals' => 30
                 ));
         }
+    }
+
+    public function postRecord()
+    {
+        $input = (object)Input::all();
+        date_default_timezone_set('Asia/Shanghai');
+        $date = date('Y-m-d H:i:s');
+        DB::table('records')->insert(
+            array('clientTime' => $input->clientTime,
+                'serverTime' => $date,
+                'ip' => $input->ip,
+                'mac' => $input->mac,
+                'temp' => $input->temp,
+                'humidity' => $input->humidity,
+                'pressure' => $input->pressure,
+                'dust' => $input->dust)
+        );
     }
 }

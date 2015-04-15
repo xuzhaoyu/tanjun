@@ -7,6 +7,7 @@ class ThresholdController extends \BaseController
     {
         if (Auth::user()) {
             $email = User::find(Auth::id())->email;
+            $columns = DB::table('users')->select('temp', 'pressure', 'dust')->where('email', $email)->get();
             $all_mac = DB::table('ip2name')->select('mac', 'room')->where('email', $email)->get();
             $data = array();
             foreach ($all_mac as $mac) {
@@ -27,7 +28,7 @@ class ThresholdController extends \BaseController
                     'intervals' => $d->intervals
                 );
             }
-            return View::make('data.showThreshold')->with('data', $data);
+            return View::make('data.showThreshold')->with('data', $data)->with('columns', $columns);
         }
         return Redirect::to(URL::route('account-login'));
     }
