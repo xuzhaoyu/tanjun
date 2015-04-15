@@ -101,8 +101,8 @@ Route::group(array('before' => 'auth'), function(){
     ));
 
     Route::get('/backup', array(
-        'as' => 'clean',
-        'uses' => 'ReadingsController@getClean'
+        'as' => 'records',
+        'uses' => 'ReadingsController@getRecords'
     ));
 
     Route::get('/graph/{room}/{time_length}', array(

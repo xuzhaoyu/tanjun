@@ -99,14 +99,14 @@ class ReadingsController extends \BaseController
         return $thresholds;
     }
 
-    public function getClean(){
+    public function getRecords(){
         $email = User::find(Auth::id())->email;
         $path = app_path('files/'.$email."_".date("Ymd").'_backup.csv');
         if(file_exists($path)){
             unlink($path);
         }
         DB::statement("select * from sensors into outfile '".$path."'");
-        DB::statement("truncate table sensors");
+        //DB::statement("truncate table sensors");
         return Response::download($path);
     }
 
