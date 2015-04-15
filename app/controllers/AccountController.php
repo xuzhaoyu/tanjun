@@ -81,13 +81,13 @@ class AccountController extends BaseController {
     public function postFindPhone(){
         $input = Input::all();
         $email = DB::table('ip2name')->select('email')->where('mac', '=', $input['mac'])->first();
+        $thresh = DB::table('thresholds')->select('intervals')->where('mac', '=', $input['mac'])->first();
+        $data = array();
+        $data[0] = $thresh->intervals;
         if($email){
             $phone = DB::table('users')->select('phone', 'phone2')->where('email', '=', $email->email)->get();
-            if ($phone) {
-                return $phone;
-            } else{
-                return 0;
-            }
+            $data[1] = $phone;
+            return $data;
         } else {
             return 0;
         }
