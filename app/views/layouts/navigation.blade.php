@@ -15,12 +15,12 @@ li{
 <nav>
     <ul>
          <li><a href="{{ URL::route('readings') }}">数据</a></li>
-         <li><a href="{{ URL::route('getThreshold') }}">Get Thresholds</a></li>
-         <li><a href="{{ URL::route('devices') }}">Get Devices</a></li>
-         <li><a href="{{ URL::route('form') }}">Set Thresholds</a></li>
-         <li><a href="{{ URL::route('account-phone') }}">改报警电话</a></li>
-         <li><a href="{{ URL::route('account-password') }}">改密码</a></li>
-         <li><a href="{{ URL::route('account-logoff') }}">Logoff</a></li>
+         <li><a href="{{ URL::route('getThreshold') }}">查看合格线</a></li>
+         <li><a href="{{ URL::route('devices') }}">查看传感装置</a></li>
+         <li><a href="{{ URL::route('form') }}">设定合格线</a></li>
+         <li><a href="{{ URL::route('account-phone') }}">修改报警电话</a></li>
+         <li><a href="{{ URL::route('account-password') }}">修改密码</a></li>
+         <li><a href="{{ URL::route('account-logoff') }}">退出</a></li>
     </ul>
 </nav>
 <br>

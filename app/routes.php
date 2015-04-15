@@ -49,9 +49,9 @@ Route::post('/readings/reading', array(
     'uses' => 'ReadingsController@postReading'
 ));
 
-Route::get('/account/getPhone', array(
+Route::post('/account/FindPhone', array(
     'as' => 'phone',
-    'uses' => 'AccountController@getPhone'
+    'uses' => 'AccountController@postFindPhone'
 ));
 
 Route::group(array('before' => 'auth'), function(){

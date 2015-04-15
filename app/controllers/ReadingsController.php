@@ -46,7 +46,7 @@ class ReadingsController extends \BaseController
     {
         if (Auth::user()) {
             $email = User::find(Auth::id())->email;
-            $room = DB::table('ip2name')->select('room', 'mac')->where('email', $email)->get();
+            $room = DB::table('ip2name')->select('room', 'mac', 'ip')->where('email', $email)->get();
             return View::make('data.setThreshold')->with('room', $room);
         }
         return Redirect::to(URL::route('account-login'));

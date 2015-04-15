@@ -42,7 +42,8 @@ class AccountController extends BaseController {
             $user = User::create(array(
                 'email'         => $email,
                 'username'      => $username,
-                'password'      => $password
+                'password'      => $password,
+                'phone'         => '00000000'
             ));
 
             if ($user) {
@@ -59,7 +60,10 @@ class AccountController extends BaseController {
     }
 
     protected function getChangePhone(){
-        return View::make('account.phone');
+        $email = User::find(Auth::id())->email;
+        $phone = DB::table('users')->select('phone')->where('email', '=', $email)->first();
+        $phone = $phone->phone;
+        return View::make('account.phone')->with('phone',$phone);
     }
 
     protected function postPhone(){
@@ -71,13 +75,17 @@ class AccountController extends BaseController {
         return View::make('success');
     }
 
-    public function getPhone(){
+    public function postFindPhone(){
         $input = Input::all();
-        $email = DB::table('ip2name')->where('mac', '=', $input['mac']);
-        $phone = DB::table('users')->where('email', '=', $email)->get();
-        if ($phone) {
-            return $phone;
-        } else{
+        $email = DB::table('ip2name')->select('email')->where('mac', '=', $input['mac'])->first();
+        if($email){
+            $phone = DB::table('users')->select('phone')->where('email', '=', $email->email)->first();
+            if ($phone) {
+                return $phone->phone;
+            } else{
+                return 0;
+            }
+        } else {
             return 0;
         }
     }

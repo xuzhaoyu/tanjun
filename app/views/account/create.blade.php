@@ -28,7 +28,7 @@
         </div>
 
         <div>
-            再一次秘密: <input type="password" name="password_again">
+            再次输入密码: <input type="password" name="password_again">
             @if ($errors->has())
             {{ $errors->first("password_again") }}
             @endif
@@ -36,7 +36,7 @@
 
         <br>
 
-        <input type="submit" value="Create account">
+        <input type="submit" value="建立新用户">
         {{ Form::token() }}
     </form>
 @stop
