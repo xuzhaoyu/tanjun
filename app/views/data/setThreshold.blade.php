@@ -40,15 +40,15 @@ Pa
 <br>
 {{ Form::label('dustMin', '最小尘埃:'); }}
 {{ Form::text('dustMin'); }}
-Particle
+个数
 <br>
 {{ Form::label('dustMax', '最大尘埃:'); }}
 {{ Form::text('dustMax'); }}
-Particle
+个数
 <br>
 {{ Form::label('intervals', '上传间隔:'); }}
 {{ Form::text('intervals'); }}
-Seconds
+秒
 <br>
 <br>
 {{ Form::submit('确认') }}
