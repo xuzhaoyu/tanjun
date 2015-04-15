@@ -13,7 +13,7 @@
 
 Route::get('/', array(
     'as' => 'home',
-    'uses' => 'WebsiteController@getIndex'
+    'uses' => 'AccountController@getLogin'
 ));
 
 Route::group(array('before' => 'guest'), function(){

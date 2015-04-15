@@ -21,7 +21,7 @@
 
     <div class="field">
         <input type="checkbox" name="remember" id="remember">
-        <label for="remember"> 记住 </label>
+        <label for="remember"> 记住密码 </label>
     </div>
 
     <br>
