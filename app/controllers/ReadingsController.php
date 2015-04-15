@@ -209,7 +209,7 @@ class ReadingsController extends \BaseController
         }
     }
 
-    public function postRecord()
+    public function postRecords()
     {
         $input = (object)Input::all();
         date_default_timezone_set('Asia/Shanghai');
