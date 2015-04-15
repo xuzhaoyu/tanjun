@@ -6,7 +6,10 @@
 
 
     {{ Form::label('phone', '电话:'); }}
-    {{ Form::text('phone', $phone); }}
+    {{ Form::text('phone', $phone->phone); }}
+    <br>
+    {{ Form::label('phone2', '电话2:'); }}
+    {{ Form::text('phone2', $phone->phone2); }}
     <br>
     <br>
     {{ Form::token() }}

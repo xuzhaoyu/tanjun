@@ -43,7 +43,8 @@ class AccountController extends BaseController {
                 'email'         => $email,
                 'username'      => $username,
                 'password'      => $password,
-                'phone'         => '00000000'
+                'phone'         => '00000000',
+                'phone2'        => '00000000'
             ));
 
             if ($user) {
@@ -61,8 +62,7 @@ class AccountController extends BaseController {
 
     protected function getChangePhone(){
         $email = User::find(Auth::id())->email;
-        $phone = DB::table('users')->select('phone')->where('email', '=', $email)->first();
-        $phone = $phone->phone;
+        $phone = DB::table('users')->select('phone','phone2')->where('email', '=', $email)->first();
         return View::make('account.phone')->with('phone',$phone);
     }
 
@@ -72,6 +72,9 @@ class AccountController extends BaseController {
         if (is_numeric($input['phone'])) {
             DB::table('users')->where('email', '=', $email)->update(array('phone' => $input['phone']));
         }
+        if (is_numeric($input['phone2'])) {
+            DB::table('users')->where('email', '=', $email)->update(array('phone2' => $input['phone2']));
+        }
         return View::make('success');
     }
 
@@ -79,9 +82,9 @@ class AccountController extends BaseController {
         $input = Input::all();
         $email = DB::table('ip2name')->select('email')->where('mac', '=', $input['mac'])->first();
         if($email){
-            $phone = DB::table('users')->select('phone')->where('email', '=', $email->email)->first();
+            $phone = DB::table('users')->select('phone', 'phone2')->where('email', '=', $email->email)->get();
             if ($phone) {
-                return $phone->phone;
+                return $phone;
             } else{
                 return 0;
             }
