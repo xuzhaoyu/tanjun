@@ -7,7 +7,7 @@ class ThresholdController extends \BaseController
     {
         if (Auth::user()) {
             $email = User::find(Auth::id())->email;
-            $columns = DB::table('users')->select('temp', 'pressure', 'dust')->where('email', $email)->get();
+            $columns = DB::table('users')->select('temp', 'pressure', 'dust')->where('email', $email)->first();
             $all_mac = DB::table('ip2name')->select('mac', 'room')->where('email', $email)->get();
             $data = array();
             foreach ($all_mac as $mac) {

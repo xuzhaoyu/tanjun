@@ -18,6 +18,10 @@ class DeviceController extends \BaseController {
             -> where('mac', '=', $mac)
             -> delete();
 
+        DB::table('records')
+            -> where('mac', '=', $mac)
+            -> delete();
+
         DB::table('thresholds')
             -> where('mac', '=', $mac)
             -> delete();

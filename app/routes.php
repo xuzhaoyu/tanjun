@@ -78,6 +78,11 @@ Route::group(array('before' => 'auth'), function(){
             'uses' => 'AccountController@postChangePassword'
         ));
 
+        Route::post('/editRecords', array(
+            'as' => 'editRecords',
+            'uses' => 'ReadingsController@postEditRecords'
+        ));
+
     });
 
     Route::get('/account/logoff', array(
@@ -115,13 +120,6 @@ Route::group(array('before' => 'auth'), function(){
         'uses' => 'ReadingsController@getGraph'
     ));
 
-    Route::get('/update_ip/{ip}/{mac}', array(  // if {mac} is not in table ip2name, add a new row with room name 新车间
-        // if {mac} is already in table ip2name, then update the {IP}
-        // This interface is for raspberry pi only
-        'as' => 'updateIP',
-        'uses' => 'AddressController@getUpdate'
-    ));
-
     Route::get('/threshold', array(             // display all entries in the table threshold
         'as' => 'getThreshold',
         'uses' => 'ThresholdController@getThreshold'
@@ -132,11 +130,18 @@ Route::group(array('before' => 'auth'), function(){
         'uses' => 'DeviceController@getDevices'
     ));
 
+    Route::get('/rooms', array(
+        'as' => 'rooms',
+        'uses' => 'ReadingsController@getRooms'
+    ));
+
+    Route::get('/edit/{room}', array(
+        'as' => 'rooms',
+        'uses' => 'ReadingsController@getRecordsData'
+    ));
+
     Route::get('/devices/delete/{mac}', array(               // display all entries in the table ip2name
         'as' => 'delete',
         'uses' => 'DeviceController@getDelete'
     ));
-
-    //Route::Controller('readings', 'ReadingsController');    // present table and bar graph
-
 });

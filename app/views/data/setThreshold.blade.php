@@ -51,6 +51,7 @@ Pa
 秒
 <br>
 <br>
+{{ Form::token() }}
 {{ Form::submit('确认') }}
 {{ Form::close() }}
 @stop

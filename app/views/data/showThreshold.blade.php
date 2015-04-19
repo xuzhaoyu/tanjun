@@ -22,71 +22,44 @@
     <table>
         <tr>
             <th>房间</th>
-            <?php
-            if ($columns[0]->temp) {
-                echo '<th>温度最小值</th>';
-                echo '<th>温度最大值</th>';
-                echo '<th>湿度最小值</th>';
-                echo '<th>湿度最大值</th>';
-            }
-            if ($columns[0]->pressure) {
-                echo '<th>压力最小值</th>';
-                echo '<th>压力最大值</th>';
-            }
-            if ($columns[0]->dust) {
-                echo '<th>尘埃微粒最小值</th>';
-                echo '<th>尘埃微粒最大值</th>';
+            @if ($columns->temp)
+                <th>温度最小值</th>
+                <th>温度最大值</th>
+                <th>湿度最小值</th>
+                <th>湿度最大值</th>
+            @endif
+            @if ($columns->pressure)
+                <th>压力最小值</th>
+                <th>压力最大值</th>
+            @endif
+            @if ($columns->dust)
+                <th>尘埃微粒最小值</th>
+                <th>尘埃微粒最大值</th>
 
-            }
-            ?>
+            @endif
             <th>上传时间间隔</th>
         </tr>
+        @foreach($data as $line)
+            <tr><td  style="color:#2c3e50; background-color: #1e90ff;">{{$line['room']}}</td>
+                @if($columns->temp)
+                    <td>{{$line['tempMin']}}</td>
+                    <td>{{$line['tempMax']}}</td>
+                    <td>{{$line['humidityMin']}}</td>
+                    <td>{{$line['humidityMax']}}</td>
+                @endif
 
-        <?php
+                @if($columns->pressure)
+                    <td>{{$line['pressureMin']}}</td>
+                    <td>{{$line['pressureMax']}}</td>
+                @endif
 
-        foreach ($data as $line) {
-            echo '<tr>';
-            echo '<td  style="color:#2c3e50; background-color: #1e90ff;">';
-            echo $line['room'];
-            echo '</td>';
-            if ($columns[0]->temp) {
-                echo '<td>';
-                echo $line['tempMin'];
-                echo '</td>';
-                echo '<td>';
-                echo $line['tempMax'];
-                echo '</td>';
-                echo '<td>';
-                echo $line['humidityMin'];
-                echo '</td>';
-                echo '<td>';
-                echo $line['humidityMax'];
-                echo '</td>';
-            }
-            if ($columns[0]->pressure) {
-                echo '<td>';
-                echo $line['pressureMin'];
-                echo '</td>';
-                echo '<td>';
-                echo $line['pressureMax'];
-                echo '</td>';
-            }
-            if ($columns[0]->dust) {
-                echo '<td>';
-                echo $line['dustMin'];
-                echo '</td>';
-                echo '<td>';
-                echo $line['dustMax'];
-                echo '</td>';
-            }
-            echo '<td>';
-            echo $line['intervals'];
-            echo '</td>';
-            echo '</tr>';
-        }
-
-        ?>
-
+                @if($columns->dust)
+                    <td>{{$line['dustMin']}}</td>
+                    <td>{{$line['dustMax']}}</td>
+                @endif
+                <td>{{$line['intervals']}}</td>
+            </tr>
+        @endforeach
     </table>
 
     <br>

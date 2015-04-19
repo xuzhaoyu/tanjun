@@ -22,6 +22,10 @@
             background-color: #94C5CC;
         }
 
+        span {
+            color: red;
+        }
+
         a:link {
             color: #2c3e50;
         }
@@ -34,235 +38,206 @@
     <table>
         <tr>
             <th>房间</th>
-            <?php
-            if ($columns[0]->temp) {
-                echo '<th>温度</th>';
-                echo '<th>湿度</th>';
-            }
-            if ($columns[0]->pressure) {
-                echo '<th>压力</th>';
-            }
-            if ($columns[0]->dust) {
-                echo '<th>尘埃微粒</th>';
-            }
-            ?>
+            @if($columns->temp)
+                <th>温度</th>
+                <th>湿度</th>
+            @endif
+            @if($columns->pressure)
+                <th>压力</th>
+            @endif
+            @if($columns->dust)
+                <th>尘埃微粒</th>
+            @endif
             <th>时间</th>
         </tr>
 
-        <?php
-        foreach ($data as $a) {
 
+        @foreach($data as $a)
+            <?php
             $t = DB::table('thresholds')->where('mac', '=', $a['mac'])
                     ->select('tempMin', 'tempMax', 'humidityMin', 'humidityMax', 'pressureMin', 'pressureMax', 'dustMin', 'dustMax')
                     ->first();
-            echo '<tr>';
-            echo '<td style="background-color:#1e90ff">';
-            echo '<a href="';
-            echo '/graph';
-            echo '/';
-            print_r($a['room']);
-            echo '/day';
+            ?>
+            <tr>
+                <td style="background-color:#1e90ff"><a href="/graph/{{$a['room']}}/day">{{$a['room']}}</a></td>
+                @if($columns->temp)
+                    @if(($a['temp'] > $t->tempMax) or ($a['temp'] < $t->tempMin))
+                        <td><span>{{$a['temp']}}</span></td>
+                    @else
+                        <td>{{$a['temp']}}</td>
+                    @endif
 
-            echo '">';
-            print_r($a['room']);
-            echo '</a>';
-            echo '</td>';
-            if ($columns[0]->temp) {
-                if (($a['temp'] > $t->tempMax) or ($a['temp'] < $t->tempMin)) {
-                    echo '<td><span style="color:red;">';
-                    print_r($a['temp']);
-                    echo '</span></td>';
-                } else {
-                    echo '<td>';
-                    print_r($a['temp']);
-                    echo '</td>';
-                }
+                    @if(($a['humidity'] > $t->humidityMax) or ($a['humidity'] < $t->humidityMin))
+                        <td><span>{{$a['humidity']}}</span></td>
+                    @else
+                        <td>{{$a['humidity']}}</td>
+                    @endif
+                @endif
 
-                if (($a['humidity'] > $t->humidityMax) or ($a['humidity'] < $t->humidityMin)) {
-                    echo '<td><span style="color:red;">';
-                    print_r($a['humidity']);
-                    echo '</span></td>';
-                } else {
-                    echo '<td>';
-                    print_r($a['humidity']);
-                    echo '</td>';
-                }
-            }
-            if ($columns[0]->pressure) {
-                if (($a['pressure'] > $t->pressureMax) or ($a['pressure'] < $t->pressureMin)) {
-                    echo '<td><span style="color:red;">';
-                    print_r($a['pressure']);
-                    echo '</span></td>';
-                } else {
-                    echo '<td>';
-                    print_r($a['pressure']);
-                    echo '</td>';
-                }
-            }
-            if ($columns[0]->dust) {
-                if (($a['dust'] > $t->dustMax) or ($a['dust'] < $t->dustMin)) {
-                    echo '<td><span style="color:red;">';
-                    print_r($a['dust']);
-                    echo '</span></td>';
-                } else {
-                    echo '<td>';
-                    print_r($a['dust']);
-                    echo '</td>';
-                }
-            }
-            echo '<td>';
-            print_r($a['serverTime']);
-            echo '</td>';
+                @if($columns->pressure)
+                    @if(($a['pressure'] > $t->pressureMax) or ($a['pressure'] < $t->pressureMin))
+                        <td><span>{{$a['pressure']}}</span></td>
+                    @else
+                    <td>{{$a['pressure']}}</td>
+                    @endif
+                @endif
 
-            echo '</tr>';
-        }
-        ?>
+                @if($columns->dust)
+                    @if(($a['dust'] > $t->dustMax) or ($a['dust'] < $t->dustMin))
+                        <td><span>{{$a['dust']}}</span></td>
+                    @else
+                        <td>{{$a['dust']}}</td>
+                    @endif
+                @endif
+                <td>{{$a['serverTime']}}</td>
+            </tr>
+        @endforeach
     </table>
 
     <body>
     <br>
     <br>
+    @if($columns->pressure)
+        <div id="pressure" style="height:400px"></div>
+    @endif
 
-    <div id="pressure" style="height:400px; width:600px"></div>
-    <div id="dust" style="height:400px; width:600px"></div>
-    <!-- ECharts import -->
-    {{ HTML::script('js/echarts/build/dist/echarts.js'); }}
-    <script type="text/javascript">
-        require.config({
-            paths: {
-                echarts: 'http://123.57.251.73/js/echarts/build/dist'
-            }
-        });
-        require(
-                [
-                    'echarts',
-                    'echarts/chart/bar'
-                ],
-                function (ec) {
-                    var myChart = ec.init(document.getElementById('pressure'));
-                    var option = {
-                        tooltip: {
-                            show: true
-                        },
-                        legend: {
-                            data: ['压差'],
-                            textStyle: {
-                                fontSize: 24
-                            }
-                        },
-                        xAxis: [
-                            {
-                                type: 'category',
-                                data: [<?php
-          foreach ($data as $a) {
-            echo '\'';
-            print_r ($a['room']);
-            echo '\'';
-            echo ', ';
-          }
-          ?>],
-                                axisLabel: {
+    @if($columns->dust)
+        <div id="dust" style="height:400px"></div>
+    @endif
+                <!-- ECharts import -->
+        {{ HTML::script('js/echarts/build/dist/echarts.js'); }}
+        @if($columns->pressure)
+            <script type="text/javascript">
+                require.config({
+                    paths: {
+                        echarts: './js/echarts/build/dist'
+                    }
+                });
+                require(
+                        [
+                            'echarts',
+                            'echarts/chart/bar'
+                        ],
+                        function (ec) {
+                            var myChart = ec.init(document.getElementById('pressure'));
+                            var option = {
+                                tooltip: {
+                                    show: true
+                                },
+                                legend: {
+                                    data: ['压差'],
                                     textStyle: {
-                                        fontWeight: 'bolder'
+                                        fontSize: 24
                                     }
-                                }
-                            }],
-                        yAxis: [
-                            {
-                                type: 'value',
-                                axisLabel: {
-                                    formatter: '{value} Pa',
-                                    textStyle: {
-                                        fontWeight: 'bolder'
-                                    }
-                                }
-                            }],
-                        series: [
-                            {
-                                "name": "压差",
-                                "type": "bar",
-                                "barWidth": 50,
-                                "itemStyle": {normal: {color: '#1e90ff'}},
-                                "data": [<?php
-          foreach ($data as $a) {
-            echo $a['pressure'];
-            echo ', ';
-          }
-          ?>]
-                            }]
-                    };
-                    myChart.setOption(option);
-                }
-        );
-    </script>
+                                },
+                                xAxis: [
+                                    {
+                                        type: 'category',
+                                        data: [
+                                            @foreach($data as $a)
+                                            '{{$a['room']}}',
+                                            @endforeach
+                                            ],
+                                        axisLabel: {
+                                            textStyle: {
+                                                fontWeight: 'bolder'
+                                            }
+                                        }
+                                    }],
+                                yAxis: [
+                                    {
+                                        type: 'value',
+                                        axisLabel: {
+                                            formatter: '{value} Pa',
+                                            textStyle: {
+                                                fontWeight: 'bolder'
+                                            }
+                                        }
+                                    }],
+                                series: [
+                                    {
+                                        "name": "压差",
+                                        "type": "bar",
+                                        "barWidth": 50,
+                                        "itemStyle": {normal: {color: '#1e90ff'}},
+                                        "data": [
+                                            @foreach($data as $a)
+                                            {{$a['pressure']}},
+                                            @endforeach
+                                        ]
+                                    }]
+                            };
+                            myChart.setOption(option);
+                        }
+                );
+            </script>
+        @endif
 
-    <script type="text/javascript">
-        require.config({
-            paths: {
-                echarts: 'http://123.57.251.73/js/echarts/build/dist'
-            }
-        });
-        require(
-                [
-                    'echarts',
-                    'echarts/chart/bar'
-                ],
-                function (ec) {
-                    var myChart = ec.init(document.getElementById('dust'));
-                    var option = {
-                        tooltip: {
-                            show: true
-                        },
-                        legend: {
-                            data: ['尘埃微粒'],
-                            textStyle: {
-                                fontSize: 24
-                            }
-                        },
-                        xAxis: [
-                            {
-                                type: 'category',
-                                data: [<?php
-          foreach ($data as $a) {
-            echo '\'';
-            print_r ($a['room']);
-            echo '\'';
-            echo ', ';
-          }
-          ?>],
-                                axisLabel: {
+        @if($columns->dust)
+            <script type="text/javascript">
+                require.config({
+                    paths: {
+                        echarts: './js/echarts/build/dist'
+                    }
+                });
+                require(
+                        [
+                            'echarts',
+                            'echarts/chart/bar'
+                        ],
+                        function (ec) {
+                            var myChart = ec.init(document.getElementById('dust'));
+                            var option = {
+                                tooltip: {
+                                    show: true
+                                },
+                                legend: {
+                                    data: ['尘埃微粒'],
                                     textStyle: {
-                                        fontWeight: 'bolder'
+                                        fontSize: 24
                                     }
-                                }
-                            }],
-                        yAxis: [
-                            {
-                                type: 'value',
-                                axisLabel: {
-                                    formatter: '{value} 个',
-                                    textStyle: {
-                                        fontWeight: 'bolder'
-                                    }
-                                }
-                            }],
-                        series: [
-                            {
-                                "name": "尘埃微粒",
-                                "type": "bar",
-                                "barWidth": 50,
-                                "itemStyle": {normal: {color: '#1e90ff'}},
-                                "data": [<?php
-          foreach ($data as $a) {
-            echo $a['dust'];
-            echo ', ';
-          }
-          ?>]
-                            }]
-                    };
-                    myChart.setOption(option);
-                }
-        );
-    </script>
+                                },
+                                xAxis: [
+                                    {
+                                        type: 'category',
+                                        data: [
+                                            @foreach($data as $a)
+                                            '{{$a['room']}}',
+                                            @endforeach
+                                        ],
+                                        axisLabel: {
+                                            textStyle: {
+                                                fontWeight: 'bolder'
+                                            }
+                                        }
+                                    }],
+                                yAxis: [
+                                    {
+                                        type: 'value',
+                                        axisLabel: {
+                                            formatter: '{value} 个',
+                                            textStyle: {
+                                                fontWeight: 'bolder'
+                                            }
+                                        }
+                                    }],
+                                series: [
+                                    {
+                                        "name": "尘埃微粒",
+                                        "type": "bar",
+                                        "barWidth": 50,
+                                        "itemStyle": {normal: {color: '#1e90ff'}},
+                                        "data": [
+                                            @foreach($data as $a)
+                                            {{$a['dust']}},
+                                            @endforeach
+                                        ]
+                                    }]
+                            };
+                            myChart.setOption(option);
+                        }
+                );
+            </script>
+        @endif
     </body>
 @stop

@@ -23,39 +23,14 @@
         <th>MAC</th>
         <th>房间</th>
     </tr>
-
-<?php
-
-foreach ($data as $line) {
-    echo '<tr>';
-
-    echo '<td>';
-    echo $line -> ip;
-    echo '</td>';
-
-    echo '<td>';
-    echo $line -> mac;
-    echo '</td>';
-
-    echo '<td>';
-    echo $line -> room;
-    echo '</td>';
-
-    echo '<td>';
-    echo '<a href="';
-    echo URL::route('devices');
-    echo '/delete/';
-    print_r($line -> mac);
-    echo '">';
-    print_r('删除');
-    echo '</a>';
-    echo '</td>';
-
-    echo '</tr>';
-}
-
-?>
-
+@foreach ($data as $line)
+    <tr>
+        <td>{{$line -> ip}}</td>
+        <td>{{$line -> mac}}</td>
+        <td>{{$line -> room}}</td>
+        <td><a href="{{URL::route('devices')}}/delete/{{$line -> mac}}">删除</a></td>
+    </tr>
+@endforeach
 </table>
 
 <br>

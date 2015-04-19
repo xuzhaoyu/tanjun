@@ -8,7 +8,7 @@ class ReadingsController extends \BaseController
         if (Auth::user()) {
             $email = User::find(Auth::id())->email;
             $all_mac = DB::table('ip2name')->select('mac', 'ip')->where('email', $email)->get();
-            $columns = DB::table('users')->select('temp', 'pressure', 'dust')->where('email', $email)->get();
+            $columns = DB::table('users')->select('temp', 'pressure', 'dust')->where('email', $email)->first();
             $data_list = array();
 
             foreach ($all_mac as $mac) {
@@ -99,6 +99,28 @@ class ReadingsController extends \BaseController
         return $thresholds;
     }
 
+    public function getRooms()
+    {
+        if (Auth::user()) {
+            $email = User::find(Auth::id())->email;
+            $data = DB::table('ip2name')->select('ip', 'mac', 'room')->where('email', $email)->get();
+            return View::make('data.presentRooms')->with('data', $data);
+        }
+        return Redirect::to(URL::route('account-login'));
+    }
+
+    public function getRecordsData($room)
+    {
+        $m = DB::table('ip2name')
+            ->where('room', '=', $room)
+            ->select('mac')
+            ->first();
+        $email = User::find(Auth::id())->email;
+        $columns = DB::table('users')->select('temp', 'pressure', 'dust')->where('email', $email)->first();
+        $data = DB::table('records')->select('id','temp', 'humidity', 'pressure', 'dust', 'serverTime')->where('mac', '=', $m->mac)->get();
+        return View::make('data.presentRecords')->with('data', $data)->with('columns', $columns);
+    }
+
     public function getRecords(){
         $email = User::find(Auth::id())->email;
         $path = app_path('files/'.$email."_".date("Ymd").'_backup.csv');
@@ -108,6 +130,33 @@ class ReadingsController extends \BaseController
         DB::statement("select * from records into outfile '".$path."'");
         //DB::statement("truncate table sensors");
         return Response::download($path);
+    }
+
+    public function postEditRecords(){
+        $email = User::find(Auth::id())->email;
+        $columns = DB::table('users')->select('temp', 'pressure', 'dust')->where('email', $email)->first();
+        $input = Input::all();
+        for($i = 1; $i <= $input['count']; $i++){
+            if($columns->temp) {
+                if (is_numeric($input['temp' . $i])) {
+                    DB::table('records')->where('id', '=', $input['id' . $i])->update(array('temp' => $input['temp' . $i]));
+                }
+                if (is_numeric($input['humidity' . $i])) {
+                    DB::table('records')->where('id', '=', $input['id' . $i])->update(array('humidity' => $input['humidity' . $i]));
+                }
+            }
+            if($columns->pressure) {
+                if (is_numeric($input['pressure' . $i])) {
+                    DB::table('records')->where('id', '=', $input['id' . $i])->update(array('pressure' => $input['pressure' . $i]));
+                }
+            }
+            if($columns->dust) {
+                if (is_numeric($input['dust' . $i])) {
+                    DB::table('records')->where('id', '=', $input['id' . $i])->update(array('dust' => $input['dust' . $i]));
+                }
+            }
+        }
+        return Redirect::to(URL::route('readings'));
     }
 
     public function getGraph($room, $time_length)
@@ -128,7 +177,7 @@ class ReadingsController extends \BaseController
         $date = new DateTime($q->serverTime);
         if ($time_length == 'month') {
             $start_from = $date->modify('-1 month')->format('Y-m-d H:i:s');
-            $all_tp = DB::table('sensors')
+            $all_tp = DB::table('records')
                 ->where('serverTime', '>=', $start_from)
                 ->where('mac', '=', $mac)
                 ->orderBy('serverTime')
@@ -143,7 +192,7 @@ class ReadingsController extends \BaseController
                 ->select('serverTime', 'temp', 'humidity', 'pressure', 'dust')
                 ->get();
         } else {
-            $all_tp = DB::table('sensors')
+            $all_tp = DB::table('records')
                 ->where('mac', '=', $mac)
                 ->orderBy('serverTime')
                 ->select('serverTime', 'temp', 'humidity', 'pressure', 'dust')
@@ -185,7 +234,7 @@ class ReadingsController extends \BaseController
                     'mac' => $input->mac,
                     'ip' => $input->ip,
                     'room' => '新车间',
-                    'email' => 'bjshanghuihao@126.com'
+                    'email' => 'new'
                 ));
         } else if ($name->ip != $input->ip) {
             DB::table('ip2name')
