@@ -59,6 +59,11 @@ Route::post('/account/FindPhone', array(
     'uses' => 'AccountController@postFindPhone'
 ));
 
+Route::post('/server', array(
+    'as' => 'server',
+    'uses' => 'ReadingsController@postServer'
+));
+
 Route::group(array('before' => 'auth'), function(){
 
     Route::group(array('before' => 'csrf'), function(){

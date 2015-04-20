@@ -46,8 +46,9 @@ class ReadingsController extends \BaseController
     {
         if (Auth::user()) {
             $email = User::find(Auth::id())->email;
+            $columns = DB::table('users')->select('temp', 'pressure', 'dust')->where('email', $email)->first();
             $room = DB::table('ip2name')->select('room', 'mac', 'ip')->where('email', $email)->get();
-            return View::make('data.setThreshold')->with('room', $room);
+            return View::make('data.setThreshold')->with('room', $room)->with('columns', $columns);
         }
         return Redirect::to(URL::route('account-login'));
     }
@@ -55,33 +56,41 @@ class ReadingsController extends \BaseController
     public function postVariable()
     {
         $input = Input::all();
+        $email = User::find(Auth::id())->email;
+        $columns = DB::table('users')->select('temp', 'pressure', 'dust')->where('email', $email)->first();
         $mac = DB::table('thresholds')->select('mac')->where('mac', '=', $input['mac'])->get();
         if ($mac == []) {
             DB::table('thresholds')->insert(array('mac' => $input['mac']));
         }
-        if (is_numeric($input['tempMin'])) {
-            DB::table('thresholds')->where('mac', '=', $input['mac'])->update(array('tempMin' => $input['tempMin']));
+        if($columns->temp) {
+            if (is_numeric($input['tempMin'])) {
+                DB::table('thresholds')->where('mac', '=', $input['mac'])->update(array('tempMin' => $input['tempMin']));
+            }
+            if (is_numeric($input['tempMax'])) {
+                DB::table('thresholds')->where('mac', '=', $input['mac'])->update(array('tempMax' => $input['tempMax']));
+            }
+            if (is_numeric($input['humidityMin'])) {
+                DB::table('thresholds')->where('mac', '=', $input['mac'])->update(array('humidityMin' => $input['humidityMin']));
+            }
+            if (is_numeric($input['humidityMax'])) {
+                DB::table('thresholds')->where('mac', '=', $input['mac'])->update(array('humidityMax' => $input['humidityMax']));
+            }
         }
-        if (is_numeric($input['tempMax'])) {
-            DB::table('thresholds')->where('mac', '=', $input['mac'])->update(array('tempMax' => $input['tempMax']));
+        if($columns->pressure) {
+            if (is_numeric($input['pressureMin'])) {
+                DB::table('thresholds')->where('mac', '=', $input['mac'])->update(array('pressureMin' => $input['pressureMin']));
+            }
+            if (is_numeric($input['pressureMax'])) {
+                DB::table('thresholds')->where('mac', '=', $input['mac'])->update(array('pressureMax' => $input['pressureMax']));
+            }
         }
-        if (is_numeric($input['humidityMin'])) {
-            DB::table('thresholds')->where('mac', '=', $input['mac'])->update(array('humidityMin' => $input['humidityMin']));
-        }
-        if (is_numeric($input['humidityMax'])) {
-            DB::table('thresholds')->where('mac', '=', $input['mac'])->update(array('humidityMax' => $input['humidityMax']));
-        }
-        if (is_numeric($input['pressureMin'])) {
-            DB::table('thresholds')->where('mac', '=', $input['mac'])->update(array('pressureMin' => $input['pressureMin']));
-        }
-        if (is_numeric($input['pressureMax'])) {
-            DB::table('thresholds')->where('mac', '=', $input['mac'])->update(array('pressureMax' => $input['pressureMax']));
-        }
-        if (is_numeric($input['dustMin'])) {
-            DB::table('thresholds')->where('mac', '=', $input['mac'])->update(array('dustMin' => $input['dustMin']));
-        }
-        if (is_numeric($input['dustMax'])) {
-            DB::table('thresholds')->where('mac', '=', $input['mac'])->update(array('dustMax' => $input['dustMax']));
+        if($columns->dust) {
+            if (is_numeric($input['dustMin'])) {
+                DB::table('thresholds')->where('mac', '=', $input['mac'])->update(array('dustMin' => $input['dustMin']));
+            }
+            if (is_numeric($input['dustMax'])) {
+                DB::table('thresholds')->where('mac', '=', $input['mac'])->update(array('dustMax' => $input['dustMax']));
+            }
         }
         if (is_numeric($input['intervals'])) {
             DB::table('thresholds')->where('mac', '=', $input['mac'])->update(array('intervals' => $input['intervals']));
@@ -273,5 +282,12 @@ class ReadingsController extends \BaseController
                 'pressure' => $input->pressure,
                 'dust' => $input->dust)
         );
+    }
+
+    public function postServer(){
+        $input = Input::all();
+        $email = DB::table('ip2name')->select('email')->where('mac', '=', $input['mac'])->first();
+        $server = DB::table('users')->select('server')->where('email', '=', $email->email)->first();
+        return $server->server;
     }
 }

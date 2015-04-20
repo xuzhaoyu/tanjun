@@ -14,38 +14,47 @@
 {{ Form::label('name', '房间名称:'); }}
 {{ Form::text('name'); }}
 <br>
-{{ Form::label('tempMin', '最小温度:'); }}
-{{ Form::text('tempMin'); }}
-°C
-<br>
-{{ Form::label('tempMax', '最大温度:'); }}
-{{ Form::text('tempMax'); }}
-°C
-<br>
-{{ Form::label('humidityMin', '最小湿度:'); }}
-{{ Form::text('humidityMin'); }}
-%RH
-<br>
-{{ Form::label('humidityMax', '最大湿度:'); }}
-{{ Form::text('humidityMax'); }}
-%RH
-<br>
-{{ Form::label('pressureMin', '最小压强:'); }}
-{{ Form::text('pressureMin'); }}
-Pa
-<br>
-{{ Form::label('pressureMax', '最大压强:'); }}
-{{ Form::text('pressureMax'); }}
-Pa
-<br>
-{{ Form::label('dustMin', '最小尘埃:'); }}
-{{ Form::text('dustMin'); }}
-个数
-<br>
-{{ Form::label('dustMax', '最大尘埃:'); }}
-{{ Form::text('dustMax'); }}
-个数
-<br>
+@if($columns->temp)
+    {{ Form::label('tempMin', '最小温度:'); }}
+    {{ Form::text('tempMin'); }}
+    °C
+    <br>
+    {{ Form::label('tempMax', '最大温度:'); }}
+    {{ Form::text('tempMax'); }}
+    °C
+    <br>
+    {{ Form::label('humidityMin', '最小湿度:'); }}
+    {{ Form::text('humidityMin'); }}
+    %RH
+    <br>
+    {{ Form::label('humidityMax', '最大湿度:'); }}
+    {{ Form::text('humidityMax'); }}
+    %RH
+    <br>
+@endif
+
+@if($columns->pressure)
+    {{ Form::label('pressureMin', '最小压强:'); }}
+    {{ Form::text('pressureMin'); }}
+    Pa
+    <br>
+    {{ Form::label('pressureMax', '最大压强:'); }}
+    {{ Form::text('pressureMax'); }}
+    Pa
+    <br>
+@endif
+
+@if($columns->dust)
+    {{ Form::label('dustMin', '最小尘埃:'); }}
+    {{ Form::text('dustMin'); }}
+    个数
+    <br>
+    {{ Form::label('dustMax', '最大尘埃:'); }}
+    {{ Form::text('dustMax'); }}
+    个数
+    <br>
+@endif
+
 {{ Form::label('intervals', '上传间隔:'); }}
 {{ Form::text('intervals'); }}
 秒
