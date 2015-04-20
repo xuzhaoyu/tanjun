@@ -104,6 +104,11 @@
     @if($columns->dust)
         <div id="dust" style="height:400px"></div>
     @endif
+
+    @if($columns->temp)
+        <div id="temp" style="height:400px"></div>
+        <div id="humidity" style="height:400px"></div>
+    @endif
                 <!-- ECharts import -->
         {{ HTML::script('js/echarts/build/dist/echarts.js'); }}
         @if($columns->pressure)
@@ -135,7 +140,7 @@
                                         type: 'category',
                                         data: [
                                             @foreach($data as $a)
-                                            '{{$a['room']}}',
+                                                '{{$a['room']}}',
                                             @endforeach
                                             ],
                                         axisLabel: {
@@ -162,7 +167,7 @@
                                         "itemStyle": {normal: {color: '#1e90ff'}},
                                         "data": [
                                             @foreach($data as $a)
-                                            {{$a['pressure']}},
+                                                {{$a['pressure']}},
                                             @endforeach
                                         ]
                                     }]
@@ -202,7 +207,7 @@
                                         type: 'category',
                                         data: [
                                             @foreach($data as $a)
-                                            '{{$a['room']}}',
+                                                '{{$a['room']}}',
                                             @endforeach
                                         ],
                                         axisLabel: {
@@ -229,7 +234,138 @@
                                         "itemStyle": {normal: {color: '#1e90ff'}},
                                         "data": [
                                             @foreach($data as $a)
-                                            {{$a['dust']}},
+                                                {{$a['dust']}},
+                                            @endforeach
+                                        ]
+                                    }]
+                            };
+                            myChart.setOption(option);
+                        }
+                );
+            </script>
+        @endif
+
+        @if($columns->temp)
+            <script type="text/javascript">
+                require.config({
+                    paths: {
+                        echarts: './js/echarts/build/dist'
+                    }
+                });
+                require(
+                        [
+                            'echarts',
+                            'echarts/chart/bar'
+                        ],
+                        function (ec) {
+                            var myChart = ec.init(document.getElementById('temp'));
+                            var option = {
+                                tooltip: {
+                                    show: true
+                                },
+                                legend: {
+                                    data: ['温度'],
+                                    textStyle: {
+                                        fontSize: 24
+                                    }
+                                },
+                                xAxis: [
+                                    {
+                                        type: 'category',
+                                        data: [
+                                            @foreach($data as $a)
+                                                '{{$a['room']}}',
+                                            @endforeach
+                                        ],
+                                        axisLabel: {
+                                            textStyle: {
+                                                fontWeight: 'bolder'
+                                            }
+                                        }
+                                    }],
+                                yAxis: [
+                                    {
+                                        type: 'value',
+                                        axisLabel: {
+                                            formatter: '{value} °C',
+                                            textStyle: {
+                                                fontWeight: 'bolder'
+                                            }
+                                        }
+                                    }],
+                                series: [
+                                    {
+                                        "name": "温度",
+                                        "type": "bar",
+                                        "barWidth": 50,
+                                        "itemStyle": {normal: {color: '#1e90ff'}},
+                                        "data": [
+                                            @foreach($data as $a)
+                                                {{$a['temp']}},
+                                            @endforeach
+                                        ]
+                                    }]
+                            };
+                            myChart.setOption(option);
+                        }
+                );
+            </script>
+            <script type="text/javascript">
+                require.config({
+                    paths: {
+                        echarts: './js/echarts/build/dist'
+                    }
+                });
+                require(
+                        [
+                            'echarts',
+                            'echarts/chart/bar'
+                        ],
+                        function (ec) {
+                            var myChart = ec.init(document.getElementById('humidity'));
+                            var option = {
+                                tooltip: {
+                                    show: true
+                                },
+                                legend: {
+                                    data: ['湿度'],
+                                    textStyle: {
+                                        fontSize: 24
+                                    }
+                                },
+                                xAxis: [
+                                    {
+                                        type: 'category',
+                                        data: [
+                                            @foreach($data as $a)
+                                                '{{$a['room']}}',
+                                            @endforeach
+                                        ],
+                                        axisLabel: {
+                                            textStyle: {
+                                                fontWeight: 'bolder'
+                                            }
+                                        }
+                                    }],
+                                yAxis: [
+                                    {
+                                        type: 'value',
+                                        axisLabel: {
+                                            formatter: '{value} %RH',
+                                            textStyle: {
+                                                fontWeight: 'bolder'
+                                            }
+                                        }
+                                    }],
+                                series: [
+                                    {
+                                        "name": "湿度",
+                                        "type": "bar",
+                                        "barWidth": 50,
+                                        "itemStyle": {normal: {color: '#1e90ff'}},
+                                        "data": [
+                                            @foreach($data as $a)
+                                                {{$a['humidity']}},
                                             @endforeach
                                         ]
                                     }]
