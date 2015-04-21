@@ -9,7 +9,7 @@
     <style>
         table, th, td {
             border: 1px solid black;
-            font-size: 37px;
+            font-size: 27px;
             font-weight: 600;
         }
 
