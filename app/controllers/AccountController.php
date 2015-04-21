@@ -43,7 +43,7 @@ class AccountController extends BaseController {
                 'email'         => $email,
                 'username'      => $username,
                 'password'      => $password,
-                'server'        => '123.57.521.73'
+                'server'        => '123.57.251.73'
             ));
 
             if ($user) {
