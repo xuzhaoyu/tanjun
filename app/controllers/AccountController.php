@@ -42,7 +42,8 @@ class AccountController extends BaseController {
             $user = User::create(array(
                 'email'         => $email,
                 'username'      => $username,
-                'password'      => $password
+                'password'      => $password,
+                'server'        => '123.57.521.73'
             ));
 
             if ($user) {
