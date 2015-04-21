@@ -147,8 +147,6 @@ class AccountController extends BaseController {
         } else {
             $user = Auth::getUser();
             if (Hash::check(Input::get('password'), $user->password)) {
-                $temp = User::find($user->id);
-                echo '<br>';
                 $user->password = Hash::make(Input::get('new_password'));
                 if ($user->save()) {
                     return View::make('success');
