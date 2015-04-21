@@ -59,7 +59,7 @@
                     ->first();
             ?>
             <tr>
-                <td style="background-color:#1e90ff"><a href="/graph/{{$a['room']}}/day">{{$a['room']}}</a></td>
+                <td style="background-color:#1e90ff"><a href="/graph/{{$a['mac']}}/day">{{$a['room']}}</a></td>
                 @if($columns->temp)
                     @if(($a['temp'] > $t->tempMax) or ($a['temp'] < $t->tempMin))
                         <td><span>{{$a['temp']}}</span></td>

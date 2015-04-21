@@ -168,17 +168,11 @@ class ReadingsController extends \BaseController
         return Redirect::to(URL::route('readings'));
     }
 
-    public function getGraph($room, $time_length)
+    public function getGraph($mac, $time_length)
     {
         $email = User::find(Auth::id())->email;
         $columns = DB::table('users')->select('temp', 'pressure', 'dust')->where('email', $email)->first();
-        $m = DB::table('ip2name')
-            ->where('room', '=', $room)
-            ->select('mac')
-            ->first();
-
-        $mac = $m->mac;
-
+        $room = DB::table('ip2name')->select('room')->where('mac', '=', $mac)->first();
         $q = DB::table('sensors')
             ->where('mac', '=', $mac)
             ->orderBy('serverTime', 'DEST')
@@ -215,7 +209,7 @@ class ReadingsController extends \BaseController
             ->select('tempMin', 'tempMax', 'humidityMin', 'humidityMax', 'pressureMin', 'pressureMax', 'dustMin', 'dustMax')
             ->first();
 
-        return View::make('data.presentGraph')->with('data', $all_tp)->with('room', $room)->with('t', $t)->with('time_length', $time_length)->with('columns', $columns);
+        return View::make('data.presentGraph')->with('data', $all_tp)->with('room', $room->room)->with('t', $t)->with('time_length', $time_length)->with('columns', $columns);
     }
 
     public function postReading()
