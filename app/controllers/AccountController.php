@@ -146,15 +146,10 @@ class AccountController extends BaseController {
                 -> withErrors($validator);
         } else {
             $user = Auth::getUser();
-            echo $user->password;
-            echo Input::get('password');
-
             if (Hash::check(Input::get('password'), $user->password)) {
                 $temp = User::find($user->id);
-                echo $temp->password;
                 echo '<br>';
                 $user->password = Hash::make(Input::get('new_password'));
-                echo $temp->password;
                 if ($user->save()) {
                     return View::make('success');
                 }
