@@ -126,7 +126,7 @@ class ReadingsController extends \BaseController
             ->first();
         $email = User::find(Auth::id())->email;
         $columns = DB::table('users')->select('temp', 'pressure', 'dust')->where('email', $email)->first();
-        $data = DB::table('records')->select('id','temp', 'humidity', 'pressure', 'dust', 'serverTime')->where('mac', '=', $m->mac)->get();
+        $data = DB::table('sensors')->select('id','temp', 'humidity', 'pressure', 'dust', 'serverTime')->where('mac', '=', $m->mac)->get();
         return View::make('data.presentRecords')->with('data', $data)->with('columns', $columns);
     }
 
@@ -136,7 +136,7 @@ class ReadingsController extends \BaseController
         if(file_exists($path)){
             unlink($path);
         }
-        DB::statement("select * from records into outfile '".$path."'");
+        DB::statement("select * from sensors into outfile '".$path."'");
         //DB::statement("truncate table sensors");
         return Response::download($path);
     }
@@ -148,20 +148,20 @@ class ReadingsController extends \BaseController
         for($i = 1; $i <= $input['count']; $i++){
             if($columns->temp) {
                 if (is_numeric($input['temp' . $i])) {
-                    DB::table('records')->where('id', '=', $input['id' . $i])->update(array('temp' => $input['temp' . $i]));
+                    DB::table('sensors')->where('id', '=', $input['id' . $i])->update(array('temp' => $input['temp' . $i]));
                 }
                 if (is_numeric($input['humidity' . $i])) {
-                    DB::table('records')->where('id', '=', $input['id' . $i])->update(array('humidity' => $input['humidity' . $i]));
+                    DB::table('sensors')->where('id', '=', $input['id' . $i])->update(array('humidity' => $input['humidity' . $i]));
                 }
             }
             if($columns->pressure) {
                 if (is_numeric($input['pressure' . $i])) {
-                    DB::table('records')->where('id', '=', $input['id' . $i])->update(array('pressure' => $input['pressure' . $i]));
+                    DB::table('sensors')->where('id', '=', $input['id' . $i])->update(array('pressure' => $input['pressure' . $i]));
                 }
             }
             if($columns->dust) {
                 if (is_numeric($input['dust' . $i])) {
-                    DB::table('records')->where('id', '=', $input['id' . $i])->update(array('dust' => $input['dust' . $i]));
+                    DB::table('sensors')->where('id', '=', $input['id' . $i])->update(array('dust' => $input['dust' . $i]));
                 }
             }
         }
@@ -188,7 +188,7 @@ class ReadingsController extends \BaseController
         $date = new DateTime($q->serverTime);
         if ($time_length == 'month') {
             $start_from = $date->modify('-1 month')->format('Y-m-d H:i:s');
-            $all_tp = DB::table('records')
+            $all_tp = DB::table('sensors')
                 ->where('serverTime', '>=', $start_from)
                 ->where('mac', '=', $mac)
                 ->orderBy('serverTime')
@@ -203,7 +203,7 @@ class ReadingsController extends \BaseController
                 ->select('serverTime', 'temp', 'humidity', 'pressure', 'dust')
                 ->get();
         } else {
-            $all_tp = DB::table('records')
+            $all_tp = DB::table('sensors')
                 ->where('mac', '=', $mac)
                 ->orderBy('serverTime')
                 ->select('serverTime', 'temp', 'humidity', 'pressure', 'dust')
