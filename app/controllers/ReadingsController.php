@@ -137,6 +137,10 @@ class ReadingsController extends \BaseController
             unlink($path);
         }
         DB::statement("select ip,mac,temp, humidity, serverTime from sensors into outfile '".$path."' fields terminated by ','");
+        App::finish(function($request, $response) use ($path)
+        {
+            unlink($path);
+        });
         //DB::statement("truncate table sensors");
         return Response::download($path);
     }
