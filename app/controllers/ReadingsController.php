@@ -136,7 +136,7 @@ class ReadingsController extends \BaseController
         if(file_exists($path)){
             unlink($path);
         }
-        DB::statement("select ip,mac,temp, humidity, serverTime from sensors into outfile '".$path."'");
+        DB::statement("select ip,mac,temp, humidity, serverTime from sensors into outfile '".$path."' fields terminated by ","");
         //DB::statement("truncate table sensors");
         return Response::download($path);
     }
