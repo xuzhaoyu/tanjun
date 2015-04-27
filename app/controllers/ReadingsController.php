@@ -126,7 +126,7 @@ class ReadingsController extends \BaseController
             ->first();
         $email = User::find(Auth::id())->email;
         $columns = DB::table('users')->select('temp', 'pressure', 'dust')->where('email', $email)->first();
-        $data = DB::table('sensors')->select('id','temp', 'humidity', 'pressure', 'dust', 'serverTime')->where('mac', '=', $m->mac)->get();
+        $data = DB::table('sensors')->select('id','temp', 'humidity', 'pressure', 'dust', 'serverTime')->where('mac', '=', $m->mac)->orderBy('serverTime', 'DESC')->get();
         return View::make('data.presentRecords')->with('data', $data)->with('columns', $columns);
     }
 
