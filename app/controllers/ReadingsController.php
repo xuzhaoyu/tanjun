@@ -132,11 +132,11 @@ class ReadingsController extends \BaseController
 
     public function getRecords(){
         $email = User::find(Auth::id())->email;
-        $path = app_path('files/'.$email."_".date("Ymd").'_backup.cvs');
+        $path = app_path('files/'.$email."_".date("Ymd").'_backup.txt');
         if(file_exists($path)){
             unlink($path);
         }
-        DB::statement("select ip2name.room, sensors.ip,sensors.mac,sensors.temp, sensors.humidity, sensors.serverTime from sensors join ip2name on sensors.mac = ip2name.mac order by sensors.serverTime desc into outfile '".$path."' CHARACTER SET gbk fields terminated by '\t'");
+        DB::statement("select ip2name.room, sensors.ip,sensors.mac,sensors.temp, sensors.humidity, sensors.serverTime from sensors join ip2name on sensors.mac = ip2name.mac order by sensors.serverTime desc into outfile '".$path."' fields terminated by '\t'");
         App::finish(function($request, $response) use ($path)
         {
             unlink($path);
