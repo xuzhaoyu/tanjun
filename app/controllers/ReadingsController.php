@@ -132,7 +132,7 @@ class ReadingsController extends \BaseController
 
     public function getRecords(){
         $email = User::find(Auth::id())->email;
-        $path = app_path('files/'.$email."_".date("Ymd").'_backup.csv');
+        $path = app_path('files/'.$email."_".date("Ymd").'_backup.txt');
         if(file_exists($path)){
             unlink($path);
         }
