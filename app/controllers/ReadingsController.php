@@ -182,7 +182,7 @@ class ReadingsController extends \BaseController
             ->orderBy('serverTime', 'DEST')
             ->select('serverTime', 'temp', 'humidity', 'pressure', 'dust')
             ->first();
-        $date = new DateTime($q->serverTime);
+        $date = new DateTime($q->serverTime); 
         if ($time_length == 'month') {
             $start_from = $date->modify('-1 month')->format('Y-m-d H:i:s');
             $all_tp = DB::table('sensors')
