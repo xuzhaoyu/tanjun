@@ -12,11 +12,11 @@
     </head>
     <body>
 
-    <a href="/graph/{{$room}}/all">所有数据</a>
+    <a href="/graph/{{$mac}}/all">所有数据</a>
     <br>
-    <a href="/graph/{{$room}}/month">一个月的数据</a>
+    <a href="/graph/{{$mac}}/month">一个月的数据</a>
     <br>
-    <a href="/graph/{{$room}}/day">今天的数据</a>
+    <a href="/graph/{{$mac}}/day">今天的数据</a>
     <br>
 
     <br>

@@ -120,7 +120,7 @@ Route::group(array('before' => 'auth'), function(){
         'uses' => 'ReadingsController@getRecords'
     ));
 
-    Route::get('/graph/{room}/{time_length}', array(
+    Route::get('/graph/{mac}/{time_length}', array(
         'as' => 'graph',
         'uses' => 'ReadingsController@getGraph'
     ));

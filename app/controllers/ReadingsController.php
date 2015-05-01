@@ -182,7 +182,6 @@ class ReadingsController extends \BaseController
             ->orderBy('serverTime', 'DEST')
             ->select('serverTime', 'temp', 'humidity', 'pressure', 'dust')
             ->first();
-
         $date = new DateTime($q->serverTime);
         if ($time_length == 'month') {
             $start_from = $date->modify('-1 month')->format('Y-m-d H:i:s');
@@ -213,7 +212,7 @@ class ReadingsController extends \BaseController
             ->select('tempMin', 'tempMax', 'humidityMin', 'humidityMax', 'pressureMin', 'pressureMax', 'dustMin', 'dustMax')
             ->first();
 
-        return View::make('data.presentGraph')->with('data', $all_tp)->with('room', $room->room)->with('t', $t)->with('time_length', $time_length)->with('columns', $columns);
+        return View::make('data.presentGraph')->with('data', $all_tp)->with('room', $room->room)->with('t', $t)->with('time_length', $time_length)->with('columns', $columns)->with('mac', $mac);
     }
 
     public function postReading()
