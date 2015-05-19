@@ -37,6 +37,7 @@ class ReadingsController extends \BaseController
                 }
 
             }
+            sort($data_list);
             return View::make('data.presentData')->with('data', $data_list)->with('columns', $columns);
         }
         return Redirect::to(URL::route('account-login'));
