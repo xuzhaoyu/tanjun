@@ -291,6 +291,6 @@ class ReadingsController extends \BaseController
             $server = DB::table('users')->select('server')->where('email', '=', $email->email)->first();
             return $server->server;
         }
-        return 0;
+        return "123.57.251.73";
     }
 }
