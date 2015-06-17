@@ -287,7 +287,10 @@ class ReadingsController extends \BaseController
     public function postServer(){
         $input = Input::all();
         $email = DB::table('ip2name')->select('email')->where('mac', '=', $input['mac'])->first();
-        $server = DB::table('users')->select('server')->where('email', '=', $email->email)->first();
-        return $server->server;
+        if($email){
+            $server = DB::table('users')->select('server')->where('email', '=', $email->email)->first();
+            return $server->server;
+        }
+        return 0;
     }
 }
