@@ -64,6 +64,16 @@ Route::post('/server', array(
     'uses' => 'ReadingsController@postServer'
 ));
 
+Route::post('/com', array(
+    'as' => 'com',
+    'uses' => 'CommandController@postCom'
+));
+
+Route::post('/code', array(
+    'as' => 'code',
+    'uses' => 'CommandController@postCode'
+));
+
 Route::group(array('before' => 'auth'), function(){
 
     Route::group(array('before' => 'csrf'), function(){
@@ -71,6 +81,11 @@ Route::group(array('before' => 'auth'), function(){
         Route::post('/readings/data', array(
             'as' => 'variable',
             'uses' => 'ReadingsController@postVariable'
+        ));
+
+        Route::post('/command/data', array(
+            'as' => 'command',
+            'uses' => 'CommandController@postForm'
         ));
 
         Route::post('/account/phonechange', array(
@@ -98,6 +113,11 @@ Route::group(array('before' => 'auth'), function(){
     Route::get('/account/pass', array(
         'as' => 'account-password',
         'uses' => 'AccountController@getChangePassword'
+    ));
+
+    Route::get('/command', array(
+        'as' => 'command-form',
+        'uses' => 'CommandController@getCommandForm'
     ));
 
     Route::get('/account/phone', array(

@@ -267,23 +267,6 @@ class ReadingsController extends \BaseController
         }
     }
 
-    public function postRecords()
-    {
-        $input = (object)Input::all();
-        date_default_timezone_set('Asia/Shanghai');
-        $date = date('Y-m-d H:i:s');
-        DB::table('records')->insert(
-            array('clientTime' => $input->clientTime,
-                'serverTime' => $date,
-                'ip' => $input->ip,
-                'mac' => $input->mac,
-                'temp' => $input->temp,
-                'humidity' => $input->humidity,
-                'pressure' => $input->pressure,
-                'dust' => $input->dust)
-        );
-    }
-
     public function postServer(){
         $input = Input::all();
         $email = DB::table('ip2name')->select('email')->where('mac', '=', $input['mac'])->first();

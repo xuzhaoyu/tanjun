@@ -33,22 +33,17 @@ CREATE TABLE `ip2name` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `records`
+-- Table structure for table `command`
 --
 
-DROP TABLE IF EXISTS `records`;
+DROP TABLE IF EXISTS `commands`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `records` (
+CREATE TABLE `commands` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `clientTime` datetime DEFAULT NULL,
-  `serverTime` datetime DEFAULT NULL,
-  `ip` varchar(20) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `mac` varchar(64) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `temp` float DEFAULT NULL,
-  `humidity` float DEFAULT NULL,
-  `pressure` float DEFAULT NULL,
-  `dust` float DEFAULT NULL,
+  `command` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `code` text CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,	
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
