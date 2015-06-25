@@ -29,7 +29,7 @@ class CommandController extends \BaseController
         $input = Input::all();
         $command = DB::table('commands')->select('command', 'id')->where('mac', '=', $input['mac'])->first();
         if($command){
-            #DB::table('commands')->where('id', '=', $command->id)->delete();
+            DB::table('commands')->where('id', '=', $command->id)->delete();
             return $command->command;
         }
         return "None";
