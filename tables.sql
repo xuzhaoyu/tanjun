@@ -42,7 +42,7 @@ DROP TABLE IF EXISTS `commands`;
 CREATE TABLE `commands` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `mac` varchar(64) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `command` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `command` text CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `code` text CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,	
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=latin1;

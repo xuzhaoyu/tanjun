@@ -18,6 +18,7 @@
     {{ Form::file('code'); }}
     <br>
     <br>
+    {{ Form::hidden('dest', 'client'); }}
     {{ Form::token() }}
     {{ Form::submit('确认') }}
     {{ Form::close() }}

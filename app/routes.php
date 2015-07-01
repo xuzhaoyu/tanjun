@@ -74,6 +74,11 @@ Route::post('/code', array(
     'uses' => 'CommandController@postCode'
 ));
 
+Route::post('/command/data', array(
+    'as' => 'command',
+    'uses' => 'CommandController@postForm'
+));
+
 Route::group(array('before' => 'auth'), function(){
 
     Route::group(array('before' => 'csrf'), function(){
@@ -83,10 +88,6 @@ Route::group(array('before' => 'auth'), function(){
             'uses' => 'ReadingsController@postVariable'
         ));
 
-        Route::post('/command/data', array(
-            'as' => 'command',
-            'uses' => 'CommandController@postForm'
-        ));
 
         Route::post('/account/phonechange', array(
             'as' => 'account-phone-post',

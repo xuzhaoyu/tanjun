@@ -21,13 +21,13 @@ class CommandController extends \BaseController
         } else {
             $path = 'NULL';
         }
-        DB::table('commands')->insert(array('mac' => $input['mac'], 'command' => $input['command'], 'code' => $path));
+        DB::table('commands')->insert(array('mac' => $input['mac'], 'command' => $input['command'], 'code' => $path, 'dest' => $input['dest']));
         return View::make('success');
     }
 
     public function postCom(){
         $input = Input::all();
-        $command = DB::table('commands')->select('command', 'id')->where('mac', '=', $input['mac'])->first();
+        $command = DB::table('commands')->select('command', 'id')->where('mac', '=', $input['mac'])->where('dest', '=', $input['dest'])->first();
         if($command){
             DB::table('commands')->where('id', '=', $command->id)->delete();
             return $command->command;
@@ -37,14 +37,18 @@ class CommandController extends \BaseController
 
     public function postCode(){
         $input = Input::all();
-        $command = DB::table('commands')->select('code')->where('mac', '=', $input['mac'])->first();
+        $command = DB::table('commands')->select('code', 'id')->where('mac', '=', $input['mac'])->where('dest', '=', $input['dest'])->first();
         $path = $command->code;
         if($command->code != 'NULL'){
-            App::finish(function($request, $response) use ($path)
+            App::finish(function($request, $response) use ($path, $input, $command)
             {
                 unlink($path);
+                if($input['dest'] == "control"){
+                    DB::table('commands')->where('id', '=', $command->id)->delete();
+                }
             });
-            return Response::download($command->code);
+
+            return Response::download($path);
         }
         return "None";
     }
