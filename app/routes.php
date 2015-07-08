@@ -49,11 +49,6 @@ Route::post('/readings/reading', array(
     'uses' => 'ReadingsController@postReading'
 ));
 
-Route::post('/readings/records', array(
-    'as' => 'record',
-    'uses' => 'ReadingsController@postRecords'
-));
-
 Route::post('/account/FindPhone', array(
     'as' => 'phone',
     'uses' => 'AccountController@postFindPhone'
