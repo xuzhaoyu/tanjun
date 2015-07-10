@@ -14,6 +14,7 @@ class CommandController extends \BaseController
     }
 
     public function postForm(){
+        dd('Test');
         $input = Input::all();
         if(Input::hasFile('code')) {
             $path = '/root/Documents/sensors/app/storage/' . Input::file('code')->getClientOriginalName();
