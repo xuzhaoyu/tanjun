@@ -74,6 +74,16 @@ Route::post('/command/data', array(
     'uses' => 'CommandController@postForm'
 ));
 
+Route::post('/phone/data', array(
+    'as' => 'phoneData',
+    'uses' => 'PhoneController@postData'
+));
+
+Route::get('/phone/number', array(
+    'as' => 'phoneNumber',
+    'uses' => 'PhoneController@getNumber'
+));
+
 Route::group(array('before' => 'auth'), function(){
 
     Route::group(array('before' => 'csrf'), function(){
