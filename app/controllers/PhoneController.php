@@ -9,19 +9,17 @@ class PhoneController extends \BaseController
 {
     public function postData(){
         $input = Input::all();
-        $all_numbers = DB::table('numbers')->select('phone')->get();
-        $phone = $input['phone'];
-        foreach ($all_numbers as $number){
-            if($number == $input['phone']){
-                $phone = $input['phone']."abc";
-                break;
-            }
+        $number = DB::table('numbers')->select('phone')->where('phone', $input['phone'])->get();
+        if($number){
+            $phone = $input['phone']."abc";
+        } else{
+            $phone = $input['phone'];
         }
         DB::table('received')->insert(array(
             'client_time' => $input['client'],
             'IMEI' => $input['IMEI'],
             'phone' => $phone
-        ));  
+        ));
         return 'Success';
     }
 
