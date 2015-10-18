@@ -21,7 +21,7 @@ class PhoneController extends \BaseController
             'client_time' => $input['client'],
             'IMEI' => $input['IMEI'],
             'phone' => $phone
-        ));
+        ));  
         return 'Success';
     }
 
