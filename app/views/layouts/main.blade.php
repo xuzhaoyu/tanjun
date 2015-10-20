@@ -3,7 +3,7 @@
 
 <html>
       <head>
-          <title> Authentication System </title>
+          <title> GPRS </title>
       </head>
 
       <body>

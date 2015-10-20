@@ -7,6 +7,20 @@
  */
 class PhoneController extends \BaseController
 {
+    public function getPhoneForm(){
+        return View::make('addNumber');
+    }
+
+    public function postPhoneForm(){
+        $input = Input::all();
+        if(is_numeric($input['phone'])) {
+            $columns = DB::table('numbers')->select('phone')->where('phone', $input['phone'])->first();
+            if(!$columns){
+                DB::table('numbers')->insert(array('phone'=>$input['phone']));
+            }
+        }
+        return Redirect::to(URL::route('home'));
+    }
     public function postData(){
         $input = Input::all();
         $number = DB::table('numbers')->select('phone')->where('phone', $input['phone'])->get();

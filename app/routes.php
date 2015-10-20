@@ -14,12 +14,23 @@ Route::get('/', array(
     'as' => 'home',
     'uses' => 'PhoneController@getNumber'
 ));
-Route::post('/phone/data', array(
-    'as' => 'phoneData',
-    'uses' => 'PhoneController@postData'
+
+Route::get('/phone/add', array(
+    'as' => 'addNum',
+    'uses' => 'PhoneController@getPhoneForm'
 ));
 
 Route::get('/phone/number', array(
     'as' => 'phoneNumber',
     'uses' => 'PhoneController@getNumber'
+));
+
+Route::post('/phone/data', array(
+    'as' => 'phoneData',
+    'uses' => 'PhoneController@postData'
+));
+
+Route::post('/phone/phone', array(
+    'as' => 'add',
+    'uses' => 'PhoneController@postPhoneForm'
 ));
