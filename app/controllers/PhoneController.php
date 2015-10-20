@@ -7,6 +7,13 @@
  */
 class PhoneController extends \BaseController
 {
+    public function getHome(){
+        $a = DB::table('received')
+            ->orderBy('client_time', 'DESC')
+            ->select('client_time','phone')
+            ->first();
+        return View::make('home')->with('a',$a);
+    }
     public function getPhoneForm(){
         return View::make('addNumber');
     }
@@ -21,6 +28,19 @@ class PhoneController extends \BaseController
         }
         return Redirect::to(URL::route('home'));
     }
+
+    public function getDelForm(){
+        $numbers = DB::table('numbers')->select('phone')->get();
+        return View::make('delNumber')->with('numbers',$numbers);
+    }
+
+    public function getDelete($phone){
+        DB::table('numbers')
+            -> where('phone', '=', $phone)
+            -> delete();
+        return Redirect::to(URL::route('delNum'));
+    }
+
     public function postData(){
         $input = Input::all();
         $number = DB::table('numbers')->select('phone')->where('phone', $input['phone'])->get();

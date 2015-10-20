@@ -12,7 +12,7 @@
 */
 Route::get('/', array(
     'as' => 'home',
-    'uses' => 'PhoneController@getNumber'
+    'uses' => 'PhoneController@getHome'
 ));
 
 Route::get('/phone/add', array(
@@ -20,9 +20,19 @@ Route::get('/phone/add', array(
     'uses' => 'PhoneController@getPhoneForm'
 ));
 
+Route::get('/phone/del', array(
+    'as' => 'delNum',
+    'uses' => 'PhoneController@getDelForm'
+));
+
 Route::get('/phone/number', array(
     'as' => 'phoneNumber',
     'uses' => 'PhoneController@getNumber'
+));
+
+Route::get('/phone/del/{phone}', array(
+    'as' => 'delete',
+    'uses' => 'PhoneController@getDelete'
 ));
 
 Route::post('/phone/data', array(
