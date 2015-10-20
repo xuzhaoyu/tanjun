@@ -26,8 +26,8 @@ class PhoneController extends \BaseController
    public function getNumber(){
        $a = DB::table('received')
            ->orderBy('client_time', 'DESC')
-           ->select('phone')
+           ->select('client_time','phone')
            ->first();
-       return $a->phone;
+       return $a;
    }
 }
