@@ -28,7 +28,9 @@ class PhoneController extends \BaseController
            ->orderBy('client_time', 'DESC')
            ->select('client_time','phone')
            ->first();
-
-       return ["client_time" => $a->client_time, "phone" => $a->phone];
+        if($a){
+            return ["client_time" => $a->client_time, "phone" => $a->phone];
+        }
+       return 0;
    }
 }
