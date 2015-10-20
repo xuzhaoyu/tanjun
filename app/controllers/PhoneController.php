@@ -28,6 +28,6 @@ class PhoneController extends \BaseController
            ->orderBy('client_time', 'DESC')
            ->select('client_time','phone')
            ->first();
-       return $a;
+       return (object)$a;
    }
 }
