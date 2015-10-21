@@ -10,7 +10,7 @@ class PhoneController extends \BaseController
     public function getHome(){
         $a = DB::table('received')
             ->orderBy('client_time', 'DESC')
-            ->select('client_time','phone')
+            ->select('client_time','phone','IMEI')
             ->first();
         return View::make('home')->with('a',$a);
     }
