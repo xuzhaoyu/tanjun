@@ -49,8 +49,9 @@ class PhoneController extends \BaseController
         } else{
             $phone = $input['phone'];
         }
+        date_default_timezone_set('Asia/Shanghai');
         DB::table('received')->insert(array(
-            'client_time' => $input['client'],
+            'client_time' => date('Y-m-d H:i:s'),
             'IMEI' => $input['IMEI'],
             'phone' => $phone
         ));
